@@ -117,7 +117,7 @@ nav > ul {
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   z-index: 999;
   background-color: white;
-  transition: left 300ms, height 300ms;
+  transition: left 300ms, height 300ms, opacity 300ms;
   opacity: 0;
 }
 
