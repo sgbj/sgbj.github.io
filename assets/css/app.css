@@ -118,19 +118,20 @@ nav > ul {
   z-index: 999;
   background-color: white;
   transition: left 300ms, height 300ms;
+  opacity: 0;
 }
 
 nav.active > ul {
   left: 0;
   overflow-y: auto;
+  opacity: 1;
 }
 
 @media screen and (max-width: 1060px) {
-
   nav > a {
     position: relative;
     top: 2rem;
-    left: -1rem;
+    left: 0;
     width: 3rem;
     margin: auto;
     display: block;
@@ -165,7 +166,7 @@ nav.active > ul {
 
   nav.active > ul {
     margin-top: 4rem;
-    height: 210px;
+    height: 200px;
     overflow-y: auto;
   }
 }
