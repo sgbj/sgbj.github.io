@@ -277,4 +277,11 @@ nav.active > ul li:nth-child(5) {
     height: 200px;
     overflow-y: auto;
   }
+
+  @media screen and (min-height: 450px) {
+    nav.active > ul {
+      height: 20rem;
+      padding-bottom:1rem;
+    }
+  }
 }
