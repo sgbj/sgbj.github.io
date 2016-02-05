@@ -127,6 +127,114 @@ nav.active > ul {
   opacity: 1;
 }
 
+nav > ul li {
+  margin-left: -1000px;
+  transition: margin-left .2s;
+}
+
+nav.active > ul li {
+  margin-left: 0;
+}
+
+nav.active > ul li:nth-child(2) {
+  transition-delay: 0.05s;
+}
+
+nav.active > ul li:nth-child(3) {
+  transition-delay: 0.1s;
+}
+
+nav.active > ul li:nth-child(4){
+  transition-delay: 0.15s;
+}
+
+nav.active > ul li:nth-child(5) {
+  transition-delay: 0.2s;
+}
+
+.projects {
+  margin: 5rem 0 4rem 0;
+  overflow: auto;
+}
+
+.projects a {
+  position: relative;
+  border-style: none;
+  float: left;
+  width: 33%;
+  overflow: hidden;
+}
+
+.projects a:hover img {
+  filter: blur(2px);
+  -webkit-filter:  blur(2px);
+  -moz-filter:  blur(2px);
+  -o-filter:  blur(2px);
+  -ms-filter:  blur(2px);
+}
+
+.projects a img {
+  width: 120%;
+  height: auto;
+  display: block;
+
+  margin-left: -10%;
+
+  transition: filter .3s, -webkit-filter .3s, -moz-filter .3s, -o-filter .3s, -ms-filter .3s;
+}
+
+.projects a p {
+  position: absolute;
+  background-color: rgba(0, 0, 0, .4);
+  width: 100%;
+  text-align: center;
+  margin: 0;
+  transition: left .3s, bottom .2s;
+  padding: 20px 5px;
+  font-size: 1.5rem;
+  color: rgba(255, 255, 255, 0.9);
+  display: inline-block;
+}
+
+.projects a p.left {
+  left: -500px;
+}
+
+.projects a p.right {
+  left: 500px;
+}
+
+.projects a p.bottom {
+  bottom: -500px;
+}
+
+.projects a:hover p {
+  left: 0;
+  bottom: 0;
+}
+
+@media screen and (max-width: 700px) {
+  .projects a {
+    width: 50%;
+  }
+
+  .projects a p {
+    left: 0 !important;
+    bottom: 0 !important;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .projects a {
+    width: 100%;
+  }
+
+  .projects a p {
+    left: 0 !important;
+    bottom: 0 !important;
+  }
+}
+
 @media screen and (max-width: 1060px) {
   nav > a {
     position: relative;
