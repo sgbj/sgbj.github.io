@@ -283,12 +283,7 @@ nav.active > ul li:nth-child(5) {
 
   nav.active > ul {
     overflow-y: hidden;
-  }
-
-  @media screen and (min-height: 450px) {
-    nav.active > ul {
-      height: 12.5rem;
-      padding-bottom: 1rem;
-    }
+    height: 12.5rem;
+    padding-bottom: 1rem;
   }
 }
