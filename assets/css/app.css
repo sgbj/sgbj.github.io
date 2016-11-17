@@ -7,7 +7,7 @@
 
 html {
   height: 100%;
-
+  margin: 0;
 }
 
 body {
@@ -16,6 +16,7 @@ body {
   font-family: Marvel;
   font-size: 2rem;
   line-height: 1.4;
+  margin: 0;
 }
 
 h1 {
@@ -38,6 +39,19 @@ h1 svg {
 section {
   max-width: 800px;
   margin: auto;
+}
+
+section.dark {
+  max-width: 100%;
+  background: #000;
+  background-image: 
+    radial-gradient(circle at top right, rgba(255, 255, 255, 0.13), transparent),
+    radial-gradient(circle closest-side, rgba(255, 255, 255, 0.05), transparent),
+    radial-gradient(circle at bottom left, rgba(255, 255, 255, 0.12), transparent),
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.11), transparent);
+  padding: 5rem 0;
+  margin: 5rem auto 4rem auto;
+  box-shadow: inset 0 0 2rem rgba(0, 0, 0, 0.4);
 }
 
 body > section:last-of-type {
@@ -114,7 +128,7 @@ nav > ul {
   border-radius: 0.1rem;
   list-style-type: none;
   line-height: 4rem;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
   z-index: 999;
   background-color: white;
   transition: left 300ms, height 300ms, opacity 300ms;
@@ -153,8 +167,9 @@ nav.active > ul li:nth-child(5) {
 }
 
 .projects {
-  margin: 5rem 0 4rem 0;
   overflow: auto;
+  max-width: 800px;
+  margin: auto;
 }
 
 .projects a {
@@ -165,22 +180,24 @@ nav.active > ul li:nth-child(5) {
   overflow: hidden;
 }
 
-.projects a:hover img {
-  filter: blur(2px);
+.projects a:hover .img {
+  opacity: 0.8;
+  filter:  blur(2px);
   -webkit-filter:  blur(2px);
   -moz-filter:  blur(2px);
   -o-filter:  blur(2px);
   -ms-filter:  blur(2px);
 }
 
-.projects a img {
-  width: 120%;
-  height: auto;
-  display: block;
-
-  margin-left: -10%;
-
-  transition: filter .3s, -webkit-filter .3s, -moz-filter .3s, -o-filter .3s, -ms-filter .3s;
+.projects a .img {
+  width:  100%;
+  height: 100%;
+  background-position: 50% 50%;
+  background-repeat:   no-repeat;
+  background-size:     cover;
+  background-color: #000;
+  min-height: 250px;
+  transition: all .2s;
 }
 
 .projects a p {
@@ -194,14 +211,6 @@ nav.active > ul li:nth-child(5) {
   font-size: 1.5rem;
   color: rgba(255, 255, 255, 0.9);
   display: inline-block;
-}
-
-.projects a p.left {
-  left: -500px;
-}
-
-.projects a p.right {
-  left: 500px;
 }
 
 .projects a p.bottom {
@@ -225,6 +234,10 @@ nav.active > ul li:nth-child(5) {
 }
 
 @media screen and (max-width: 400px) {
+  section.dark {
+    padding: 0;
+  }
+
   .projects a {
     width: 100%;
   }
@@ -252,7 +265,7 @@ nav.active > ul li:nth-child(5) {
     width: 100%;
     min-height: 4rem;
     background-color: white;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
     z-index: 999;
   }
 
@@ -273,15 +286,13 @@ nav.active > ul li:nth-child(5) {
   }
 
   nav.active > ul {
-    margin-top: 4rem;
-    height: 200px;
-    overflow-y: auto;
+    overflow-y: hidden;
   }
 
   @media screen and (min-height: 450px) {
     nav.active > ul {
-      height: 20rem;
-      padding-bottom:1rem;
+      height: 12.5rem;
+      padding-bottom: 1rem;
     }
   }
 }
