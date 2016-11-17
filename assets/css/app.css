@@ -234,10 +234,6 @@ nav.active > ul li:nth-child(5) {
 }
 
 @media screen and (max-width: 400px) {
-  section.dark {
-    padding: 0;
-  }
-
   .projects a {
     width: 100%;
   }
