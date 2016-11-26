@@ -85,7 +85,7 @@ nav a:hover, nav a:focus {
 
     header h1 {
         font-size: 4em;
-        text-shadow: -.08em 0 red, .08em 0 cyan;
+        text-shadow: -.04em 0 red, .04em 0 cyan;
     }
 
     main p {
