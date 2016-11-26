@@ -4,11 +4,11 @@
 
 html {
     min-height: 100%;
+    cursor: crosshair;
 }
 
 body {
     font-family: 'Quicksand', sans-serif;
-    cursor: crosshair;
     min-height: 100%;
 }
 
