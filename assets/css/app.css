@@ -26,10 +26,12 @@ header h1 {
     text-align: center;
     animation: fade-in .2s ease-in;
     margin: 0;
+    font-weight: normal;
 }
 
 main p {
     font-size: 4em;
+    font-weight: lighter;
     text-align: center;
     animation: fade-in 1s ease-in;
     margin: 1.8em 0;
