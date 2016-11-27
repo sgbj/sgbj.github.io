@@ -5,7 +5,7 @@ var quotes = [
     'Developer & designer',
     'Gamer',
     'App developer',
-    'Blogger',
+    //'Blogger',
     'Web developer',
     'Tinkerer'
 ];
