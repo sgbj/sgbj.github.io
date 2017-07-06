@@ -1,3 +1,21 @@
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+h2 {
+    font-family: 'Heebo', sans-serif;
+    color: #fff;
+    margin: 0;
+    font-weight: 100;
+    font-size: 3rem;
+}
+
 body {
     font-family: 'Heebo', sans-serif;
     font-size: 1.4rem;
@@ -34,6 +52,7 @@ main {
 
 nav a {
     margin: 0 10px;
+    padding-bottom: 4px;
 }
 
 @media screen and (max-width: 400px) {
