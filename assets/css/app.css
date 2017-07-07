@@ -16,6 +16,11 @@ h2 {
     font-size: 3rem;
 }
 
+html, body {
+    padding: 0;
+    margin: 0;
+}
+
 body {
     font-family: 'Heebo', sans-serif;
     font-size: 1.4rem;
@@ -36,9 +41,8 @@ a:link:active, a:visited:active, a:hover {
 
 main {
     position: absolute;
-    left: 50%;
     top: 50%;
-    margin-left: -240px;
+    width: 100%;
     margin-top: -250px;
     text-align: center;
 }
@@ -48,11 +52,6 @@ main {
     display: block;
     max-width: 100%;
     height: auto;
-    margin-bottom: 10px;
-}
-
-nav {
-    margin-left: -
 }
 
 nav a {
