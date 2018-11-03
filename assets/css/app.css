@@ -22,7 +22,7 @@ html, body {
 }
 
 body {
-    font-family: 'Heebo', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-size: 1.4rem;
     background-color: rgb(54, 0, 96);
 }
@@ -30,13 +30,14 @@ body {
 a:link, a:visited { 
     color: #fff;
     text-decoration: none;
-    border-bottom: 3px solid transparent;
-    transition: border-color .2s;
+    transition: .2s ease;
     text-transform: lowercase;
+    padding: 8px 16px;
 }
 
 a:link:active, a:visited:active, a:hover { 
-    border-bottom-color: #fff;
+    background-color: #fff;
+    color: rgb(54, 0, 96);
 }
 
 main {
@@ -50,6 +51,7 @@ main {
 .me {
     margin: auto;
     display: block;
+    width: 400px;
     max-width: 100%;
     height: auto;
 }
