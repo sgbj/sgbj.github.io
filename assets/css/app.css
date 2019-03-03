@@ -8,73 +8,41 @@
                                   supported by Chrome and Opera */
 }
 
-h2 {
-    font-family: 'Heebo', sans-serif;
-    color: #fff;
-    margin: 0;
-    font-weight: 100;
-    font-size: 3rem;
-}
-
 html, body {
     padding: 0;
     margin: 0;
+    height: 100%;
 }
 
 body {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 1.4rem;
-    background-color: rgb(54, 0, 96);
+    font-family: 'Zilla Slab', sans-serif;
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-a:link, a:visited { 
-    color: #fff;
+nav a { 
+    color: rgb(119, 132, 149);
     text-decoration: none;
-    transition: .2s ease;
-    text-transform: lowercase;
-    padding: 8px 16px;
+    transition: .1s ease;
+    margin: 1rem;
+    display: inline-block;
 }
 
-a:link:active, a:visited:active, a:hover { 
-    background-color: #fff;
-    color: rgb(54, 0, 96);
+nav a:hover, nav a:focus {
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    color: rgb(19, 32, 49);
 }
 
 main {
-    position: absolute;
-    top: 50%;
-    width: 100%;
-    margin-top: -250px;
     text-align: center;
 }
 
 .me {
     margin: auto;
     display: block;
-    width: 400px;
-    max-width: 100%;
-    height: auto;
-}
-
-nav a {
-    margin: 0 10px 10px 10px;
-    padding-bottom: 4px;
-    display: inline-block;
-}
-
-@media screen and (max-width: 400px) {
-    body {
-        font-size: 1.2rem;
-    }
-    main {
-        left: 0;
-        margin-left: 0;
-    }
-}
-
-@media screen and (max-height: 450px) {
-    main {
-        top: 0;
-        margin-top: 0;
-    }
+    width: 100%;
+    max-width: 30rem;
 }
