@@ -1,40 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv=X-UA-Compatible content="IE=edge">
-        <meta name="viewport" content="width=device-width,initial-scale=1.0">
-        <meta name="description" content="I've made Yeoman generators for Angular and React, VS Code extensions, Karma and Jasmine plugins, an icon font starter kit, Electron apps, and a mobile app available on the App Store and Google Play.">
-        <title>Scott Batary</title>
-        <link href="https://fonts.googleapis.com/css?family=Zilla+Slab:400" rel="stylesheet">
-        <link rel="apple-touch-icon" sizes="57x57" href="assets/images/favicon/apple-icon-57x57.png">
-        <link rel="apple-touch-icon" sizes="60x60" href="assets/images/favicon/apple-icon-60x60.png">
-        <link rel="apple-touch-icon" sizes="72x72" href="assets/images/favicon/apple-icon-72x72.png">
-        <link rel="apple-touch-icon" sizes="76x76" href="assets/images/favicon/apple-icon-76x76.png">
-        <link rel="apple-touch-icon" sizes="114x114" href="assets/images/favicon/apple-icon-114x114.png">
-        <link rel="apple-touch-icon" sizes="120x120" href="assets/images/favicon/apple-icon-120x120.png">
-        <link rel="apple-touch-icon" sizes="144x144" href="assets/images/favicon/apple-icon-144x144.png">
-        <link rel="apple-touch-icon" sizes="152x152" href="assets/images/favicon/apple-icon-152x152.png">
-        <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon/apple-icon-180x180.png">
-        <link rel="icon" type="image/png" sizes="192x192"  href="assets/images/favicon/android-icon-192x192.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="96x96" href="assets/images/favicon/favicon-96x96.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon/favicon-16x16.png">
-        <link rel="manifest" href="assets/images/favicon/manifest.json">
-        <meta name="msapplication-TileColor" content="#360060">
-        <meta name="msapplication-TileImage" content="assets/images/favicon/ms-icon-144x144.png">
-        <meta name="theme-color" content="#360060">
-        <link href="assets/css/app.css" rel="stylesheet">
-    </head>
-    <body>
-        <main class="noselect">
-            <img src="assets/images/computer.png" alt="Avatar" class="me" />
-            <nav>
-                <a href="https://github.com/sgbj">GitHub</a>
-                <a href="https://blog.batary.dev/">Blog</a>
-                <a href="https://twitter.com/sbatary">Twitter</a>
-            </nav>
-        </main>
-        <script src="assets/js/app.js" async></script>
-    </body>
+  <head>
+    <meta charset="utf-8" />
+    <title>Scott Batary</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
+      body {
+        background: url(/background.jpg) no-repeat center center fixed;
+        background-size: cover;
+        font-family: "Press Start 2P";
+        font-size: 24px;
+      }
+
+      nav {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+      }
+
+      a {
+        display: inline-block;
+        margin: 1em 0.5em;
+        color: #fff;
+        text-decoration: none;
+        text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.6);
+        opacity: 0.8;
+      }
+
+      a:hover {
+        color: rgba(255, 255, 255, 1);
+        animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+      }
+
+      @keyframes shake {
+        10%,
+        90% {
+          transform: translate3d(-1px, 0, 0);
+        }
+
+        20%,
+        80% {
+          transform: translate3d(2px, 0, 0);
+        }
+
+        30%,
+        50%,
+        70% {
+          transform: translate3d(-4px, 0, 0);
+        }
+
+        40%,
+        60% {
+          transform: translate3d(4px, 0, 0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a href="https://github.com/sgbj">GitHub</a>
+      <a href="https://blog.batary.dev/">Blog</a>
+    </nav>
+  </body>
 </html>
