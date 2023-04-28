@@ -4,18 +4,21 @@
     <meta charset="utf-8" />
     <title>Scott Batary</title>
     <style>
-      @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+      @font-face {
+        font-family: "RuneScape Plain 12";
+        src: url("/RuneScape-Plain-12.ttf") format("truetype");
+      }
 
       body {
         background: url(/background.jpg) no-repeat center center fixed;
         background-size: cover;
-        font-family: "Press Start 2P";
-        font-size: 24px;
+        font-family: "RuneScape Plain 12", sans-serif;
+        font-size: 32px;
       }
 
       nav {
         position: fixed;
-        bottom: 0;
+        top: 0;
         width: 100%;
         text-align: center;
       }
@@ -31,31 +34,20 @@
 
       a:hover {
         color: rgba(255, 255, 255, 1);
-        animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+        animation: shake 0.35s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
         transform: translate3d(0, 0, 0);
         opacity: 1;
       }
 
       @keyframes shake {
-        10%,
-        90% {
+        40%,
+        80% {
           transform: translate3d(-1px, 0, 0);
         }
 
         20%,
-        80% {
-          transform: translate3d(2px, 0, 0);
-        }
-
-        30%,
-        50%,
-        70% {
-          transform: translate3d(-4px, 0, 0);
-        }
-
-        40%,
         60% {
-          transform: translate3d(4px, 0, 0);
+          transform: translate3d(1px, 0, 0);
         }
       }
     </style>
