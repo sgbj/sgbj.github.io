@@ -89,7 +89,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 0.5rem;
+        gap: 0.25rem;
         border-radius: 5rem;
         background: rgb(var(--background) / 0.7);
         backdrop-filter: blur(0.5rem);
@@ -100,7 +100,7 @@
         margin: 0;
         padding: 0;
         display: flex;
-        gap: 0.5rem;
+        gap: 0.25rem;
       }
 
       nav ul::before {
@@ -138,7 +138,7 @@
 
       nav a {
         display: block;
-        padding: 0.5rem 1rem;
+        padding: 0.25rem 0.5rem;
         border-radius: 5rem;
         text-decoration: none;
         color: rgb(var(--foreground) / 0.7);
@@ -337,8 +337,10 @@
         overflow: hidden;
       }
 
-      .dark .card {
-        background: rgb(var(--surface-background) / 0.5);
+      @supports (backdrop-filter: none) {
+        .dark .card {
+          background: rgb(var(--surface-background) / 0.5);
+        }
       }
 
       article.card {
@@ -419,6 +421,11 @@
 
       #experience .tags {
         margin: 0.25rem 0 1rem;
+      }
+
+      .experience-item > div:first-child {
+        color: rgb(var(--surface-foreground) / 0.8);
+        font-size: 0.9rem;
       }
 
       #blog > ul {
@@ -698,6 +705,18 @@
           font-size: 18px;
         }
 
+        nav {
+          gap: 0.5rem;
+        }
+
+        nav ul {
+          gap: 0.5rem;
+        }
+
+        nav a {
+          padding: 0.5rem 1rem;
+        }
+
         header {
           padding: 2rem;
         }
@@ -765,6 +784,17 @@
 
         #about {
           gap: 3rem;
+        }
+
+        .experience-item {
+          display: flex;
+        }
+
+        .experience-item > div:first-child {
+          width: 7.5rem;
+          flex-grow: 0;
+          flex-shrink: 0;
+          font-size: 1rem;
         }
 
         #projects > div {
@@ -962,108 +992,109 @@
         <section id="experience" class="card fade-in">
           <h2>💻 Experience</h2>
 
-          <table>
-            <tr>
-              <td style="min-width: 7.25rem">2017 - Present</td>
-              <td>
-                <strong
-                  >Principal Developer / Supervisor &mdash; Supreme Court of
-                  Oklahoma</strong
-                >
-                <p>
-                  Currently leading a team of developers to create a new case
-                  management system. Worked across teams to create and maintain
-                  shared libraries and services. Built a design system to
-                  provide a consistent experience across applications. Created
-                  automated builds, tests, and deployments.
-                </p>
-                <ul class="tags">
-                  <li>Angular</li>
-                  <li>TS</li>
-                  <li>C#</li>
-                  <li>OpenID Connect</li>
-                  <li>OAuth 2.0</li>
-                  <li>ASP.NET Core</li>
-                  <li>Entity Framework Core</li>
-                  <li>SQL Server</li>
-                  <li>SSRS</li>
-                  <li>Azure DevOps</li>
-                  <li>Docker</li>
-                  <li>SharePoint</li>
-                  <li>Microsoft Graph</li>
-                </ul>
-              </td>
-            </tr>
-            <tr>
-              <td>2016 - 2017</td>
-              <td>
-                <strong>Senior Developer &mdash; Innov8tive</strong>
-                <p>
-                  Technical lead and architect for a team of developers working
-                  on a patient portal for a large healthcare provider.
-                  Implemented multi-factor authentication, a patient education
-                  system, and a secure messaging web app.
-                </p>
-                <ul class="tags">
-                  <li>C#</li>
-                  <li>JS</li>
-                  <li>ASP.NET</li>
-                  <li>AngularJS</li>
-                  <li>React</li>
-                  <li>Redux</li>
-                  <li>Redis</li>
-                  <li>Twilio</li>
-                  <li>SendGrid</li>
-                  <li>DocuSign</li>
-                  <li>GitHub Enterprise</li>
-                  <li>Octopus</li>
-                  <li>Jira</li>
-                </ul>
-              </td>
-            </tr>
-            <tr>
-              <td>2013 - 2016</td>
-              <td>
-                <strong
-                  >Programmer Analyst &mdash; Supreme Court of Oklahoma</strong
-                >
-                <p>
-                  Implemented state-wide EMV credit card transactions. Created
-                  an online payment web app. Worked with a team of developers on
-                  internal apps, APIs, background jobs, data exchanges, reports,
-                  and more.
-                </p>
-                <ul class="tags">
-                  <li>C#</li>
-                  <li>ASP.NET MVC</li>
-                  <li>Entity Framework</li>
-                  <li>SQL Server</li>
-                  <li>SSRS</li>
-                </ul>
-              </td>
-            </tr>
-            <tr>
-              <td>2011 - 2013</td>
-              <td>
-                <strong
-                  >Tutor / Lab Assistant &mdash; Oklahoma City Community
-                  College</strong
-                >
-                <p>
-                  Tutored students in computer science. Worked with instructors
-                  to create course materials and supervise student projects.
-                </p>
-                <ul class="tags">
-                  <li>Java</li>
-                  <li>PHP</li>
-                  <li>HTML</li>
-                  <li>CSS</li>
-                  <li>JS</li>
-                  <li>Computer Science</li>
-                </ul>
-              </td>
-            </tr>
-          </table>
+          <div class="experience-item">
+            <div>2017 - Present</div>
+            <div>
+              <strong
+                >Principal Developer / Supervisor &mdash; Supreme Court of
+                Oklahoma</strong
+              >
+              <p>
+                Currently leading a team of developers to create a new case
+                management system. Worked across teams to create and maintain
+                shared libraries and services. Built a design system to provide
+                a consistent experience across applications. Created automated
+                builds, tests, and deployments.
+              </p>
+              <ul class="tags">
+                <li>Angular</li>
+                <li>TS</li>
+                <li>C#</li>
+                <li>OpenID Connect</li>
+                <li>OAuth 2.0</li>
+                <li>ASP.NET Core</li>
+                <li>Entity Framework Core</li>
+                <li>SQL Server</li>
+                <li>SSRS</li>
+                <li>Azure DevOps</li>
+                <li>Docker</li>
+                <li>SharePoint</li>
+                <li>Microsoft Graph</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="experience-item">
+            <div>2016 - 2017</div>
+            <div>
+              <strong>Senior Developer &mdash; Innov8tive</strong>
+              <p>
+                Technical lead and architect for a team of developers working on
+                a patient portal for a large healthcare provider. Implemented
+                multi-factor authentication, a patient education system, and a
+                secure messaging web app.
+              </p>
+              <ul class="tags">
+                <li>C#</li>
+                <li>JS</li>
+                <li>ASP.NET</li>
+                <li>AngularJS</li>
+                <li>React</li>
+                <li>Redux</li>
+                <li>Redis</li>
+                <li>Twilio</li>
+                <li>SendGrid</li>
+                <li>DocuSign</li>
+                <li>GitHub Enterprise</li>
+                <li>Octopus</li>
+                <li>Jira</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="experience-item">
+            <div>2013 - 2016</div>
+            <div>
+              <strong
+                >Programmer Analyst &mdash; Supreme Court of Oklahoma</strong
+              >
+              <p>
+                Implemented state-wide EMV credit card transactions. Created an
+                online payment web app. Worked with a team of developers on
+                internal apps, APIs, background jobs, data exchanges, reports,
+                and more.
+              </p>
+              <ul class="tags">
+                <li>C#</li>
+                <li>ASP.NET MVC</li>
+                <li>Entity Framework</li>
+                <li>SQL Server</li>
+                <li>SSRS</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="experience-item">
+            <div>2011 - 2013</div>
+            <div>
+              <strong
+                >Tutor / Lab Assistant &mdash; Oklahoma City Community
+                College</strong
+              >
+              <p>
+                Tutored students in computer science. Worked with instructors to
+                create course materials and supervise student projects.
+              </p>
+              <ul class="tags">
+                <li>Java</li>
+                <li>PHP</li>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JS</li>
+                <li>Computer Science</li>
+              </ul>
+            </div>
+          </div>
         </section>
 
         <section id="blog" class="card fade-in">
