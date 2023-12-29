@@ -1507,7 +1507,7 @@
         });
 
       let darkMode =
-        localStorage.getItem("darkMode") === undefined
+        localStorage.getItem("darkMode") === null
           ? window.matchMedia("(prefers-color-scheme: dark)").matches
           : localStorage.getItem("darkMode") === "true";
 
