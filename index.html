@@ -1443,29 +1443,26 @@
         navList.style.setProperty("--nav-pointer-opacity", "0");
       });
 
-      const intersectionObserver = new IntersectionObserver(
-        (entries) => {
-          console.log(entries);
-          for (const entry of entries) {
-            document
-              .querySelectorAll(`nav a[href="#${entry.target.id}"]`)
-              .forEach((link) => {
-                if (entry.isIntersecting) {
-                  navList.style.setProperty(
-                    "--nav-active-x",
-                    `${link.offsetLeft}px`
-                  );
-                  navList.style.setProperty(
-                    "--nav-active-width",
-                    `${link.offsetWidth}px`
-                  );
-                }
-                link.classList.toggle("active", entry.isIntersecting);
-              });
-          }
-        },
-        { threshold: 0.3 }
-      );
+      const intersectionObserver = new IntersectionObserver((entries) => {
+        console.log(entries);
+        for (const entry of entries) {
+          document
+            .querySelectorAll(`nav a[href="#${entry.target.id}"]`)
+            .forEach((link) => {
+              if (entry.isIntersecting) {
+                navList.style.setProperty(
+                  "--nav-active-x",
+                  `${link.offsetLeft}px`
+                );
+                navList.style.setProperty(
+                  "--nav-active-width",
+                  `${link.offsetWidth}px`
+                );
+              }
+              link.classList.toggle("active", entry.isIntersecting);
+            });
+        }
+      });
       document
         .querySelectorAll("#home, #about, #projects, #contact")
         .forEach((el) => {
