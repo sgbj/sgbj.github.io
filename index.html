@@ -32,6 +32,7 @@
     <style>
       * {
         box-sizing: border-box;
+        transition: all 0.1s cubic-bezier(0.345, 0.115, 0.135, 1.42);
       }
 
       :focus {
@@ -47,7 +48,7 @@
         --background: 40 30 70;
         --foreground: 245 240 255;
         --accent: 220 200 255;
-        --surface-background: 250 240 255;
+        --surface-background: 250 245 255;
         --surface-foreground: 35 25 45;
         --surface-accent: 60 40 100;
         --box-shadow: rgb(0 0 0 / 0.3) 0px 2px 4px,
@@ -800,7 +801,6 @@
           width: 7.5rem;
           flex-grow: 0;
           flex-shrink: 0;
-          font-size: 1rem;
         }
 
         #projects > div {
