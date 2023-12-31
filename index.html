@@ -32,7 +32,6 @@
     <style>
       * {
         box-sizing: border-box;
-        transition: all 0.1s cubic-bezier(0.345, 0.115, 0.135, 1.42);
       }
 
       :focus {
@@ -44,12 +43,12 @@
       }
 
       :root {
-        --wave: 100 70 140;
+        --wave: 90 70 135;
         --background: 40 30 70;
-        --foreground: 245 240 255;
-        --accent: 220 200 255;
+        --foreground: 235 230 240;
+        --accent: 210 190 255;
         --surface-background: 250 245 255;
-        --surface-foreground: 35 25 45;
+        --surface-foreground: 15 10 20;
         --surface-accent: 60 40 100;
         --box-shadow: rgb(0 0 0 / 0.3) 0px 2px 4px,
           rgb(0 0 0 / 0.2) 0px 7px 13px -3px,
@@ -71,13 +70,13 @@
       }
 
       .dark {
-        --wave: 40 20 70;
+        --wave: 45 30 70;
         --background: 17 10 30;
-        --foreground: 240 225 255;
-        --accent: 200 180 255;
-        --surface-background: 45 35 65;
-        --surface-foreground: 230 220 240;
-        --surface-accent: 200 180 255;
+        --foreground: 245 240 250;
+        --accent: 210 190 255;
+        --surface-background: 40 30 60;
+        --surface-foreground: 235 230 240;
+        --surface-accent: 210 190 255;
         --box-shadow: rgb(0 0 0 / 0.4) 0px 2px 4px,
           rgb(0 0 0 / 0.3) 0px 7px 13px -3px,
           rgb(0 0 0 / 0.2) 0px -3px 0px inset;
@@ -253,6 +252,7 @@
       header section.card,
       .dark header section.card {
         background: rgb(var(--background) / 0.8);
+        color: rgb(var(--foreground) / 0.8);
         box-shadow: none;
       }
 
@@ -271,10 +271,6 @@
       .underline {
         text-decoration: underline;
         text-decoration-color: rgb(var(--accent) / 0.8);
-      }
-
-      header p {
-        color: rgb(var(--foreground) / 0.8);
       }
 
       .socials {
@@ -349,7 +345,7 @@
         position: relative;
         padding: 1rem;
         background: rgb(var(--surface-background) / 0.9);
-        color: rgb(var(--surface-foreground));
+        color: rgb(var(--surface-foreground) / 0.9);
         backdrop-filter: blur(1rem);
         border-radius: 1rem;
         box-shadow: var(--box-shadow);
