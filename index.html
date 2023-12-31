@@ -15,13 +15,13 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       property="og:description"
-      content="Scott Batary is a developer with over a decade of experience building software."
+      content="I'm a full-stack developer with a passion for building feature-rich web apps, robust APIs, and innovative libraries."
     />
     <meta property="og:site_name" content="Scott Batary" />
     <meta name="twitter:site" content="@sbatary" />
     <meta
       name="description"
-      content="Scott Batary is a developer with over a decade of experience building software."
+      content="I'm a full-stack developer with a passion for building feature-rich web apps, robust APIs, and innovative libraries."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -32,6 +32,14 @@
     <style>
       * {
         box-sizing: border-box;
+      }
+
+      :focus {
+        outline: 0.2rem solid rgba(0, 100, 200, 0.7);
+      }
+
+      ::selection {
+        background: rgba(0, 100, 200, 0.5);
       }
 
       :root {
@@ -166,7 +174,7 @@
         justify-content: space-between;
         border-radius: 5rem;
         padding: 0.2rem 0;
-        font-size: 1.5rem;
+        font-size: 1.4rem;
         background: linear-gradient(
           to right,
           rgb(137, 139, 255),
@@ -177,6 +185,7 @@
         cursor: pointer;
         opacity: 0.9;
         transition: all 0.2s cubic-bezier(0.345, 0.115, 0.135, 1.42);
+        font-family: inherit;
       }
 
       #theme-toggle:hover,
@@ -185,7 +194,7 @@
       }
 
       #theme-toggle::after {
-        left: 0.25rem;
+        left: 0.2rem;
         content: "";
         position: absolute;
         width: 1.5rem;
@@ -197,7 +206,7 @@
       }
 
       #theme-toggle[aria-pressed="false"]::after {
-        left: calc(100% - 1.75rem);
+        left: calc(100% - 1.7rem);
       }
 
       header {
@@ -254,7 +263,7 @@
       }
 
       h1 small {
-        font-size: 0.75em;
+        font-size: 0.65em;
       }
 
       .underline {
@@ -287,6 +296,7 @@
       .socials svg {
         width: 1.3rem;
         height: 1.3rem;
+        display: block;
       }
 
       .socials span {
@@ -309,7 +319,7 @@
       .socials a:hover span,
       .socials a:focus span {
         opacity: 1;
-        transform: translateX(-50%) scale(1);
+        transform: translate(-50%, 0.4rem) scale(1);
       }
 
       #waves {
@@ -349,33 +359,6 @@
         }
       }
 
-      article.card {
-        padding: 1rem;
-        transition: all 0.1s cubic-bezier(0.345, 0.115, 0.135, 1.42);
-        cursor: pointer;
-      }
-
-      article.card:hover {
-        transform: scale(1.05);
-      }
-
-      article.card > div {
-        border-top-left-radius: inherit;
-        border-top-right-radius: inherit;
-        min-height: 8rem;
-        background-color: rgb(var(--background) / 0.6);
-        background-size: cover;
-        background-position: center;
-        margin: -1rem -1rem 1rem;
-        opacity: 0.8;
-        transition: all 0.1s cubic-bezier(0.345, 0.115, 0.135, 1.42);
-      }
-
-      article.card:hover > div,
-      article.card:focus-within > div {
-        opacity: 1;
-      }
-
       h2,
       h3 {
         margin: 0 0 1rem;
@@ -408,7 +391,7 @@
         color: rgb(var(--surface-accent) / 0.8);
       }
 
-      #about {
+      .about-grid {
         display: grid;
         grid-template-columns: 1fr;
         gap: 1.5rem;
@@ -489,15 +472,33 @@
         gap: 1.5rem;
       }
 
-      #projects .card a {
-        position: absolute;
-        inset: 0;
+      #projects .card {
+        padding: 1rem;
+        transition: all 0.1s cubic-bezier(0.345, 0.115, 0.135, 1.42);
+        cursor: pointer;
+        text-decoration: none;
       }
 
-      #projects .card:focus-within {
-        transform: scale(1.1);
-        box-shadow: 0 0 0 0.1rem rgb(0 0 0), 0 0 0 0.15rem rgb(255 255 255),
-          var(--box-shadow);
+      #projects .card > div {
+        border-top-left-radius: inherit;
+        border-top-right-radius: inherit;
+        min-height: 8rem;
+        background-color: rgb(var(--background) / 0.6);
+        background-size: cover;
+        background-position: center;
+        margin: -1rem -1rem 1rem;
+        opacity: 0.8;
+        transition: all 0.1s cubic-bezier(0.345, 0.115, 0.135, 1.42);
+      }
+
+      #projects .card:hover,
+      #projects .card:focus {
+        transform: scale(1.05);
+      }
+
+      #projects .card:hover > div,
+      #projects .card:focus > div {
+        opacity: 1;
       }
 
       #projects h3 {
@@ -713,6 +714,10 @@
           font-size: 18px;
         }
 
+        h1 small {
+          font-size: 0.75em;
+        }
+
         nav {
           gap: 0.5rem;
         }
@@ -742,7 +747,7 @@
           padding: 2rem;
         }
 
-        #about {
+        .about-grid {
           gap: 2rem;
         }
 
@@ -790,7 +795,7 @@
           gap: 3rem;
         }
 
-        #about {
+        .about-grid {
           gap: 3rem;
         }
 
@@ -833,7 +838,7 @@
           font-size: 20px;
         }
 
-        #about {
+        .about-grid {
           grid-template-columns: 2fr 1fr;
         }
 
@@ -852,7 +857,7 @@
       }
     </style>
   </head>
-  <body>
+  <body id="home">
     <nav>
       <ul>
         <li><a href="#home" class="active">Home</a></li>
@@ -866,7 +871,7 @@
       </button>
     </nav>
 
-    <header id="home">
+    <header>
       <div class="fade-in">
         <div class="neon-mist"></div>
         <section class="card">
@@ -875,8 +880,9 @@
             <small class="underline">Software Developer / Sourcerer</small> 🧙‍♂️
           </h1>
           <p>
-            I've made web apps, APIs, libraries, background jobs, mobile apps,
-            and more. Check out my work on GitHub!
+            I'm a full-stack developer with a passion for building feature-rich
+            web apps, robust APIs, and innovative libraries. Check out my work
+            on GitHub!
           </p>
           <div class="socials">
             <a href="https://github.com/sgbj">
@@ -961,40 +967,27 @@
     </svg>
 
     <main>
-      <div id="about">
-        <section class="card fade-in">
+      <div class="about-grid">
+        <section id="about" class="card fade-in">
           <h2>👋 About</h2>
           <p>
-            Hello, world! I'm Scott, a level 31 software developer from
-            Oklahoma. I have over a decade of experience crafting digital
-            experiences.
+            Hello, world! I'm Scott, a level 31 software developer based in
+            Oklahoma. I'm passionate about technology and committed to
+            continuous improvement. I've invested in my professional growth with
+            personal licenses for GitHub Pro, GitHub Copilot, JetBrains,
+            Tailwind UI, and Font Awesome.
           </p>
           <p>
-            In the ever-evolving realm of technology, I thrive on staying at the
-            forefront. Armed with personal licenses for GitHub Pro, GitHub
-            Copilot, JetBrains, Tailwind UI, and Font Awesome, I don't just keep
-            up; I set the pace. My commitment to continuous learning has become
-            the driving force behind my professional growth.
+            Beyond coding, I enjoy competitive gaming. I'm a grandmaster support
+            player in Overwatch and a top Nurse main in Dead by Daylight. The
+            strategic mindset and adaptability that enhance my gaming
+            performance also resonate in my coding skills.
           </p>
           <p>
-            My hobbies include gaming, programming, and buying domains for
-            projects I'll never complete. 😅 Recently, I've immersed myself in
-            the realms of 2D and 3D development, exploring the possibilities
-            with Phaser, three.js, Babylon.js, and Unreal Engine.
+            Join me on an exciting journey of creation and innovation, whether
+            crafting software solutions or venturing into epic gaming quests.
+            Let's level up together! ⚔️
           </p>
-          <p>
-            Outside of coding, I love competitive games. As a GM support player
-            in Overwatch, a Nurse main in Dead by Daylight, and an adventurer
-            navigating the unfolding mysteries of Baldur's Gate 3, I bring the
-            same strategic mindset and adaptability to my coding endeavors.
-          </p>
-          <p>
-            I invite you to join me on this exciting journey of creation and
-            innovation. Whether it's crafting seamless software solutions or
-            embarking on epic gaming quests, I'm here to make a mark in the
-            digital realm.
-          </p>
-          <p>Let's level up together!</p>
         </section>
 
         <section id="experience" class="card fade-in">
@@ -1008,26 +1001,29 @@
                 Oklahoma</strong
               >
               <p>
-                Currently leading a team of developers to create a new case
-                management system. Worked across teams to create and maintain
-                shared libraries and services. Built a design system to provide
-                a consistent experience across applications. Created automated
-                builds, tests, and deployments.
+                I'm currently leading the development of a cutting-edge case
+                management system. My role involves working across teams and
+                projects to establish and maintain shared standards, libraries,
+                and services. I've integrated a bespoke design system, providing
+                a seamless user experience across applications, and optimized
+                development processes by instituting automated builds, tests,
+                and deployments.
               </p>
               <ul class="tags">
-                <li>Angular</li>
-                <li>TS</li>
                 <li>C#</li>
-                <li>OpenID Connect</li>
-                <li>OAuth 2.0</li>
+                <li>TS</li>
+                <li>SCSS</li>
+                <li>Angular</li>
                 <li>ASP.NET Core</li>
                 <li>Entity Framework Core</li>
+                <li>OpenID Connect</li>
+                <li>OAuth 2.0</li>
                 <li>SQL Server</li>
                 <li>SSRS</li>
-                <li>Azure DevOps</li>
                 <li>Docker</li>
                 <li>SharePoint</li>
                 <li>Microsoft Graph</li>
+                <li>Azure DevOps</li>
               </ul>
             </div>
           </div>
@@ -1037,10 +1033,11 @@
             <div>
               <strong>Senior Developer &mdash; Innov8tive</strong>
               <p>
-                Technical lead and architect for a team of developers working on
-                a patient portal for a large healthcare provider. Implemented
-                multi-factor authentication, a patient education system, and a
-                secure messaging web app.
+                I was the technical lead and architect for a team of developers
+                working on a patient portal for a prominent healthcare provider.
+                Notable achievements include the integration of multi-factor
+                authentication, the implementation of a patient education
+                system, and the development of a secure messaging application.
               </p>
               <ul class="tags">
                 <li>C#</li>
@@ -1067,13 +1064,16 @@
                 >Programmer Analyst &mdash; Supreme Court of Oklahoma</strong
               >
               <p>
-                Implemented state-wide EMV credit card transactions. Created an
-                online payment web app. Worked with a team of developers on
-                internal apps, APIs, background jobs, data exchanges, reports,
-                and more.
+                I played a pivotal role in driving technological advancement,
+                and was a key contributor to various applications, APIs,
+                background jobs, and reports. Additionally, I led the
+                development of a state-wide credit card transaction system and
+                successfully implemented an online payment web application.
               </p>
               <ul class="tags">
                 <li>C#</li>
+                <li>JS</li>
+                <li>SQL</li>
                 <li>ASP.NET MVC</li>
                 <li>Entity Framework</li>
                 <li>SQL Server</li>
@@ -1090,8 +1090,10 @@
                 College</strong
               >
               <p>
-                Tutored students in computer science. Worked with instructors to
-                create course materials and supervise student projects.
+                I provided invaluable support to students in computer science,
+                collaborated with instructors to build engaging course
+                materials, and supervised student projects to ensure their
+                success.
               </p>
               <ul class="tags">
                 <li>Java</li>
@@ -1119,7 +1121,7 @@
         <h2>🚀 Projects</h2>
 
         <div>
-          <article class="card">
+          <a href="https://batary.dev/suika-clone/" class="card">
             <div style="background-image: url(/assets/suika-clone.jpg)"></div>
             <h3>Suika Clone</h3>
             <p>Halloween 🎃 themed version of the Watermelon Game.</p>
@@ -1129,10 +1131,9 @@
               <li>Matter.js</li>
               <li>Vite</li>
             </ul>
-            <a href="https://batary.dev/suika-clone/"></a>
-          </article>
+          </a>
 
-          <article class="card">
+          <a href="https://overlays.batary.dev/" class="card">
             <div
               style="background-image: url(/assets/overlay-sharer.png)"
             ></div>
@@ -1147,10 +1148,12 @@
               <li>Tailwind</li>
               <li>Vercel</li>
             </ul>
-            <a href="https://overlays.batary.dev/"></a>
-          </article>
+          </a>
 
-          <article class="card">
+          <a
+            href="https://www.etsy.com/listing/1579967521/animated-chatbox-overlay-widget-for"
+            class="card"
+          >
             <div style="background-image: url(/assets/chat-widget.jpg)"></div>
             <h3>Chat Widget</h3>
             <p>Animated chatbox widget for StreamElements, Twitch, and OBS.</p>
@@ -1159,12 +1162,9 @@
               <li>CSS</li>
               <li>JS</li>
             </ul>
-            <a
-              href="https://www.etsy.com/listing/1579967521/animated-chatbox-overlay-widget-for"
-            ></a>
-          </article>
+          </a>
 
-          <article class="card">
+          <a href="https://batary.dev/d20/" class="card">
             <div style="background-image: url(/assets/d20.png)"></div>
             <h3>d20</h3>
             <p>Roll a set of 3D dice 🎲 in the browser.</p>
@@ -1174,10 +1174,9 @@
               <li>Havok</li>
               <li>Vite</li>
             </ul>
-            <a href="https://batary.dev/d20/"></a>
-          </article>
+          </a>
 
-          <article class="card">
+          <a href="https://github.com/sgbj/dotnet-monitoring" class="card">
             <div
               style="background-image: url(/assets/dotnet-monitoring.png)"
             ></div>
@@ -1193,10 +1192,12 @@
               <li>Grafana</li>
               <li>Docker</li>
             </ul>
-            <a href="https://github.com/sgbj/dotnet-monitoring"></a>
-          </article>
+          </a>
 
-          <article class="card">
+          <a
+            href="https://www.nuget.org/packages/Sgbj.Cron.CronTimer"
+            class="card"
+          >
             <div style="background-image: url(/assets/crontimer.png)"></div>
             <h3>CronTimer</h3>
             <p>Cron timer NuGet package with over 100k downloads.</p>
@@ -1205,10 +1206,9 @@
               <li>.NET</li>
               <li>NuGet</li>
             </ul>
-            <a href="https://www.nuget.org/packages/Sgbj.Cron.CronTimer"></a>
-          </article>
+          </a>
 
-          <article class="card">
+          <a href="https://github.com/sgbj/conquer" class="card">
             <div
               style="background-image: url(/assets/conquer-server.jpg)"
             ></div>
@@ -1220,10 +1220,9 @@
               <li>Entity Framework Core</li>
               <li>SQL Server</li>
             </ul>
-            <a href="https://github.com/sgbj/conquer"></a>
-          </article>
+          </a>
 
-          <article class="card">
+          <a href="https://github.com/sgbj/dbd-stats" class="card">
             <div style="background-image: url(/assets/dbd-stats.png)"></div>
             <h3>DBD Stats</h3>
             <p>
@@ -1236,10 +1235,9 @@
               <li>Prisma</li>
               <li>Vercel</li>
             </ul>
-            <a href="https://github.com/sgbj/dbd-stats"></a>
-          </article>
+          </a>
 
-          <article class="card">
+          <a href="https://github.com/sgbj/notion-clone" class="card">
             <div style="background-image: url(/assets/notion-clone.png)"></div>
             <h3>Notion Clone</h3>
             <p>
@@ -1256,10 +1254,9 @@
               <li>Edge Store</li>
               <li>BlockNote</li>
             </ul>
-            <a href="https://github.com/sgbj/notion-clone"></a>
-          </article>
+          </a>
 
-          <article class="card">
+          <a href="https://github.com/sgbj/discord-clone" class="card">
             <div style="background-image: url(/assets/discord-clone.png)"></div>
             <h3>Discord Clone</h3>
             <p>
@@ -1275,10 +1272,9 @@
               <li>Prisma</li>
               <li>MySQL</li>
             </ul>
-            <a href="https://github.com/sgbj/discord-clone"></a>
-          </article>
+          </a>
 
-          <article class="card">
+          <a href="https://batary.dev/pool/" class="card">
             <div style="background-image: url(/assets/pool.png)"></div>
             <h3>Pool</h3>
             <p>A game of pool 🎱 made with pixel art.</p>
@@ -1287,10 +1283,9 @@
               <li>Phaser</li>
               <li>Matter.js</li>
             </ul>
-            <a href="https://batary.dev/pool/"></a>
-          </article>
+          </a>
 
-          <article class="card">
+          <a href="https://batary.dev/chess/" class="card">
             <div style="background-image: url(/assets/chess.png)"></div>
             <h3>Chess</h3>
             <p>Chess ♟️ game using the Canvas API.</p>
@@ -1299,10 +1294,9 @@
               <li>JS</li>
               <li>Vite</li>
             </ul>
-            <a href="https://batary.dev/chess/"></a>
-          </article>
+          </a>
 
-          <article class="card">
+          <a href="https://batary.dev/emojis/" class="card">
             <div style="background-image: url(/assets/bouncy-emojis.png)"></div>
             <h3>Bouncy Emojis</h3>
             <p>Spawn emojis 🤪 with bouncy physics.</p>
@@ -1311,10 +1305,9 @@
               <li>Phaser</li>
               <li>Matter.js</li>
             </ul>
-            <a href="https://batary.dev/emojis/"></a>
-          </article>
+          </a>
 
-          <article class="card">
+          <a href="https://github.com/sgbj/platform" class="card">
             <div style="background-image: url(/assets/platform.png)"></div>
             <h3>Platform</h3>
             <p>Frontend prototype for a platform as a service.</p>
@@ -1324,10 +1317,9 @@
               <li>Angular</li>
               <li>Material</li>
             </ul>
-            <a href="https://github.com/sgbj/platform"></a>
-          </article>
+          </a>
 
-          <article class="card">
+          <a href="https://github.com/sgbj/streaming" class="card">
             <div style="background-image: url(/assets/twitch-clone.png)"></div>
             <h3>Twitch Clone</h3>
             <p>
@@ -1340,10 +1332,9 @@
               <li>React</li>
               <li>Chakra UI</li>
             </ul>
-            <a href="https://github.com/sgbj/streaming"></a>
-          </article>
+          </a>
 
-          <article class="card">
+          <a href="https://github.com/sgbj/versed" class="card">
             <div style="background-image: url(/assets/versed.png)"></div>
             <h3>Versed</h3>
             <p>
@@ -1354,10 +1345,9 @@
               <li>Node.js</li>
               <li>Express</li>
             </ul>
-            <a href="https://github.com/sgbj/versed"></a>
-          </article>
+          </a>
 
-          <article class="card">
+          <a href="https://github.com/sgbj/pdf-sign" class="card">
             <div style="background-image: url(/assets/pdf-sign.png)"></div>
             <h3>PDF Sign</h3>
             <p>
@@ -1369,10 +1359,9 @@
               <li>JS</li>
               <li>CSS</li>
             </ul>
-            <a href="https://github.com/sgbj/pdf-sign"></a>
-          </article>
+          </a>
 
-          <article class="card">
+          <a href="https://batary.dev/fractals/" class="card">
             <div style="background-image: url(/assets/fractals.png)"></div>
             <h3>Fractals</h3>
             <p>Implementations of common fractals.</p>
@@ -1380,10 +1369,9 @@
               <li>HTML</li>
               <li>JS</li>
             </ul>
-            <a href="https://batary.dev/fractals/"></a>
-          </article>
+          </a>
 
-          <article class="card">
+          <a href="https://github.com/sgbj/pocket-iv" class="card">
             <div style="background-image: url(/assets/pocket-iv.png)"></div>
             <h3>Pocket IV</h3>
             <p>Mobile app for calculating IV in Pokemon GO.</p>
@@ -1392,18 +1380,16 @@
               <li>CSS</li>
               <li>Ionic</li>
             </ul>
-            <a href="https://github.com/sgbj/pocket-iv"></a>
-          </article>
+          </a>
 
-          <article class="card">
+          <a href="https://github.com/sgbj/merry-kawaii" class="card">
             <div style="background-image: url(/assets/merry-kawaii.png)"></div>
             <h3>Merry Kawaii</h3>
             <p>Holiday sticker pack for iMessage.</p>
             <ul class="tags">
               <li>Xcode</li>
             </ul>
-            <a href="https://github.com/sgbj/merry-kawaii"></a>
-          </article>
+          </a>
         </div>
       </section>
 
@@ -1455,7 +1441,9 @@
         console.log(entries);
         for (const entry of entries) {
           document
-            .querySelectorAll(`nav a[href="#${entry.target.id}"]`)
+            .querySelectorAll(
+              `nav a[href="#${entry.target.closest("*[id]").id}"]`
+            )
             .forEach((link) => {
               if (entry.isIntersecting) {
                 navList.style.setProperty(
@@ -1472,7 +1460,7 @@
         }
       });
       document
-        .querySelectorAll("#home, #about, #projects, #contact")
+        .querySelectorAll("#home h1, #about h2, #projects h2, #contact h2")
         .forEach((el) => {
           intersectionObserver.observe(el);
         });
