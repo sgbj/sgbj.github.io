@@ -23,293 +23,659 @@
       name="description"
       content="I'm a full-stack developer with a passion for building feature-rich web apps, robust APIs, and innovative libraries."
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
     <style>
-      @font-face {
-        font-family: "Geist";
-        src: url("/Geist/webfonts/Geist[wght].woff2") format("woff2");
+      :root {
+        /* Colors */
+        --color-bg: #1a151d;
+        --color-bg-alt: #2c2135;
+        --color-bg-tert: #2a1f3a;
+        --color-text: #cdbfa2;
+        --color-text-light: #f3ecd8;
+        --color-accent: #b6a8e9;
+        --color-accent-alt: #8c7b6b;
+        --color-border: #3e2f3d;
+        --color-overlay: rgba(27, 22, 34, 0.8);
+        --color-shadow: rgba(0, 0, 0, 0.2);
+        --color-glow: rgba(182, 168, 233, 0.1);
+        --color-link-hover: rgba(182, 168, 233, 0.15);
+        --color-link-active: rgba(182, 168, 233, 0.3);
+        
+        /* Typography */
+        --font-size-xs: 0.75rem;    /* 12px */
+        --font-size-sm: 0.875rem;   /* 14px */
+        --font-size-base: 1rem;     /* 16px */
+        --font-size-lg: 1.125rem;   /* 18px */
+        --font-size-xl: 1.25rem;    /* 20px */
+        --font-size-2xl: 1.5rem;    /* 24px */
+        --font-size-3xl: 2rem;      /* 32px */
+        --font-size-4xl: 3rem;      /* 48px */
+        
+        /* Spacing */
+        --spacing-xs: 0.25rem;
+        --spacing-sm: 0.5rem;
+        --spacing-md: 1rem;
+        --spacing-lg: 1.5rem;
+        --spacing-xl: 2rem;
+        
+        /* Shadows */
+        --shadow-sm: 0 2px 6px var(--color-shadow);
+        --shadow-md: 0 6px 12px var(--color-glow);
+        --shadow-inner: inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+        
+        /* Transitions */
+        --transition-fast: 0.2s ease;
+        --transition-normal: 0.3s ease;
+        
+        /* Border Radius */
+        --radius-sm: 4px;
+        --radius-md: 8px;
+        --radius-lg: 1rem;
       }
 
       * {
         box-sizing: border-box;
+        margin: 0;
+        padding: 0;
       }
 
-      :focus {
-        outline: 0.2rem solid rgba(0, 100, 200, 0.7);
+      *:focus {
+        outline: 3px double var(--color-accent);
+        outline-offset: 3px;
+        transition: outline var(--transition-fast);
       }
 
-      ::selection {
-        background: rgba(0, 100, 200, 0.5);
-      }
-
-      :root {
-        --wave: 90 70 135;
-        --background: 40 30 70;
-        --foreground: 235 230 240;
-        --accent: 210 190 255;
-        --surface-background: 250 245 255;
-        --surface-foreground: 15 10 20;
-        --surface-accent: 60 40 100;
-        --box-shadow: rgb(0 0 0 / 0.3) 0px 2px 4px,
-          rgb(0 0 0 / 0.2) 0px 7px 13px -3px,
-          rgb(0 0 0 / 0.1) 0px -3px 0px inset;
-
+      html {
         scroll-behavior: smooth;
-        font-family: "Geist", sans-serif;
-        font-size: 16px;
-        color: rgb(var(--foreground));
-        background: linear-gradient(
-            to bottom,
-            transparent,
-            rgb(var(--background) / 0.4)
-          ),
-          rgb(var(--background)) url("/assets/Scott\ Lofi.jpg") no-repeat center /
-            cover;
-        height: 100vh;
         font-size: 16px;
       }
 
-      .dark {
-        --wave: 45 30 70;
-        --background: 17 10 30;
-        --foreground: 245 240 250;
-        --accent: 210 190 255;
-        --surface-background: 40 30 60;
-        --surface-foreground: 235 230 240;
-        --surface-accent: 210 190 255;
-        --box-shadow: rgb(0 0 0 / 0.4) 0px 2px 4px,
-          rgb(0 0 0 / 0.3) 0px 7px 13px -3px,
-          rgb(0 0 0 / 0.2) 0px -3px 0px inset;
+      @media (max-width: 768px) {
+        html {
+          font-size: 15px;
+        }
       }
 
       body {
-        margin: 0;
-        line-height: 1.4;
+        font-family: "IBM Plex Sans", sans-serif;
+        font-size: var(--font-size-base);
+        background: linear-gradient(
+          30deg,
+          var(--color-bg),
+          var(--color-bg-alt),
+          var(--color-bg-tert),
+          var(--color-bg-alt)
+        );
+        background-size: 300% 300%;
+        animation: gradientBG 20s ease infinite;
+        color: var(--color-text);
+        padding: var(--spacing-lg);
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-lg);
+        min-height: 100vh;
+        line-height: 1.6;
       }
 
+      canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      p {
+        margin: var(--spacing-md) 0;
+        font-size: var(--font-size-xl);
+        line-height: 1.6;
+        opacity: 0;
+        transform: translateY(20px);
+        animation: revealText 0.6s ease forwards;
+      }
+
+      p:nth-child(1) { animation-delay: 0.3s; }
+      p:nth-child(2) { animation-delay: 0.4s; }
+      p:nth-child(3) { animation-delay: 0.5s; }
+
+      @media (max-width: 768px) {
+        p {
+          font-size: var(--font-size-lg);
+        }
+      }
+
+      ::selection {
+        background-color: rgba(205, 191, 162, 0.1);
+      }
+
+      /* Navigation */
       nav {
         position: sticky;
-        top: 0.5rem;
-        z-index: 100;
-        width: fit-content;
-        margin: 0 auto;
-        padding: 0.5rem;
+        top: 0;
+        background-color: var(--color-overlay);
+        border-bottom: 2px solid var(--color-border);
+        box-shadow: var(--shadow-sm), var(--shadow-inner);
+        backdrop-filter: blur(4px);
+        margin:  calc(-1 * var(--spacing-lg));
+        z-index: 3;
+        height: 3.5rem;
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 0.5rem;
-        border-radius: 5rem;
-        background: rgb(var(--background) / 0.9);
-        backdrop-filter: blur(0.5rem);
-      }
-
-      @supports (backdrop-filter: none) {
-        nav {
-          background: rgb(var(--background) / 0.7);
-        }
       }
 
       nav ul {
         list-style: none;
-        margin: 0;
-        padding: 0;
         display: flex;
-        gap: 0.5rem;
+        justify-content: center;
+        gap: var(--spacing-lg);
       }
 
-      nav ul::before {
-        content: "";
-        position: absolute;
-        top: 0.5rem;
-        bottom: 0.5rem;
-        left: var(--nav-active-x);
-        width: var(--nav-active-width);
-        opacity: 1;
-        background: rgb(var(--accent) / 0.2);
-        border-radius: 5rem;
-        transition: all 0.2s cubic-bezier(0.785, 0.135, 0.15, 0.86);
-        pointer-events: none;
-      }
-
-      nav ul::after {
-        content: "";
-        position: absolute;
-        top: 0.5rem;
-        bottom: 0.5rem;
-        left: var(--nav-pointer-x);
-        width: var(--nav-pointer-width);
-        opacity: var(--nav-pointer-opacity);
-        background: rgb(var(--accent) / 0.05);
-        border-radius: 5rem;
-        transform: scale(0.5);
-        transition: all 0.2s cubic-bezier(0.785, 0.135, 0.15, 0.86);
-        pointer-events: none;
-      }
-
-      nav:hover ul::after {
-        transform: scale(1);
-      }
-
-      nav a {
-        display: block;
-        padding: 0.25rem 0.5rem;
-        border-radius: 5rem;
-        text-decoration: none;
-        color: rgb(var(--foreground) / 0.7);
-      }
-
-      nav a:hover,
-      nav a:focus {
-        color: rgb(var(--foreground) / 0.9);
-      }
-
-      nav a.active {
-        color: rgb(var(--foreground) / 0.9);
-      }
-
-      #theme-toggle {
+      /* Header */
+      .jumbotron {
+        background-image: url("/background.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 100vh;
+        margin: -3.5rem calc(-1 * var(--spacing-lg)) 0;
+        border-radius: var(--radius-md);
+        padding: var(--spacing-lg);
         position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        border-radius: 5rem;
-        padding: 0.2rem 0;
-        font-size: 1.4rem;
-        background: linear-gradient(
-          to right,
-          rgb(137, 139, 255),
-          rgb(47, 16, 97)
-        );
-        min-width: 4rem;
-        border: 0.1rem solid rgb(240 225 255 / 0.8);
-        line-height: 1;
-        cursor: pointer;
-        opacity: 0.9;
-        transition: all 0.2s cubic-bezier(0.345, 0.115, 0.135, 1.42);
-        font-family: inherit;
-      }
-
-      #theme-toggle:hover,
-      #theme-toggle:focus {
-        opacity: 1;
-      }
-
-      #theme-toggle::after {
-        left: 0.2rem;
-        content: "";
-        position: absolute;
-        width: 1.5rem;
-        height: 1.5rem;
-        background: rgb(240 225 255);
-        border-radius: 50%;
-        box-shadow: 0 0 0.25rem rgb(0 0 0 / 0.5);
-        transition: all 0.2s cubic-bezier(0.345, 0.115, 0.135, 1.42);
-      }
-
-      #theme-toggle[aria-pressed="false"]::after {
-        left: calc(100% - 1.7rem);
-      }
-
-      header {
-        height: 80vh;
         display: flex;
         align-items: flex-end;
-        justify-content: flex-start;
-        padding: 1rem;
-        position: relative;
+        justify-content: center;
       }
 
-      header > div {
-        position: relative;
-      }
-
-      header .neon-mist {
+      .jumbotron::before {
+        content: '';
         position: absolute;
-        opacity: 0.5;
         inset: 0;
-        z-index: -1;
-        background-image: linear-gradient(
-          to right,
-          rgb(89, 143, 214),
-          rgb(143, 66, 187),
-          rgb(194, 60, 133)
+        background: linear-gradient(
+          to bottom,
+          rgba(44, 33, 53, 0.4),
+          rgba(44, 33, 53, 0.6)
         );
-        background-size: 400%;
-        filter: blur(0.5rem);
-        animation: neon-mist 6s ease infinite alternate;
+        border-radius: var(--radius-md);
+        z-index: 1;
       }
 
-      @keyframes neon-mist {
-        0%,
-        100% {
-          background-position: 0% 50%;
+      .jumbotron::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          circle at 50% 50%,
+          transparent 0%,
+          rgba(44, 33, 53, 0.3) 100%
+        );
+        border-radius: var(--radius-md);
+        z-index: 1;
+      }
+
+      .jumbotron section {
+        text-align: center;
+        max-width: 35rem;
+        position: relative;
+        z-index: 2;
+      }
+
+      /* Typography */
+      h1, h2, h3 {
+        font-family: "IBM Plex Serif", serif;
+        color: var(--color-text-light);
+        margin: 0;
+        opacity: 0;
+        transform: translateY(20px);
+        animation: revealText 0.6s ease forwards;
+        text-shadow: 0 0 5px var(--color-glow),
+                    0 0 10px var(--color-glow);
+      }
+
+      h2 img {
+        height: .9em;
+        image-rendering: pixelated;
+      }
+
+      @keyframes revealText {
+        to {
+          opacity: 1;
+          transform: translateY(0);
         }
-        50% {
-          background-position: 100% 50%;
+      }
+
+      h1 { 
+        font-size: var(--font-size-4xl);
+        animation-delay: 0.2s;
+      }
+      h2 { 
+        font-size: var(--font-size-3xl);
+        animation-delay: 0.4s;
+      }
+      h3 {
+        font-size: var(--font-size-2xl);
+      }
+
+      @media (max-width: 1024px) {
+        h1 { font-size: var(--font-size-3xl); }
+        h2 { font-size: var(--font-size-2xl); }
+        h3 { font-size: var(--font-size-xl); }
+      }
+
+      @media (max-width: 768px) {
+        h1 { font-size: var(--font-size-2xl); }
+        h2 { font-size: var(--font-size-xl); }
+        h3 { font-size: var(--font-size-lg); }
+      }
+
+      h1, h2 {
+        width: fit-content;
+        display: block;
+        margin: 0 auto;
+      }
+
+      h1::after, h2::after {
+        content: "";
+        display: block;
+        height: 2px;
+        background: linear-gradient(
+          to right,
+          transparent,
+          var(--color-accent-alt),
+          var(--color-accent),
+          var(--color-accent-alt),
+          transparent
+        );
+      }
+
+      /* Scroll Margin */
+      .scroll-margin-top {
+        scroll-margin-top: 4rem;
+      }
+
+      /* Links */
+      a {
+        font-family: "IBM Plex Serif", serif;
+        font-weight: bold;
+        color: var(--color-text);
+        text-decoration: none;
+        position: relative;
+        transition: color var(--transition-normal);
+        font-size: var(--font-size-lg);
+      }
+
+      nav ul li a {
+        font-size: var(--font-size-xl);
+      }
+
+      .card a {
+        font-size: var(--font-size-lg);
+      }
+
+      #blog > ul > li > a {
+        font-size: var(--font-size-xl);
+      }
+
+      a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+        width: 100%;
+        height: 1px;
+        background: linear-gradient(
+          to right,
+          transparent,
+          var(--color-accent-alt),
+          var(--color-accent),
+          var(--color-accent-alt),
+          transparent
+        );
+        opacity: 0.5;
+        transform: scaleX(0);
+        transform-origin: center;
+        transition: transform var(--transition-normal), opacity var(--transition-normal);
+      }
+
+      a:hover,
+      a:focus {
+        color: var(--color-text-light);
+      }
+
+      a:hover::after,
+      a:focus::after {
+        transform: scaleX(1);
+        opacity: 0.9;
+      }
+
+      /* Sections */
+      section, .card {
+        padding: var(--spacing-lg);
+        background-color: var(--color-overlay);
+        border: 2px solid var(--color-border);
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-sm), var(--shadow-inner);
+        backdrop-filter: blur(4px);
+        z-index: 2;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity var(--transition-normal), transform var(--transition-normal);
+      }
+
+      section.visible, .card.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Cards */
+      .card {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-md);
+        overflow: hidden;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        padding: var(--spacing-md);
+        font-family: "IBM Plex Sans", sans-serif;
+        font-weight: normal;
+        position: relative;
+      }
+
+      .card::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          circle at var(--x, 50%) var(--y, 50%),
+          var(--color-glow) 0%,
+          transparent 50%
+        );
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .card:hover::before {
+        opacity: 0.5;
+      }
+
+      .card:hover,
+      .card:focus {
+        transform: translateY(-4px);
+        border-color: var(--color-accent);
+        box-shadow: var(--shadow-md), 
+          0 0 0 2px var(--color-glow),
+          0 0 20px var(--color-glow),
+          0 0 40px var(--color-glow);
+        outline: 0;
+      }
+
+      .card div {
+        aspect-ratio: 16/9;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        margin: calc(-1 * var(--spacing-md)) calc(-1 * var(--spacing-md)) 0;
+        filter: brightness(0.9) contrast(0.95) saturate(0.9) sepia(0.12) hue-rotate(-10deg) blur(0.3px);
+        transition: filter var(--transition-normal), transform var(--transition-normal);
+      }
+
+      .card:hover div {
+        filter: brightness(1.05) contrast(1.05) saturate(1.2);
+      }
+
+      .card h3 {
+        margin-bottom: -0.5rem;
+      }
+
+      .card p {
+        font-size: var(--font-size-lg);
+        color: var(--color-text);
+        margin: 0;
+      }
+
+      /* Tags */
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--spacing-sm);
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .tags li {
+        padding: var(--spacing-xs) var(--spacing-sm);
+        font-size: var(--font-size-sm);
+        background: var(--color-link-hover);
+        border: 1px solid var(--color-link-active);
+        border-radius: var(--radius-sm);
+        color: var(--color-accent);
+        backdrop-filter: blur(4px);
+      }
+
+      /* Grid Layouts */
+      .about-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: var(--spacing-lg);
+      }
+
+      .about-grid section:first-child,
+      .about-grid section:nth-child(2) {
+        grid-column: 1;
+      }
+
+      .about-grid section:last-child {
+        grid-column: 2;
+        grid-row: 1 / span 2;
+      }
+
+      @media (max-width: 1024px) {
+        .about-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .about-grid section:first-child,
+        .about-grid section:nth-child(2),
+        .about-grid section:last-child {
+          grid-column: 1;
+          grid-row: auto;
         }
       }
 
-      header section.card,
-      .dark header section.card {
-        background: rgb(var(--background) / 0.8);
-        color: rgb(var(--foreground) / 0.8);
-        box-shadow: none;
+      .projects-grid {
+        display: grid;
+        gap: var(--spacing-lg);
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
       }
 
-      header h1 {
-        font-size: 2rem;
-        line-height: 1.1;
-        margin: 0 0 1rem 0;
-        color: rgb(var(--foreground));
-        font-weight: 400;
+      /* Experience */
+      .experience-item {
+        margin-top: var(--spacing-lg);
+        display: flex;
       }
 
-      h1 small {
-        font-size: 0.65em;
+      .experience-item > div:first-child {
+        width: 9rem;
+        flex: 0 0 auto;
+        color: var(--color-accent-alt);
+        font-size: var(--font-size-base);
       }
 
-      .underline {
-        text-decoration: underline;
-        text-decoration-color: rgb(var(--accent) / 0.8);
+      .experience-item strong {
+        color: var(--color-text-light);
+        font-size: var(--font-size-xl);
       }
 
+      .experience-item p {
+        margin: var(--spacing-sm) 0 var(--spacing-md);
+      }
+
+      /* Blog */
+      #blog > ul {
+        list-style-type: none;
+        padding: 0;
+      }
+
+      #blog > ul > li {
+        margin-bottom: var(--spacing-lg);
+      }
+
+      #blog > ul > li > a {
+        display: inline-block;
+        margin: 0.3rem 0 0.6rem 0;
+      }
+
+      #blog time {
+        display: block;
+        font-size: var(--font-size-base);
+        color: var(--color-accent-alt);
+      }
+
+      /* Contact Form */
+      #contact {
+        max-width: 600px;
+        width: 100%;
+        margin: 0 auto;
+      }
+
+      #contact form {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-lg);
+      }
+
+      label {
+        display: flex;
+        flex-direction: column;
+        font-size: var(--font-size-base);
+        letter-spacing: 0.5px;
+        color: var(--color-text);
+      }
+
+      input,
+      textarea {
+        margin-top: 0.4rem;
+        background: var(--color-bg);
+        border: 1px solid var(--color-link-active);
+        border-radius: var(--radius-sm);
+        padding: 0.75rem 1rem;
+        color: var(--color-text-light);
+        font-size: var(--font-size-base);
+        font-family: inherit;
+        transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+      }
+
+      input:focus,
+      textarea:focus {
+        outline: none;
+        border-color: var(--color-accent);
+        box-shadow: 0 0 0 2px var(--color-glow);
+      }
+
+      /* Buttons */
+      button,
+      .button {
+        font-family: "IBM Plex Serif", serif;
+        font-size: var(--font-size-base);
+        font-weight: bold;
+        padding: var(--spacing-sm) var(--spacing-md);
+        color: var(--color-text-light);
+        background: var(--color-overlay);
+        border: 2px solid var(--color-accent-alt);
+        border-radius: var(--radius-md);
+        backdrop-filter: blur(5px);
+        box-shadow: var(--shadow-inner), 0 2px 5px var(--color-shadow), 0 0 6px var(--color-glow);
+        transition: all 0.25s ease;
+        cursor: pointer;
+      }
+
+      button:hover,
+      .button:hover {
+        background: var(--color-link-hover);
+        border-color: var(--color-accent);
+        color: var(--color-text-light);
+        box-shadow: 0 0 8px var(--color-glow),
+          0 0 18px var(--color-link-hover),
+          inset 0 0 10px rgba(255, 240, 200, 0.05);
+        transform: translateY(-2px);
+      }
+
+      button:focus,
+      .button:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px var(--color-accent),
+          0 0 8px 3px var(--color-glow);
+      }
+
+      .button.small {
+        font-size: var(--font-size-sm);
+        padding: var(--spacing-xs) var(--spacing-sm);
+        border-radius: var(--radius-sm);
+      }
+
+      /* Social Links */
       .socials {
         display: flex;
         align-items: center;
+        justify-content: center;
         gap: 0.75rem;
       }
 
       .socials a {
-        text-decoration: none;
-        color: rgb(var(--accent) / 0.7);
         fill: currentColor;
+        transition: all 0.2s ease;
         position: relative;
+      }
+
+      .socials a::before {
+        content: '';
+        position: absolute;
+        inset: -4px;
+        border-radius: 50%;
+        background: var(--color-glow);
+        opacity: 0;
+        transform: scale(0.8);
+        transition: all 0.2s ease;
+      }
+
+      .socials a:hover::before,
+      .socials a:focus::before {
+        opacity: 0.3;
+        transform: scale(1.2);
       }
 
       .socials a:hover,
       .socials a:focus {
-        color: rgb(var(--accent));
+        transform: translateY(-2px) scale(1.1);
+        filter: drop-shadow(0 0 8px var(--color-glow));
       }
 
       .socials svg {
         width: 1.3rem;
         height: 1.3rem;
         display: block;
+        transition: transform var(--transition-normal);
       }
 
       .socials span {
+        font-family: "IBM Plex Sans", sans-serif;
         position: absolute;
         display: block;
-        background: rgb(var(--surface-background));
-        color: rgb(var(--surface-foreground));
-        border-radius: 0.3rem;
-        padding: 0.25rem 0.5rem;
+        background: var(--color-text-light);
+        color: var(--color-bg);
+        border-radius: var(--radius-sm);
+        padding: var(--spacing-xs) var(--spacing-sm);
         width: fit-content;
+        margin-top: .5rem;
         left: 50%;
         transform: translateX(-50%) scale(0.5);
         opacity: 0;
-        font-size: 0.8rem;
+        font-size: var(--font-size-sm);
         white-space: nowrap;
-        transition: all 0.1s cubic-bezier(0.345, 0.115, 0.135, 1.42);
+        transition: all 0.1s ease;
         pointer-events: none;
       }
 
@@ -319,1250 +685,1079 @@
         transform: translate(-50%, 0.4rem) scale(1);
       }
 
-      #waves {
-        display: block;
-      }
-
-      main {
-        background: linear-gradient(
-            to bottom,
-            rgb(var(--background) / 0.95),
-            rgb(var(--background) / 0.95)
-          ),
-          linear-gradient(to bottom, rgb(var(--background)), transparent) top /
-            100% 5rem no-repeat,
-          linear-gradient(to bottom, transparent, rgb(var(--background))) bottom /
-            100% 5rem no-repeat,
-          url(/assets/Party.png) center / 50rem 50rem;
-        padding: 1.5rem 1rem;
-        display: flex;
-        flex-direction: column;
-        gap: 1.5rem;
-      }
-
-      .card {
+      /* Dividers */
+      hr {
+        width: 100%;
+        overflow: visible;
+        border: none;
+        text-align: center;
+        height: 1px;
+        background: none;
         position: relative;
-        padding: 1rem;
-        background: rgb(var(--surface-background) / 0.9);
-        color: rgb(var(--surface-foreground) / 0.9);
-        backdrop-filter: blur(1rem);
-        border-radius: 1rem;
-        box-shadow: var(--box-shadow);
+        max-width: 420px;
+        margin: var(--spacing-xl) auto;
       }
 
-      @supports (backdrop-filter: none) {
-        .dark .card {
-          background: rgb(var(--surface-background) / 0.5);
-        }
-      }
-
-      h2,
-      h3 {
-        margin: 0 0 1rem;
-        color: rgb(var(--surface-accent));
-        font-weight: 500;
-      }
-
-      p {
-        margin: 0 0 1rem;
-      }
-
-      p:last-child {
-        margin: 0;
-      }
-
-      .tags {
-        margin: 0;
-        padding: 0;
-        list-style: none;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.25rem;
-      }
-
-      .tags li {
-        padding: 0 0.5rem;
-        font-size: 0.8rem;
-        border-radius: 1rem;
-        background: rgb(var(--surface-accent) / 0.1);
-        color: rgb(var(--surface-accent) / 0.8);
-      }
-
-      .about-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-      }
-
-      #experience strong {
-        color: rgb(var(--surface-accent));
-        font-weight: 500;
-      }
-
-      #experience td {
-        vertical-align: top;
-      }
-
-      #experience p {
-        margin: 0;
-      }
-
-      #experience .tags {
-        margin: 0.25rem 0 1rem;
-      }
-
-      .experience-item > div:first-child {
-        color: rgb(var(--surface-foreground) / 0.8);
-        font-size: 0.9rem;
-      }
-
-      #blog > ul {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-      }
-
-      #blog time {
-        display: block;
-        font-size: 0.9rem;
-        color: rgb(var(--surface-foreground) / 0.8);
-      }
-
-      #blog a {
-        color: rgb(var(--surface-accent));
-        text-decoration: none;
-        font-weight: 500;
-      }
-
-      #blog a:hover,
-      #blog a:focus {
-        text-decoration: underline;
-      }
-
-      #blog .tags {
-        margin: 0.25rem 0 1.25rem;
-      }
-
-      #blog a.button {
-        color: inherit;
-        font-weight: normal;
+      hr::before {
+        content: "✧✦✧";
         display: inline-block;
-        text-decoration: none;
-        width: unset;
-        border-radius: 0.5rem;
-        font-size: 0.9rem;
-        padding: 0.5rem 1rem;
-        color: rgb(var(--foreground));
+        position: absolute;
+        top: -0.9rem;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 1.4rem;
+        color: var(--color-accent);
+        background: var(--color-bg);
+        padding: 0 0.6rem;
+        border-radius: var(--radius-lg);
       }
 
-      #projects {
-        position: relative;
-      }
-
-      #projects h2 {
-        color: rgb(var(--accent));
-      }
-
-      #projects > div {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-      }
-
-      #projects .card {
-        padding: 1rem;
-        transition: all 0.1s cubic-bezier(0.345, 0.115, 0.135, 1.42);
-        cursor: pointer;
-        text-decoration: none;
-      }
-
-      #projects .card > div {
-        border-top-left-radius: inherit;
-        border-top-right-radius: inherit;
-        min-height: 8rem;
-        background-color: rgb(var(--background) / 0.6);
-        background-size: cover;
-        background-position: center;
-        margin: -1rem -1rem 1rem;
-        opacity: 0.9;
-        transition: all 0.1s cubic-bezier(0.345, 0.115, 0.135, 1.42);
-      }
-
-      #projects .card:hover,
-      #projects .card:focus {
-        transform: scale(1.05);
-      }
-
-      #projects .card:hover > div,
-      #projects .card:focus > div {
-        opacity: 1;
-      }
-
-      #projects h3 {
-        margin-bottom: 0.25rem;
-      }
-
-      #projects p {
-        margin-bottom: 0.5rem;
-      }
-
-      #contact {
-        grid-area: 4 / 1 / 5 / 3;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-evenly;
-        gap: 1rem;
-      }
-
-      .confetti-button {
-        background: url(/assets/Scott\ Lofi.jpg) center / cover;
-        width: 10rem;
-        height: 10rem;
-        border-radius: 50%;
-        border: 0.1rem solid rgb(var(--accent) / 0.5);
-        transition: all 0.3s cubic-bezier(0.345, 0.115, 0.135, 1.42);
-        cursor: pointer;
-      }
-
-      .confetti-button:hover {
-        transform: scale(1.1) rotate(30deg);
-      }
-
-      .confetti-button:active {
-        transform: scale(1) rotate(30deg);
-      }
-
-      #contact .divider {
-        width: 10rem;
-        height: 0.1rem;
+      hr::after {
+        content: "";
+        display: block;
+        height: 3px;
         background: linear-gradient(
           to right,
           transparent,
-          rgb(var(--surface-accent) / 0.2),
+          var(--color-accent-alt),
           transparent
         );
       }
 
-      #contact form {
-        width: 100%;
-        max-width: 25rem;
-      }
-
-      .form-field {
-        position: relative;
-      }
-
-      .form-field label {
-        position: absolute;
-        top: 1.25rem;
-        left: 1rem;
-        color: rgb(var(--surface-foreground) / 0.5);
-        pointer-events: none;
-        transition: all 0.1s cubic-bezier(0.345, 0.115, 0.135, 1.42);
-      }
-
-      .form-field input:focus + label,
-      .form-field input:valid + label,
-      .form-field textarea:focus + label,
-      .form-field textarea:valid + label {
-        color: rgb(var(--surface-foreground) / 0.9);
-        top: 0.5rem;
-        font-size: 0.8rem;
-      }
-
-      input {
-        font-family: inherit;
-        border: 0;
-        border-radius: 1rem;
-        display: block;
-        width: 100%;
-        font-size: 1rem;
-        margin-bottom: 1rem;
-        background: rgb(var(--surface-background) / 0.5);
-        color: rgb(var(--surface-foreground));
-        padding: 1.75rem 1rem 1rem;
-        box-shadow: 0 0 0 0.1rem rgb(var(--background) / 0.1);
-      }
-
-      input:-webkit-autofill,
-      input:-webkit-autofill:hover,
-      input:-webkit-autofill:focus,
-      textarea:-webkit-autofill,
-      textarea:-webkit-autofill:hover,
-      textarea:-webkit-autofill:focus {
-        -webkit-text-fill-color: rgb(var(--surface-foreground));
-        -webkit-box-shadow: 0 0 0px 1000px rgb(var(--surface-background)) inset,
-          0 0 0 0.1rem rgb(var(--background) / 0.1);
-        transition: background-color 5000s ease-in-out 0s;
-      }
-
-      .dark input {
-        background: rgb(var(--surface-accent) / 0.1);
-        box-shadow: 0 0 0 0.1rem rgb(var(--background));
-      }
-
-      .dark input:-webkit-autofill,
-      .dark input:-webkit-autofill:hover,
-      .dark input:-webkit-autofill:focus,
-      .dark textarea:-webkit-autofill,
-      .dark textarea:-webkit-autofill:hover,
-      .dark textarea:-webkit-autofill:focus {
-        -webkit-text-fill-color: rgb(var(--surface-foreground));
-        -webkit-box-shadow: 0 0 0px 1000px rgb(var(--surface-accent) / 0.1)
-            inset,
-          0 0 0 0.1rem rgb(var(--background));
-        transition: background-color 5000s ease-in-out 0s;
-      }
-
-      textarea {
-        font-family: inherit;
-        border: 0;
-        border-radius: 1rem;
-        display: block;
-        width: 100%;
-        font-size: 1rem;
-        margin-bottom: 1rem;
-        background: rgb(var(--surface-background) / 0.5);
-        color: rgb(var(--surface-foreground));
-        padding: 1.75rem 1rem 1rem;
-        box-shadow: 0 0 0 0.1rem rgb(var(--background) / 0.1);
-      }
-
-      .dark textarea {
-        background: rgb(var(--surface-accent) / 0.1);
-        box-shadow: 0 0 0 0.1rem rgb(var(--background) / 1);
-      }
-
-      .button {
-        font-family: inherit;
-        border: 0;
-        border-radius: 1rem;
-        display: block;
-        width: 100%;
-        font-size: 1rem;
-        background: rgb(var(--background));
-        color: rgb(var(--foreground));
-        padding: 1rem 1rem;
-        position: relative;
-      }
-
-      .button::after {
-        content: "";
-        background: transparent;
-        position: absolute;
-        inset: 0;
-        border-radius: 5rem;
-        transform: scaleX(0.7) scaleY(0.7) perspective(1px);
-        opacity: 0;
-        transition: transform 300ms cubic-bezier(0.345, 0.115, 0.135, 1.42),
-          background 250ms ease-out, box-shadow 300ms ease-out;
-        border-radius: inherit;
-      }
-
-      .button:hover::after {
-        transform: scaleX(1) perspective(1px);
-        background: rgb(0 0 0 / 0.2);
-        opacity: 1;
-      }
-
-      .button:active {
-        transform: scaleX(1.015) scaleY(1.035) perspective(1px);
-      }
-
+      /* Footer */
       footer {
-        display: flex;
-        justify-content: center;
-        padding: 0 1rem 1.5rem;
+        text-align: center;
+        margin-top: auto;
       }
 
-      .dot {
-        position: absolute;
-        box-shadow: 0 0 0.5rem 0.5rem rgb(var(--accent) / 0.1);
-        animation: dot 0.25s cubic-bezier(0.47, 0, 0.745, 0.715) forwards;
+      /* Media Queries */
+      @media (max-width: 1024px) {
+        .about-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 768px) {
+        body {
+          padding: var(--spacing-md);
+        }
+
+        .projects-grid {
+          grid-template-columns: 1fr;
+          gap: var(--spacing-md);
+        }
+
+        .card {
+          margin: 0;
+        }
+
+        .card div {
+          margin: calc(-1 * var(--spacing-md)) calc(-1 * var(--spacing-md)) 0;
+        }
+
+        .socials {
+          flex-wrap: wrap;
+          gap: var(--spacing-sm);
+        }
+
+        .socials a {
+          padding: var(--spacing-xs);
+        }
+
+        .socials svg {
+          width: 1.2rem;
+          height: 1.2rem;
+        }
+
+        .tags {
+          gap: var(--spacing-xs);
+        }
+
+        .tags li {
+          font-size: var(--font-size-xs);
+          padding: var(--spacing-xs) var(--spacing-sm);
+        }
+
+        .experience-item {
+          flex-direction: column;
+          gap: var(--spacing-sm);
+        }
+
+        .experience-item > div:first-child {
+          width: auto;
+        }
+
+        input,
+        textarea {
+          font-size: var(--font-size-sm);
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+          scroll-behavior: auto !important;
+        }
+      }
+
+      /* Background Animation */
+      @keyframes gradientBG {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+
+      /* Particle Burst Effect */
+      .particle {
+        position: fixed;
         pointer-events: none;
+        z-index: 9999;
+        animation: particleBurst 1s ease-out forwards;
       }
 
-      @keyframes dot {
+      @keyframes particleBurst {
         0% {
+          transform: translate(0, 0) scale(1);
           opacity: 1;
         }
         100% {
-          transform: scale(0.3);
+          transform: translate(var(--tx), var(--ty)) scale(0);
           opacity: 0;
         }
       }
 
-      .fade-in[data-visible="true"] {
-        animation: fade-in 0.25s cubic-bezier(0.47, 0, 0.745, 0.715);
+      /* Cursor Trail */
+      .cursor-trail {
+        position: fixed;
+        width: 8px;
+        height: 8px;
+        background: var(--color-accent);
+        border-radius: 50%;
+        pointer-events: none;
+        opacity: 0;
+        z-index: 9999;
+        mix-blend-mode: screen;
+        filter: blur(1px);
+        transition: transform 0.1s ease;
       }
 
-      @keyframes fade-in {
-        0% {
-          opacity: 0.5;
-        }
-        100% {
-          opacity: 1;
-        }
+      /* Magic Pulse */
+      @keyframes magicPulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+        100% { transform: scale(1); }
       }
 
-      @media (min-width: 768px) {
-        :root {
-          font-size: 18px;
-        }
-
-        h1 small {
-          font-size: 0.75em;
-        }
-
-        header {
-          padding: 2rem;
-        }
-
-        header > div {
-          max-width: 32rem;
-        }
-
-        main {
-          padding: 2rem;
-          gap: 2rem;
-        }
-
-        .card {
-          padding: 2rem;
-        }
-
-        .about-grid {
-          gap: 2rem;
-        }
-
-        #projects > div {
-          grid-template-columns: 1fr 1fr;
-          gap: 2rem;
-        }
-
-        #contact {
-          gap: 2rem;
-          flex-direction: row;
-        }
-
-        #contact .divider {
-          width: 0.1rem;
-          height: 10rem;
-          background: linear-gradient(
-            to bottom,
-            transparent,
-            rgb(var(--surface-accent) / 0.2),
-            transparent
-          );
-        }
-
-        #contact form {
-          max-width: 20rem;
-        }
-
-        footer {
-          padding: 0 2rem 2rem;
-        }
+      .magic-pulse {
+        animation: magicPulse 2s ease-in-out infinite;
       }
 
-      @media (min-width: 1200px) {
-        :root {
-          font-size: 18px;
-        }
+      .magic-pulse:nth-child(1) { animation-delay: 0s; }
+      .magic-pulse:nth-child(2) { animation-delay: 0.2s; }
+      .magic-pulse:nth-child(3) { animation-delay: 0.4s; }
+      .magic-pulse:nth-child(4) { animation-delay: 0.6s; }
+      .magic-pulse:nth-child(5) { animation-delay: 0.8s; }
 
-        nav a {
-          padding: 0.5rem 1rem;
-        }
-
-        header {
-          padding: 3rem;
-        }
-
-        main {
-          padding: 3rem;
-          gap: 3rem;
-        }
-
-        .about-grid {
-          gap: 3rem;
-        }
-
-        .experience-item {
-          display: flex;
-        }
-
-        .experience-item > div:first-child {
-          width: 7.5rem;
-          flex-grow: 0;
-          flex-shrink: 0;
-        }
-
-        #projects > div {
-          grid-template-columns: 1fr 1fr 1fr;
-          gap: 3rem;
-        }
-
-        #contact {
-          gap: 3rem;
-        }
-
-        #contact .confetti-button {
-          width: 12rem;
-          height: 12rem;
-        }
-
-        #contact form {
-          max-width: 25rem;
-        }
-
-        footer {
-          padding: 0 3rem 3rem;
-        }
+      /* Form Inputs */
+      .form-group {
+        position: relative;
+        margin-bottom: var(--spacing-md);
       }
 
-      @media (min-width: 1400px) {
-        :root {
-          font-size: 20px;
-        }
+      .form-group label {
+        position: absolute;
+        left: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        transition: all 0.3s ease;
+        pointer-events: none;
+        color: var(--color-text);
+        background: var(--color-bg);
+        border-radius: var(--radius-sm);
+        padding: 0 0.5rem;
+        font-size: var(--font-size-lg);
+      }
 
-        .about-grid {
-          grid-template-columns: 2fr 1fr;
-        }
+      .form-group textarea ~ label {
+        top: 1rem;
+        transform: none;
+      }
 
-        #blog {
-          grid-area: 1 / 2 / 3 / 3;
-        }
+      .form-group input:focus ~ label,
+      .form-group textarea:focus ~ label,
+      .form-group input:not(:placeholder-shown) ~ label,
+      .form-group textarea:not(:placeholder-shown) ~ label {
+        top: -0.75rem;
+        left: 0.5rem;
+        font-size: var(--font-size-base);
+        color: var(--color-accent);
+        background: var(--color-bg);
+        padding: 0 0.5rem;
+      }
 
-        #projects > div {
-          grid-template-columns: 1fr 1fr 1fr 1fr;
-          gap: 3rem;
-        }
+      .form-group textarea:focus ~ label,
+      .form-group textarea:not(:placeholder-shown) ~ label {
+        top: -1.5rem;
+      }
 
-        footer {
-          padding: 0 3rem 3rem;
-        }
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        background: transparent;
+        border: 2px solid var(--color-border);
+        border-radius: var(--radius-md);
+        padding: 1rem;
+        color: var(--color-text);
+        font-size: var(--font-size-lg);
+        transition: all 0.3s ease;
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus {
+        border-color: var(--color-accent);
+        box-shadow: 0 0 0 2px var(--color-glow);
+      }
+
+      .form-group::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: var(--radius-md);
+        background: radial-gradient(circle at var(--x, 50%) var(--y, 50%),
+          var(--color-glow) 0%,
+          transparent 50%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+      }
+
+      .form-group:hover::after {
+        opacity: 0.1;
       }
     </style>
   </head>
-  <body id="home">
+  <body>
+    <!-- Background effects -->
+    <canvas id="arcane-bg"></canvas>
+    <canvas id="magic-trail"></canvas>
+
     <nav>
       <ul>
-        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#home">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
-      <button id="theme-toggle" aria-label="Toggle dark mode">
-        <span aria-hidden="true">☀️</span>
-        <span aria-hidden="true">🌒</span>
-      </button>
     </nav>
 
-    <header>
-      <div class="fade-in">
-        <div class="neon-mist"></div>
-        <section class="card">
-          <h1>
-            Hi, I'm <span class="underline">Scott Batary</span><br />
-            <small class="underline">Software Developer / Sourcerer</small> 🧙‍♂️
-          </h1>
-          <p>
-            I'm a full-stack developer with a passion for building feature-rich
-            web apps, robust APIs, and innovative libraries. Check out my work
-            on GitHub!
-          </p>
-          <div class="socials">
-            <a href="https://github.com/sgbj">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                height="1em"
-                viewBox="0 0 496 512"
-              >
-                <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                <path
-                  d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"
-                />
-              </svg>
-              <span>GitHub</span>
-            </a>
-            <a href="https://blog.batary.dev/">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                height="1em"
-                viewBox="0 0 640 512"
-              >
-                <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                <path
-                  d="M180.5,74.262C80.813,74.262,0,155.633,0,256S80.819,437.738,180.5,437.738,361,356.373,361,256,280.191,74.262,180.5,74.262Zm288.25,10.646c-49.845,0-90.245,76.619-90.245,171.095s40.406,171.1,90.251,171.1,90.251-76.619,90.251-171.1H559C559,161.5,518.6,84.908,468.752,84.908Zm139.506,17.821c-17.526,0-31.735,68.628-31.735,153.274s14.2,153.274,31.735,153.274S640,340.631,640,256C640,171.351,625.785,102.729,608.258,102.729Z"
-                />
-              </svg>
-              <span>Medium</span>
-            </a>
-            <a href="https://stackoverflow.com/users/2658854/sgbj">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                height="1em"
-                viewBox="0 0 384 512"
-              >
-                <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                <path
-                  d="M290.7 311L95 269.7 86.8 309l195.7 41zm51-87L188.2 95.7l-25.5 30.8 153.5 128.3zm-31.2 39.7L129.2 179l-16.7 36.5L293.7 300zM262 32l-32 24 119.3 160.3 32-24zm20.5 328h-200v39.7h200zm39.7 80H42.7V320h-40v160h359.5V320h-40z"
-                />
-              </svg>
-              <span>Stack Overflow</span>
-            </a>
-            <a href="https://twitter.com/sbatary">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                height="1em"
-                viewBox="0 0 512 512"
-              >
-                <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                <path
-                  d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"
-                />
-              </svg>
-              <span>X / Twitter</span>
-            </a>
-            <a href="https://www.linkedin.com/in/scott-batary/">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                height="1em"
-                viewBox="0 0 448 512"
-              >
-                <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                <path
-                  d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"
-                />
-              </svg>
-              <span>LinkedIn</span>
-            </a>
-          </div>
-        </section>
-      </div>
+    <header id="home" class="jumbotron scroll-margin-top">
+      <section>
+        <h1>Scott Batary</h1>
+        <p>
+          I'm a full-stack developer with a passion for building feature-rich
+          web apps, robust APIs, and innovative libraries. Check out my work on
+          GitHub!
+        </p>
+        <div class="socials">
+          <a href="https://github.com/sgbj" aria-label="GitHub">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="1em"
+              viewBox="0 0 496 512"
+              aria-hidden="true"
+            >
+              <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+              <path
+                d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"
+              />
+            </svg>
+            <span>GitHub</span>
+          </a>
+          <a href="https://blog.batary.dev/" aria-label="Medium">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="1em"
+              viewBox="0 0 640 512"
+              aria-hidden="true"
+            >
+              <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+              <path
+                d="M180.5,74.262C80.813,74.262,0,155.633,0,256S80.819,437.738,180.5,437.738,361,356.373,361,256,280.191,74.262,180.5,74.262Zm288.25,10.646c-49.845,0-90.245,76.619-90.245,171.095s40.406,171.1,90.251,171.1,90.251-76.619,90.251-171.1H559C559,161.5,518.6,84.908,468.752,84.908Zm139.506,17.821c-17.526,0-31.735,68.628-31.735,153.274s14.2,153.274,31.735,153.274S640,340.631,640,256C640,171.351,625.785,102.729,608.258,102.729Z"
+              />
+            </svg>
+            <span>Medium</span>
+          </a>
+          <a href="https://stackoverflow.com/users/2658854/sgbj" aria-label="Stack Overflow">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="1em"
+              viewBox="0 0 384 512"
+              aria-hidden="true"
+            >
+              <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+              <path
+                d="M290.7 311L95 269.7 86.8 309l195.7 41zm51-87L188.2 95.7l-25.5 30.8 153.5 128.3zm-31.2 39.7L129.2 179l-16.7 36.5L293.7 300zM262 32l-32 24 119.3 160.3 32-24zm20.5 328h-200v39.7h200zm39.7 80H42.7V320h-40v160h359.5V320h-40z"
+              />
+            </svg>
+            <span>Stack Overflow</span>
+          </a>
+          <a href="https://twitter.com/sbatary" aria-label="X / Twitter">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="1em"
+              viewBox="0 0 512 512"
+              aria-hidden="true"
+            >
+              <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+              <path
+                d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"
+              />
+            </svg>
+            <span>X / Twitter</span>
+          </a>
+          <a href="https://www.linkedin.com/in/scott-batary/" aria-label="LinkedIn">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="1em"
+              viewBox="0 0 448 512"
+              aria-hidden="true"
+            >
+              <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+              <path
+                d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"
+              />
+            </svg>
+            <span>LinkedIn</span>
+          </a>
+        </div>
+      </section>
     </header>
 
-    <svg viewBox="0 518 900 50" id="waves">
-      <path
-        d="M0 526L30 529C60 532 120 538 180 542.5C240 547 300 550 360 550C420 550 480 547 540 540.5C600 534 660 524 720 520.7C780 517.3 840 520.7 870 522.3L900 524L900 601L870 601C840 601 780 601 720 601C660 601 600 601 540 601C480 601 420 601 360 601C300 601 240 601 180 601C120 601 60 601 30 601L0 601Z"
-        fill="rgb(var(--wave))"
-      ></path>
-      <path
-        d="M0 556L30 554C60 552 120 548 180 550.5C240 553 300 562 360 564.5C420 567 480 563 540 559.8C600 556.7 660 554.3 720 552.8C780 551.3 840 550.7 870 550.3L900 550L900 601L870 601C840 601 780 601 720 601C660 601 600 601 540 601C480 601 420 601 360 601C300 601 240 601 180 601C120 601 60 601 30 601L0 601Z"
-        fill="rgb(var(--background))"
-      ></path>
-    </svg>
+    <hr />
 
-    <main>
-      <div class="about-grid">
-        <section id="about" class="card fade-in">
-          <h2>👋 About</h2>
-          <p>
-            Hello, world! I'm Scott, a software developer based in Oklahoma. I'm
-            passionate about building intuitive and scalable software solutions
-            that make a positive impact.
-          </p>
-          <p>
-            I strive to keep up-to-date with new technologies and best
-            practices. Lately, I've been learning Go, Next.js, and React Server
-            Components. I also have personal licenses for GitHub Pro, GitHub
-            Copilot, JetBrains, Tailwind UI, and Font Awesome.
-          </p>
-          <p>
-            Beyond coding, I enjoy playing games like Overwatch, Dead by
-            Daylight, and Elder Scrolls Online.
-          </p>
-        </section>
+    <div class="about-grid">
+      <section id="about" class="scroll-margin-top">
+        <h2>🧙‍♂️ About</h2>
+        <p>
+          Hello, world! I'm Scott, a software developer based in Oklahoma. I'm
+          passionate about building intuitive and scalable software solutions
+          that make a positive impact.
+        </p>
+        <p>
+          I strive to keep up-to-date with new technologies and best
+          practices. Lately, I've been learning Go, Next.js, and React Server
+          Components. I also have personal licenses for GitHub Pro, GitHub
+          Copilot, JetBrains, Tailwind UI, and Font Awesome.
+        </p>
+        <p>
+          Beyond coding, I enjoy playing games like Overwatch, Dead by
+          Daylight, and Elder Scrolls Online.
+        </p>
+      </section>
 
-        <section id="experience" class="card fade-in">
-          <h2>💻 Experience</h2>
+      <section id="experience">
+        <h2>📜 Experience</h2>
 
-          <div class="experience-item">
-            <div>2017 - Present</div>
-            <div>
-              <strong>Principal Developer</strong>
-              <p>
-                I'm currently leading the development of a cutting-edge court
-                case management system. Additionally, I standardized
-                authentication and authorization across our applications,
-                established a design system for a seamless user experience, and
-                optimized developer workflows through CI/CD pipelines.
-              </p>
-              <ul class="tags">
-                <li>C#</li>
-                <li>TS</li>
-                <li>SCSS</li>
-                <li>Angular</li>
-                <li>ASP.NET Core</li>
-                <li>Entity Framework Core</li>
-                <li>IdentityServer</li>
-                <li>OpenID Connect</li>
-                <li>OAuth 2.0</li>
-                <li>SQL Server</li>
-                <li>SSRS</li>
-                <li>Docker</li>
-                <li>SharePoint</li>
-                <li>Microsoft Graph</li>
-                <li>Azure DevOps</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="experience-item">
-            <div>2016 - 2017</div>
-            <div>
-              <strong>Senior Developer</strong>
-              <p>
-                I was the technical lead and architect for a team of developers
-                working on a patient portal for a healthcare provider. Notable
-                achievements include the integration of multi-factor
-                authentication, a patient education system, and a secure
-                messaging application.
-              </p>
-              <ul class="tags">
-                <li>C#</li>
-                <li>JS</li>
-                <li>ASP.NET</li>
-                <li>AngularJS</li>
-                <li>React</li>
-                <li>Redux</li>
-                <li>Redis</li>
-                <li>Twilio</li>
-                <li>SendGrid</li>
-                <li>DocuSign</li>
-                <li>GitHub Enterprise</li>
-                <li>Octopus</li>
-                <li>Jira</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="experience-item">
-            <div>2013 - 2016</div>
-            <div>
-              <strong>Programmer Analyst</strong>
-              <p>
-                I led the development of a credit card transaction system and
-                online payment web application, and was a key contributor to
-                various applications, APIs, background jobs, and reports.
-              </p>
-              <ul class="tags">
-                <li>C#</li>
-                <li>JS</li>
-                <li>SQL</li>
-                <li>ASP.NET MVC</li>
-                <li>Entity Framework</li>
-                <li>SQL Server</li>
-                <li>SSRS</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="experience-item">
-            <div>2011 - 2013</div>
-            <div>
-              <strong>Lab Assistant</strong>
-              <p>
-                I tutored students in computer science, collaborated with
-                instructors to create course materials, and supervised student
-                projects.
-              </p>
-              <ul class="tags">
-                <li>Java</li>
-                <li>PHP</li>
-                <li>HTML</li>
-                <li>CSS</li>
-                <li>JS</li>
-                <li>Computer Science</li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        <section id="blog" class="card fade-in">
-          <h2>✏️ Blog</h2>
-          <p></p>
-          <ul></ul>
-          <a href="https://blog.batary.dev/" class="button"
-            >View more&hellip;</a
-          >
-        </section>
-      </div>
-
-      <section id="projects" class="fade-in">
-        <h2>🚀 Projects</h2>
-
-        <div>
-          <a href="https://batary.dev/suika-clone/" class="card">
-            <div style="background-image: url(/assets/suika-clone.jpg)"></div>
-            <h3>Suika Clone</h3>
-            <p>Halloween 🎃 themed version of the Watermelon Game.</p>
-            <ul class="tags">
-              <li>TS</li>
-              <li>Phaser</li>
-              <li>Matter.js</li>
-              <li>Vite</li>
-            </ul>
-          </a>
-
-          <a href="https://overlays.batary.dev/" class="card">
-            <div
-              style="background-image: url(/assets/overlay-sharer.png)"
-            ></div>
-            <h3>Overlay Sharer</h3>
-            <p>Share StreamElements overlays with the click of a button.</p>
-            <ul class="tags">
-              <li>Next.js</li>
-              <li>NextAuth.js</li>
-              <li>React</li>
-              <li>Prisma</li>
-              <li>PostgreSQL</li>
-              <li>Tailwind</li>
-              <li>Vercel</li>
-            </ul>
-          </a>
-
-          <a href="https://github.com/sgbj/conquer" class="card">
-            <div
-              style="background-image: url(/assets/conquer-server.jpg)"
-            ></div>
-            <h3>Conquer Server</h3>
-            <p>Private server for the MMORPG Conquer Online.</p>
-            <ul class="tags">
-              <li>C#</li>
-              <li>ASP.NET Core Identity</li>
-              <li>Entity Framework Core</li>
-              <li>SQL Server</li>
-            </ul>
-          </a>
-
-          <a href="https://batary.dev/d20/" class="card">
-            <div style="background-image: url(/assets/d20.png)"></div>
-            <h3>d20</h3>
-            <p>Roll a set of 3D dice 🎲 in the browser.</p>
-            <ul class="tags">
-              <li>TS</li>
-              <li>Babylon.js</li>
-              <li>Havok</li>
-              <li>Vite</li>
-            </ul>
-          </a>
-
-          <a href="https://github.com/sgbj/dbd-stats" class="card">
-            <div style="background-image: url(/assets/dbd-stats.png)"></div>
-            <h3>DBD Stats</h3>
+        <article class="experience-item">
+          <div>2017 - Present</div>
+          <div>
+            <strong>Principal Developer</strong>
             <p>
-              Track Dead by Daylight player stats and achievements from Steam.
-            </p>
-            <ul class="tags">
-              <li>Next.js</li>
-              <li>React</li>
-              <li>Tailwind</li>
-              <li>Prisma</li>
-              <li>Vercel</li>
-            </ul>
-          </a>
-
-          <a
-            href="https://www.etsy.com/listing/1579967521/animated-chatbox-overlay-widget-for"
-            class="card"
-          >
-            <div style="background-image: url(/assets/chat-widget.jpg)"></div>
-            <h3>Chat Widget</h3>
-            <p>Animated chatbox widget for StreamElements, Twitch, and OBS.</p>
-            <ul class="tags">
-              <li>HTML</li>
-              <li>CSS</li>
-              <li>JS</li>
-            </ul>
-          </a>
-
-          <a
-            href="https://www.nuget.org/packages/Sgbj.Cron.CronTimer"
-            class="card"
-          >
-            <div style="background-image: url(/assets/crontimer.png)"></div>
-            <h3>CronTimer</h3>
-            <p>Cron timer NuGet package with over 100k downloads.</p>
-            <ul class="tags">
-              <li>C#</li>
-              <li>.NET</li>
-              <li>NuGet</li>
-            </ul>
-          </a>
-
-          <a href="https://github.com/sgbj/dotnet-monitoring" class="card">
-            <div
-              style="background-image: url(/assets/dotnet-monitoring.png)"
-            ></div>
-            <h3>.NET Monitoring</h3>
-            <p>
-              Sample ASP.NET Core web app with instrumentation and monitoring
-              using OpenTelementry.
+              I'm currently leading the development of a cutting-edge court
+              case management system. Additionally, I standardized
+              authentication and authorization across our applications,
+              established a design system for a seamless user experience, and
+              optimized developer workflows through CI/CD pipelines.
             </p>
             <ul class="tags">
               <li>C#</li>
-              <li>Prometheus</li>
-              <li>Jaeger</li>
-              <li>Grafana</li>
-              <li>Docker</li>
-            </ul>
-          </a>
-
-          <a href="https://github.com/sgbj/go-todos" class="card">
-            <div style="background-image: url(/assets/go-todos.png)"></div>
-            <h3>Todos</h3>
-            <p>Simple todo app built with Go.</p>
-            <ul class="tags">
-              <li>Go</li>
-              <li>SQLite</li>
-              <li>REST</li>
-            </ul>
-          </a>
-
-          <a href="https://github.com/sgbj/notion-clone" class="card">
-            <div style="background-image: url(/assets/notion-clone.png)"></div>
-            <h3>Notion Clone</h3>
-            <p>
-              Fullstack notes app with auth, sharing, rich text editing, and
-              image uploads.
-            </p>
-            <ul class="tags">
-              <li>Next.js</li>
-              <li>React</li>
-              <li>Tailwind</li>
-              <li>shadcn/ui</li>
-              <li>Clerk</li>
-              <li>Convex</li>
-              <li>Edge Store</li>
-              <li>BlockNote</li>
-            </ul>
-          </a>
-
-          <a href="https://github.com/sgbj/discord-clone" class="card">
-            <div style="background-image: url(/assets/discord-clone.png)"></div>
-            <h3>Discord Clone</h3>
-            <p>
-              Fullstack chat app with realtime messaging, audio, and video
-              calls.
-            </p>
-            <ul class="tags">
-              <li>Next.js</li>
-              <li>React</li>
-              <li>Tailwind</li>
-              <li>shadcn/ui</li>
-              <li>Socket.IO</li>
-              <li>Prisma</li>
-              <li>MySQL</li>
-            </ul>
-          </a>
-
-          <a href="https://batary.dev/pool/" class="card">
-            <div style="background-image: url(/assets/pool.png)"></div>
-            <h3>Pool</h3>
-            <p>A game of pool 🎱 made with pixel art.</p>
-            <ul class="tags">
-              <li>JS</li>
-              <li>Phaser</li>
-              <li>Matter.js</li>
-            </ul>
-          </a>
-
-          <a href="https://batary.dev/chess/" class="card">
-            <div style="background-image: url(/assets/chess.png)"></div>
-            <h3>Chess</h3>
-            <p>Chess ♟️ game using the Canvas API.</p>
-            <ul class="tags">
-              <li>HTML</li>
-              <li>JS</li>
-              <li>Vite</li>
-            </ul>
-          </a>
-
-          <a href="https://batary.dev/emojis/" class="card">
-            <div style="background-image: url(/assets/bouncy-emojis.png)"></div>
-            <h3>Bouncy Emojis</h3>
-            <p>Spawn emojis 🤪 with bouncy physics.</p>
-            <ul class="tags">
-              <li>JS</li>
-              <li>Phaser</li>
-              <li>Matter.js</li>
-            </ul>
-          </a>
-
-          <a href="https://github.com/sgbj/platform" class="card">
-            <div style="background-image: url(/assets/platform.png)"></div>
-            <h3>Platform</h3>
-            <p>Frontend prototype for a platform as a service.</p>
-            <ul class="tags">
               <li>TS</li>
               <li>SCSS</li>
               <li>Angular</li>
-              <li>Material</li>
+              <li>ASP.NET Core</li>
+              <li>Entity Framework Core</li>
+              <li>IdentityServer</li>
+              <li>OpenID Connect</li>
+              <li>OAuth 2.0</li>
+              <li>SQL Server</li>
+              <li>SSRS</li>
+              <li>Docker</li>
+              <li>SharePoint</li>
+              <li>Microsoft Graph</li>
+              <li>Azure DevOps</li>
             </ul>
-          </a>
+          </div>
+        </article>
 
-          <a href="https://github.com/sgbj/streaming" class="card">
-            <div style="background-image: url(/assets/twitch-clone.png)"></div>
-            <h3>Twitch Clone</h3>
+        <article class="experience-item">
+          <div>2016 - 2017</div>
+          <div>
+            <strong>Senior Developer</strong>
             <p>
-              Proof of concept streaming platform built on the same protocols as
-              Twitch: RTMP and HLS.
+              I was the technical lead and architect for a team of developers
+              working on a patient portal for a healthcare provider. Notable
+              achievements include the integration of multi-factor
+              authentication, a patient education system, and a secure
+              messaging application.
             </p>
             <ul class="tags">
               <li>C#</li>
-              <li>SignalR</li>
+              <li>JS</li>
+              <li>ASP.NET</li>
+              <li>AngularJS</li>
               <li>React</li>
-              <li>Chakra UI</li>
+              <li>Redux</li>
+              <li>Redis</li>
+              <li>Twilio</li>
+              <li>SendGrid</li>
+              <li>DocuSign</li>
+              <li>GitHub Enterprise</li>
+              <li>Octopus</li>
+              <li>Jira</li>
             </ul>
-          </a>
+          </div>
+        </article>
 
-          <a href="https://github.com/sgbj/versed" class="card">
-            <div style="background-image: url(/assets/versed.png)"></div>
-            <h3>Versed</h3>
+        <article class="experience-item">
+          <div>2013 - 2016</div>
+          <div>
+            <strong>Programmer Analyst</strong>
             <p>
-              File conversion microservice powered by FFmpeg, LibreOffice,
-              ImageMagick, and Tesseract OCR.
+              I led the development of a credit card transaction system and
+              online payment web application, and was a key contributor to
+              various applications, APIs, background jobs, and reports.
             </p>
             <ul class="tags">
-              <li>Node.js</li>
-              <li>Express</li>
+              <li>C#</li>
+              <li>JS</li>
+              <li>SQL</li>
+              <li>ASP.NET MVC</li>
+              <li>Entity Framework</li>
+              <li>SQL Server</li>
+              <li>SSRS</li>
             </ul>
-          </a>
+          </div>
+        </article>
 
-          <a href="https://github.com/sgbj/pdf-sign" class="card">
-            <div style="background-image: url(/assets/pdf-sign.png)"></div>
-            <h3>PDF Sign</h3>
+        <article class="experience-item">
+          <div>2011 - 2013</div>
+          <div>
+            <strong>Lab Assistant</strong>
             <p>
-              Prototype using custom PDF rendering, overlayed form controls, and
-              the ability to draw on canvas.
+              I tutored students in computer science, collaborated with
+              instructors to create course materials, and supervised student
+              projects.
             </p>
             <ul class="tags">
+              <li>Java</li>
+              <li>PHP</li>
               <li>HTML</li>
-              <li>JS</li>
               <li>CSS</li>
-            </ul>
-          </a>
-
-          <a href="https://batary.dev/fractals/" class="card">
-            <div style="background-image: url(/assets/fractals.png)"></div>
-            <h3>Fractals</h3>
-            <p>Implementations of common fractals.</p>
-            <ul class="tags">
-              <li>HTML</li>
               <li>JS</li>
+              <li>Computer Science</li>
             </ul>
-          </a>
+          </div>
+        </article>
+      </section>
 
-          <a href="https://github.com/sgbj/pocket-iv" class="card">
-            <div style="background-image: url(/assets/pocket-iv.png)"></div>
-            <h3>Pocket IV</h3>
-            <p>Mobile app for calculating IV in Pokemon GO.</p>
-            <ul class="tags">
-              <li>JS</li>
-              <li>CSS</li>
-              <li>Ionic</li>
-            </ul>
-          </a>
+      <section id="blog">
+        <h2>📖 Blog</h2>
+        <p></p>
+        <ul></ul>
+        <a href="https://blog.batary.dev/" class="button small">✧ View more ✧</a>
+      </section>
+    </div>
 
-          <!--
-          <a href="https://github.com/sgbj/merry-kawaii" class="card">
-            <div style="background-image: url(/assets/merry-kawaii.png)"></div>
-            <h3>Merry Kawaii</h3>
-            <p>Holiday sticker pack for iMessage.</p>
-            <ul class="tags">
-              <li>Xcode</li>
-            </ul>
-          </a>
-          -->
+    <hr />
+
+    <h2 id="projects" class="scroll-margin-top">⚗️ Projects</h2>
+
+    <div class="projects-grid">
+      <a href="https://batary.dev/suika-clone/" class="card">
+        <div style="background-image: url(/assets/suika-clone.jpg)"></div>
+        <h3>Suika Clone</h3>
+        <p>Halloween 🎃 themed version of the Watermelon Game.</p>
+        <ul class="tags">
+          <li>TS</li>
+          <li>Phaser</li>
+          <li>Matter.js</li>
+          <li>Vite</li>
+        </ul>
+      </a>
+
+      <a href="https://overlays.batary.dev/" class="card">
+        <div style="background-image: url(/assets/overlay-sharer.png)"></div>
+        <h3>Overlay Sharer</h3>
+        <p>Share StreamElements overlays with the click of a button.</p>
+        <ul class="tags">
+          <li>Next.js</li>
+          <li>NextAuth.js</li>
+          <li>React</li>
+          <li>Prisma</li>
+          <li>PostgreSQL</li>
+          <li>Tailwind</li>
+          <li>Vercel</li>
+        </ul>
+      </a>
+
+      <a href="https://github.com/sgbj/conquer" class="card">
+        <div style="background-image: url(/assets/conquer-server.jpg)"></div>
+        <h3>Conquer Server</h3>
+        <p>Private server for the MMORPG Conquer Online.</p>
+        <ul class="tags">
+          <li>C#</li>
+          <li>ASP.NET Core Identity</li>
+          <li>Entity Framework Core</li>
+          <li>SQL Server</li>
+        </ul>
+      </a>
+
+      <a href="https://batary.dev/d20/" class="card">
+        <div style="background-image: url(/assets/d20.png)"></div>
+        <h3>d20</h3>
+        <p>Roll a set of 3D dice 🎲 in the browser.</p>
+        <ul class="tags">
+          <li>TS</li>
+          <li>Babylon.js</li>
+          <li>Havok</li>
+          <li>Vite</li>
+        </ul>
+      </a>
+
+      <a href="https://github.com/sgbj/dbd-stats" class="card">
+        <div style="background-image: url(/assets/dbd-stats.png)"></div>
+        <h3>DBD Stats</h3>
+        <p>Track Dead by Daylight player stats and achievements from Steam.</p>
+        <ul class="tags">
+          <li>Next.js</li>
+          <li>React</li>
+          <li>Tailwind</li>
+          <li>Prisma</li>
+          <li>Vercel</li>
+        </ul>
+      </a>
+
+      <a href="https://www.etsy.com/listing/1579967521/animated-chatbox-overlay-widget-for" class="card">
+        <div style="background-image: url(/assets/chat-widget.jpg)"></div>
+        <h3>Chat Widget</h3>
+        <p>Animated chatbox widget for StreamElements, Twitch, and OBS.</p>
+        <ul class="tags">
+          <li>HTML</li>
+          <li>CSS</li>
+          <li>JS</li>
+        </ul>
+      </a>
+
+      <a href="https://www.nuget.org/packages/Sgbj.Cron.CronTimer" class="card">
+        <div style="background-image: url(/assets/crontimer.png)"></div>
+        <h3>CronTimer</h3>
+        <p>Cron timer NuGet package with over 400k downloads.</p>
+        <ul class="tags">
+          <li>C#</li>
+          <li>.NET</li>
+          <li>NuGet</li>
+        </ul>
+      </a>
+
+      <a href="https://github.com/sgbj/dotnet-monitoring" class="card">
+        <div style="background-image: url(/assets/dotnet-monitoring.png)"></div>
+        <h3>.NET Monitoring</h3>
+        <p>
+          Sample ASP.NET Core web app with instrumentation and monitoring using
+          OpenTelementry.
+        </p>
+        <ul class="tags">
+          <li>C#</li>
+          <li>Prometheus</li>
+          <li>Jaeger</li>
+          <li>Grafana</li>
+          <li>Docker</li>
+        </ul>
+      </a>
+
+      <a href="https://github.com/sgbj/go-todos" class="card">
+        <div style="background-image: url(/assets/go-todos.png)"></div>
+        <h3>Todos</h3>
+        <p>Simple todo app built with Go.</p>
+        <ul class="tags">
+          <li>Go</li>
+          <li>SQLite</li>
+          <li>REST</li>
+        </ul>
+      </a>
+
+      <a href="https://github.com/sgbj/notion-clone" class="card">
+        <div style="background-image: url(/assets/notion-clone.png)"></div>
+        <h3>Notion Clone</h3>
+        <p>
+          Fullstack notes app with auth, sharing, rich text editing, and image
+          uploads.
+        </p>
+        <ul class="tags">
+          <li>Next.js</li>
+          <li>React</li>
+          <li>Tailwind</li>
+          <li>shadcn/ui</li>
+          <li>Clerk</li>
+          <li>Convex</li>
+          <li>Edge Store</li>
+          <li>BlockNote</li>
+        </ul>
+      </a>
+
+      <a href="https://github.com/sgbj/discord-clone" class="card">
+        <div style="background-image: url(/assets/discord-clone.png)"></div>
+        <h3>Discord Clone</h3>
+        <p>
+          Fullstack chat app with realtime messaging, audio, and video calls.
+        </p>
+        <ul class="tags">
+          <li>Next.js</li>
+          <li>React</li>
+          <li>Tailwind</li>
+          <li>shadcn/ui</li>
+          <li>Socket.IO</li>
+          <li>Prisma</li>
+          <li>MySQL</li>
+        </ul>
+      </a>
+
+      <a href="https://batary.dev/pool/" class="card">
+        <div style="background-image: url(/assets/pool.png)"></div>
+        <h3>Pool</h3>
+        <p>A game of pool 🎱 made with pixel art.</p>
+        <ul class="tags">
+          <li>JS</li>
+          <li>Phaser</li>
+          <li>Matter.js</li>
+        </ul>
+      </a>
+
+      <a href="https://batary.dev/chess/" class="card">
+        <div style="background-image: url(/assets/chess.png)"></div>
+        <h3>Chess</h3>
+        <p>Chess ♟️ game using the Canvas API.</p>
+        <ul class="tags">
+          <li>HTML</li>
+          <li>JS</li>
+          <li>Vite</li>
+        </ul>
+      </a>
+
+      <a href="https://batary.dev/emojis/" class="card">
+        <div style="background-image: url(/assets/bouncy-emojis.png)"></div>
+        <h3>Bouncy Emojis</h3>
+        <p>Spawn emojis 🤪 with bouncy physics.</p>
+        <ul class="tags">
+          <li>JS</li>
+          <li>Phaser</li>
+          <li>Matter.js</li>
+        </ul>
+      </a>
+
+      <a href="https://github.com/sgbj/platform" class="card">
+        <div style="background-image: url(/assets/platform.png)"></div>
+        <h3>Platform</h3>
+        <p>Frontend prototype for a platform as a service.</p>
+        <ul class="tags">
+          <li>TS</li>
+          <li>SCSS</li>
+          <li>Angular</li>
+          <li>Material</li>
+        </ul>
+      </a>
+
+      <a href="https://github.com/sgbj/streaming" class="card">
+        <div style="background-image: url(/assets/twitch-clone.png)"></div>
+        <h3>Twitch Clone</h3>
+        <p>
+          Proof of concept streaming platform built on the same protocols as
+          Twitch: RTMP and HLS.
+        </p>
+        <ul class="tags">
+          <li>C#</li>
+          <li>SignalR</li>
+          <li>React</li>
+          <li>Chakra UI</li>
+        </ul>
+      </a>
+
+      <a href="https://github.com/sgbj/versed" class="card">
+        <div style="background-image: url(/assets/versed.png)"></div>
+        <h3>Versed</h3>
+        <p>
+          File conversion microservice powered by FFmpeg, LibreOffice,
+          ImageMagick, and Tesseract OCR.
+        </p>
+        <ul class="tags">
+          <li>Node.js</li>
+          <li>Express</li>
+        </ul>
+      </a>
+
+      <a href="https://github.com/sgbj/pdf-sign" class="card">
+        <div style="background-image: url(/assets/pdf-sign.png)"></div>
+        <h3>PDF Sign</h3>
+        <p>
+          Prototype using custom PDF rendering, overlayed form controls, and the
+          ability to draw on canvas.
+        </p>
+        <ul class="tags">
+          <li>HTML</li>
+          <li>JS</li>
+          <li>CSS</li>
+        </ul>
+      </a>
+
+      <a href="https://batary.dev/fractals/" class="card">
+        <div style="background-image: url(/assets/fractals.png)"></div>
+        <h3>Fractals</h3>
+        <p>Implementations of common fractals.</p>
+        <ul class="tags">
+          <li>HTML</li>
+          <li>JS</li>
+        </ul>
+      </a>
+
+      <a href="https://github.com/sgbj/pocket-iv" class="card">
+        <div style="background-image: url(/assets/pocket-iv.png)"></div>
+        <h3>Pocket IV</h3>
+        <p>Mobile app for calculating IV in Pokemon GO.</p>
+        <ul class="tags">
+          <li>JS</li>
+          <li>CSS</li>
+          <li>Ionic</li>
+        </ul>
+      </a>
+    </div>
+
+    <hr />
+
+    <section id="contact" class="scroll-margin-top">
+      <form>
+        <h2>🦉 Contact</h2>
+
+        <div class="form-group">
+          <input type="email" name="email" required placeholder=" " />
+          <label>Email</label>
         </div>
-      </section>
 
-      <section id="contact" class="card fade-in">
-        <button class="confetti-button" aria-label="Confetti"></button>
-        <div class="divider"></div>
-        <form>
-          <h2>📧 Contact</h2>
-          <div class="form-field">
-            <input id="email" name="email" type="email" required />
-            <label for="email">Email</label>
-          </div>
-          <div class="form-field">
-            <textarea id="message" name="message" rows="6" required></textarea>
-            <label for="message">Message</label>
-          </div>
-          <button class="button">Send</button>
-        </form>
-      </section>
-    </main>
+        <div class="form-group">
+          <textarea name="message" rows="6" required placeholder=" "></textarea>
+          <label>Message</label>
+        </div>
 
-    <footer>
-      <p>Made with ❣️ by sgbj</p>
-    </footer>
+        <button type="submit">Send owl 🪽</button>
+      </form>
+    </section>
 
-    <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.2/tsparticles.confetti.bundle.min.js"></script>
+    <footer>Made with ✨ by sgbj</footer>
+
+    <!-- Arcane Background Glyphs -->
     <script>
-      const navList = document.querySelector("nav ul");
+      const canvas = document.getElementById("arcane-bg");
+      const ctx = canvas.getContext("2d");
+      
+      const resizeCanvas = () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      };
+      
+      resizeCanvas();
+      window.addEventListener("resize", resizeCanvas);
 
-      document.querySelectorAll("nav a").forEach((link) => {
-        link.addEventListener("mouseover", (e) => {
-          navList.style.setProperty("--nav-pointer-x", `${link.offsetLeft}px`);
-          navList.style.setProperty(
-            "--nav-pointer-width",
-            `${link.offsetWidth}px`
-          );
-        });
+      const glyphs = "10".split("");
+      const particles = Array.from({ length: 100 }, () => ({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        size: 24 + Math.random() * 16,
+        char: glyphs[Math.floor(Math.random() * glyphs.length)],
+        alpha: 0.1 + Math.random() * 0.4,
+        speedX: (Math.random() - 0.5) * 0.2,
+        speedY: (Math.random() - 0.5) * 0.2,
+        rotate: Math.random() * Math.PI * 2,
+        rotateSpeed: (Math.random() - 0.5) * 0.01,
+        parallax: 0.2 + Math.random() * 0.3,
+      }));
+
+      let scrollY = 0;
+      let isMobile = window.innerWidth <= 768;
+      let mouseX = 0;
+      let mouseY = 0;
+      
+      window.addEventListener('scroll', () => {
+        scrollY = window.scrollY * 0.5;
       });
 
-      navList.addEventListener("mouseover", (e) => {
-        navList.style.setProperty("--nav-pointer-opacity", "1");
+      window.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
       });
 
-      navList.addEventListener("mouseleave", (e) => {
-        navList.style.setProperty("--nav-pointer-opacity", "0");
+      window.addEventListener('resize', () => {
+        isMobile = window.innerWidth <= 768;
+        resizeCanvas();
       });
 
-      const intersectionObserver = new IntersectionObserver((entries) => {
-        console.log(entries);
-        for (const entry of entries) {
-          document
-            .querySelectorAll(
-              `nav a[href="#${entry.target.closest("*[id]").id}"]`
-            )
-            .forEach((link) => {
-              if (entry.isIntersecting) {
-                navList.style.setProperty(
-                  "--nav-active-x",
-                  `${link.offsetLeft}px`
-                );
-                navList.style.setProperty(
-                  "--nav-active-width",
-                  `${link.offsetWidth}px`
-                );
-              }
-              link.classList.toggle("active", entry.isIntersecting);
-            });
+      const animate = () => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        for (const p of particles) {
+          // Calculate parallax-adjusted positions
+          const particleParallaxY = p.y + (scrollY * p.parallax * (isMobile ? 0.5 : 1));
+          
+          // Calculate distance to mouse
+          const dx = p.x - mouseX;
+          const dy = particleParallaxY - mouseY;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+          
+          // Move away from mouse if within 200px
+          if (distance < 200) {
+            const force = (200 - distance) / 200;
+            // Apply force in the direction away from mouse
+            p.x += (dx / distance) * force * 2;
+            p.y += (dy / distance) * force * 2;
+          } else {
+            // Normal movement when far from mouse
+            p.x += p.speedX;
+            p.y += p.speedY;
+          }
+
+          ctx.save();
+          // Use the parallax-adjusted position for rendering
+          ctx.translate(p.x, particleParallaxY);
+          ctx.rotate(p.rotate);
+          ctx.font = `${p.size}px serif`;
+          ctx.fillStyle = `rgba(200, 230, 255, ${p.alpha})`;
+          ctx.shadowColor = "rgba(180, 220, 255, 0.3)";
+          ctx.shadowBlur = 10;
+          ctx.fillText(p.char, 0, 0);
+          ctx.restore();
+
+          p.rotate += p.rotateSpeed;
+          
+          // Wrap around screen
+          if (p.x < -50) p.x = canvas.width + 50;
+          if (p.x > canvas.width + 50) p.x = -50;
+          if (p.y < -50) p.y = canvas.height + 50;
+          if (p.y > canvas.height + 50) p.y = -50;
         }
-      });
-      document
-        .querySelectorAll("#home h1, #about h2, #projects h2, #contact h2")
-        .forEach((el) => {
-          intersectionObserver.observe(el);
-        });
+        
+        requestAnimationFrame(animate);
+      };
+      
+      animate();
+    </script>
 
+    <!-- Cursor Sparkle Trail -->
+    <script>
+      const trailCanvas = document.getElementById("magic-trail");
+      const tctx = trailCanvas.getContext("2d");
+      
+      const resizeTrailCanvas = () => {
+        trailCanvas.width = window.innerWidth;
+        trailCanvas.height = window.innerHeight;
+      };
+      
+      resizeTrailCanvas();
+      window.addEventListener("resize", resizeTrailCanvas);
+
+      const sparks = [];
+      
+      document.addEventListener("mousemove", (e) => {
+        sparks.push({
+          x: e.clientX,
+          y: e.clientY,
+          radius: Math.random() * 2 + 1,
+          alpha: 1,
+          life: 60,
+        });
+      });
+
+      const sparkle = () => {
+        tctx.clearRect(0, 0, trailCanvas.width, trailCanvas.height);
+        
+        for (let i = sparks.length - 1; i >= 0; i--) {
+          const s = sparks[i];
+          tctx.beginPath();
+          tctx.arc(s.x, s.y, s.radius, 0, Math.PI * 2);
+          tctx.fillStyle = `rgba(173,216,230,${s.alpha})`;
+          tctx.shadowColor = "rgba(173,216,230,0.5)";
+          tctx.shadowBlur = 8;
+          tctx.fill();
+
+          s.alpha -= 0.015;
+          s.y -= 0.5;
+          s.life--;
+          
+          if (s.life <= 0 || s.alpha <= 0) {
+            sparks.splice(i, 1);
+          }
+        }
+        
+        requestAnimationFrame(sparkle);
+      };
+      
+      sparkle();
+    </script>
+
+    <!-- Blog -->
+    <script>
       const blogStatus = document.querySelector("#blog p");
+      const blogList = document.querySelector("#blog ul");
+      
       blogStatus.innerHTML = "Fetching blog posts&hellip;";
-      fetch(
-        "https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@batary"
-      )
-        .then((res) => res.json())
-        .then((res) => {
-          console.log(res);
+      
+      fetch("https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@batary")
+        .then(res => res.json())
+        .then(res => {
           blogStatus.innerHTML = "";
-          document.querySelector("#blog ul").innerHTML = res.items
+          blogList.innerHTML = res.items
             .slice(0, 10)
-            .map(
-              (item) =>
-                `<li>
-                        <time>${new Date(
-                          item.pubDate
-                        ).toLocaleDateString()}</time>
-                        <a href="${item.link}">${item.title}</a>
-                        <ul class="tags">
-                          ${item.categories
-                            .map((category) => `<li>${category}</li>`)
-                            .join("")}
-                        </ul>
-                      </li>`
-            )
+            .map(item => `
+              <li>
+                <time>${new Date(item.pubDate).toLocaleDateString()}</time>
+                <a href="${item.link}">${item.title}</a>
+                <ul class="tags">
+                  ${item.categories.map(category => `<li>${category}</li>`).join("")}
+                </ul>
+              </li>
+            `)
             .join("");
         })
-        .catch((err) => {
+        .catch(err => {
           console.error(err);
           blogStatus.innerHTML = "Error fetching blog posts.";
         });
+    </script>
 
-      let lastDot = { x: 0, y: 0 };
-      window.addEventListener("mousemove", (event) => {
-        if (
-          Math.sqrt(
-            Math.pow(event.pageX - lastDot.x, 2) +
-              Math.pow(event.pageY - lastDot.y, 2)
-          ) < 5
-        ) {
-          return;
-        }
-
-        lastDot = { x: event.pageX, y: event.pageY };
-
-        const dot = document.createElement("div");
-        dot.classList.add("dot");
-        dot.style.left = `${event.pageX}px`;
-        dot.style.top = `${event.pageY}px`;
-        document.body.appendChild(dot);
-
-        setTimeout(() => {
-          dot.remove();
-        }, 250);
+    <!-- Contact Form -->
+    <script>
+      document.querySelector("#contact form").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const data = Object.fromEntries(formData.entries());
+        const button = e.target.querySelector("button");
+        
+        fetch("https://contact-form-gamma-six.vercel.app/api/contact?" + new URLSearchParams(data))
+          .then(() => {
+            e.target.reset();
+            button.blur();
+            button.textContent = "Owl sent! ❇️";
+          })
+          .catch(console.error);
       });
+    </script>
 
-      document
-        .querySelector(".confetti-button")
-        .addEventListener("click", () => {
-          confetti({
-            particleCount: 100,
-            spread: 70,
-            origin: { y: 0.6 },
-          });
-        });
-
-      let darkMode =
-        localStorage.getItem("darkMode") === null
-          ? window.matchMedia("(prefers-color-scheme: dark)").matches
-          : localStorage.getItem("darkMode") === "true";
-
-      const themeToggle = document.querySelector("#theme-toggle");
-      themeToggle.setAttribute("aria-pressed", `${darkMode}`);
-      document.documentElement.classList.toggle("dark", darkMode);
-
-      themeToggle.addEventListener("click", () => {
-        darkMode = !darkMode;
-        localStorage.setItem("darkMode", `${darkMode}`);
-        themeToggle.setAttribute("aria-pressed", `${darkMode}`);
-        document.documentElement.classList.toggle("dark", darkMode);
-      });
-
-      document
-        .querySelector("#contact form")
-        .addEventListener("submit", (e) => {
-          e.preventDefault();
-          const formData = new FormData(e.target);
-          const data = Object.fromEntries(formData.entries());
-          fetch(
-            "https://contact-form-gamma-six.vercel.app/api/contact?" +
-              new URLSearchParams(data)
-          )
-            .then((res) => {
-              console.log(res);
-              e.target.reset();
-              e.target.querySelector("button").blur();
-              e.target.querySelector("button").textContent = "Sent! ✅";
-            })
-            .catch((err) => {
-              console.error(err);
-            });
-        });
-
-      const fadeInObserver = new IntersectionObserver((entries) => {
-        for (const entry of entries) {
+    <!-- Scroll Reveal -->
+    <script>
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
           if (entry.isIntersecting) {
-            entry.target.setAttribute("data-visible", "true");
+            entry.target.classList.add('visible');
           }
-        }
+        });
+      }, {
+        threshold: 0.1
       });
-      document.querySelectorAll(".fade-in").forEach((el) => {
-        fadeInObserver.observe(el);
+
+      document.querySelectorAll('section, .card').forEach(el => {
+        observer.observe(el);
+      });
+    </script>
+
+    <!-- Particle Burst Effect -->
+    <script>
+      function createParticleBurst(x, y) {
+        const colors = [
+          'rgba(182, 168, 233, 0.8)',  // accent
+          'rgba(205, 191, 162, 0.8)',  // text
+          'rgba(140, 123, 107, 0.8)',  // accent-alt
+        ];
+        
+        for (let i = 0; i < 12; i++) {
+          const particle = document.createElement('div');
+          particle.className = 'particle';
+          
+          const angle = (i / 12) * Math.PI * 2;
+          const distance = 50 + Math.random() * 50;
+          const tx = Math.cos(angle) * distance;
+          const ty = Math.sin(angle) * distance;
+          
+          particle.style.setProperty('--tx', `${tx}px`);
+          particle.style.setProperty('--ty', `${ty}px`);
+          particle.style.left = `${x}px`;
+          particle.style.top = `${y}px`;
+          particle.style.width = `${4 + Math.random() * 4}px`;
+          particle.style.height = particle.style.width;
+          particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+          particle.style.borderRadius = '50%';
+          particle.style.boxShadow = '0 0 10px var(--color-glow)';
+          
+          document.body.appendChild(particle);
+          
+          particle.addEventListener('animationend', () => {
+            particle.remove();
+          });
+        }
+      }
+
+      document.addEventListener('click', (e) => {
+        createParticleBurst(e.clientX, e.clientY);
+      });
+    </script>
+
+    <!-- Cursor Trail Effect -->
+    <script>
+      const cursorTrails = [];
+      const maxTrails = 10;
+
+      document.addEventListener('mousemove', (e) => {
+        const trail = document.createElement('div');
+        trail.className = 'cursor-trail';
+        trail.style.left = e.clientX + 'px';
+        trail.style.top = e.clientY + 'px';
+        document.body.appendChild(trail);
+        cursorTrails.push(trail);
+
+        if (cursorTrails.length > maxTrails) {
+          const oldTrail = cursorTrails.shift();
+          oldTrail.style.opacity = '0';
+          setTimeout(() => oldTrail.remove(), 100);
+        }
+
+        // Update card hover effect
+        const cards = document.querySelectorAll('.card');
+        cards.forEach(card => {
+          const rect = card.getBoundingClientRect();
+          const x = ((e.clientX - rect.left) / rect.width) * 100;
+          const y = ((e.clientY - rect.top) / rect.height) * 100;
+          card.style.setProperty('--x', `${x}%`);
+          card.style.setProperty('--y', `${y}%`);
+        });
+      });
+    </script>
+
+    <!-- Add magic-pulse class to social icons -->
+    <script>
+      document.querySelectorAll('.socials a').forEach((el, i) => {
+        el.classList.add('magic-pulse');
+      });
+    </script>
+
+    <!-- Form Input Effect -->
+    <script>
+      document.querySelectorAll('.form-group').forEach(group => {
+        const input = group.querySelector('input, textarea');
+        group.addEventListener('mousemove', (e) => {
+          const rect = group.getBoundingClientRect();
+          const x = ((e.clientX - rect.left) / rect.width) * 100;
+          const y = ((e.clientY - rect.top) / rect.height) * 100;
+          group.style.setProperty('--x', `${x}%`);
+          group.style.setProperty('--y', `${y}%`);
+        });
       });
     </script>
   </body>
