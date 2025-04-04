@@ -2,14 +2,19 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>Scott Batary</title>
     <link rel="shortcut icon" type="image/jpg" href="/logo.jpg" />
-    <meta name="theme-color" content="#1a151d" />
+    <meta name="theme-color" content="#1a151d" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#1a151d" media="(prefers-color-scheme: dark)" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="msapplication-navbutton-color" content="#1a151d" />
     <meta name="msapplication-TileColor" content="#1a151d" />
+    <meta name="apple-mobile-web-app-title" content="Scott Batary" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="mobile-web-app-capable" content="yes" />
     <meta property="og:title" content="Scott Batary" />
     <meta property="og:type" content="article" />
     <meta
@@ -106,6 +111,7 @@
       body {
         font-family: "IBM Plex Sans", sans-serif;
         font-size: var(--font-size-base);
+        background-color: var(--color-bg);
         background: linear-gradient(
           30deg,
           var(--color-bg),
