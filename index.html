@@ -35,7 +35,10 @@
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
       :root {
         /* Colors */
@@ -54,6 +57,8 @@
         --color-link-active: rgba(182, 168, 233, 0.3);
         
         /* Typography */
+        --font-family-heading: "Silkscreen", cursive;
+        --font-family-body: "JetBrains Mono", monospace;
         --font-size-xs: 0.75rem;    /* 12px */
         --font-size-sm: 0.875rem;   /* 14px */
         --font-size-base: 1rem;     /* 16px */
@@ -109,7 +114,7 @@
       }
 
       body {
-        font-family: "IBM Plex Sans", sans-serif;
+        font-family: var(--font-family-body);
         font-size: var(--font-size-base);
         background-color: var(--color-bg);
         background: linear-gradient(
@@ -212,14 +217,14 @@
 
       .jumbotron section {
         text-align: center;
-        max-width: 35rem;
+        max-width: 36rem;
         position: relative;
         z-index: 2;
       }
 
       /* Typography */
       h1, h2, h3 {
-        font-family: "IBM Plex Serif", serif;
+        font-family: var(--font-family-heading);
         color: var(--color-text-light);
         margin: 0;
         opacity: 0;
@@ -238,14 +243,17 @@
 
       h1 { 
         font-size: var(--font-size-4xl);
+        font-weight: normal;
         animation-delay: 0.2s;
       }
       h2 { 
         font-size: var(--font-size-3xl);
+        font-weight: normal;
         animation-delay: 0.4s;
       }
       h3 {
         font-size: var(--font-size-2xl);
+        font-weight: normal;
       }
 
       @media (max-width: 1024px) {
@@ -287,8 +295,7 @@
 
       /* Links */
       a {
-        font-family: "IBM Plex Serif", serif;
-        font-weight: bold;
+        font-family: var(--font-family-heading);
         color: var(--color-text);
         text-decoration: none;
         position: relative;
@@ -356,8 +363,7 @@
         text-decoration: none;
         transition: all 0.3s ease;
         padding: var(--spacing-md);
-        font-family: "IBM Plex Sans", sans-serif;
-        font-weight: normal;
+        font-family: var(--font-family-body);
         position: relative;
       }
 
@@ -476,10 +482,9 @@
       }
 
       .experience-item > div:first-child {
-        width: 9rem;
+        width: 10rem;
         flex: 0 0 auto;
         color: var(--color-accent-alt);
-        font-size: var(--font-size-base);
       }
 
       .experience-item strong {
@@ -529,6 +534,7 @@
       label {
         display: flex;
         flex-direction: column;
+        font-family: var(--font-family-heading);
         font-size: var(--font-size-base);
         letter-spacing: 0.5px;
         color: var(--color-text);
@@ -557,9 +563,8 @@
       /* Buttons */
       button,
       .button {
-        font-family: "IBM Plex Serif", serif;
+        font-family: var(--font-family-heading);
         font-size: var(--font-size-base);
-        font-weight: bold;
         padding: var(--spacing-sm) var(--spacing-md);
         color: var(--color-text-light);
         background: var(--color-overlay);
@@ -639,7 +644,7 @@
       }
 
       .socials span {
-        font-family: "IBM Plex Sans", sans-serif;
+        font-family: var(--font-family-body);
         position: absolute;
         display: block;
         background: var(--color-text-light);
@@ -1499,7 +1504,7 @@
           // Use the parallax-adjusted position for rendering
           ctx.translate(p.x, particleParallaxY);
           ctx.rotate(p.rotate);
-          ctx.font = `${p.size}px serif`;
+          ctx.font = `${p.size}px monospace`;
           ctx.fillStyle = `rgba(200, 230, 255, ${p.alpha})`;
           ctx.shadowColor = "rgba(180, 220, 255, 0.3)";
           ctx.shadowBlur = 10;
