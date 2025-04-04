@@ -59,14 +59,6 @@
         /* Typography */
         --font-family-heading: "Silkscreen", cursive;
         --font-family-body: "JetBrains Mono", monospace;
-        --font-size-xs: 0.75rem;    /* 12px */
-        --font-size-sm: 0.875rem;   /* 14px */
-        --font-size-base: 1rem;     /* 16px */
-        --font-size-lg: 1.125rem;   /* 18px */
-        --font-size-xl: 1.25rem;    /* 20px */
-        --font-size-2xl: 1.5rem;    /* 24px */
-        --font-size-3xl: 2rem;      /* 32px */
-        --font-size-4xl: 3rem;      /* 48px */
         
         /* Spacing */
         --spacing-xs: 0.25rem;
@@ -107,15 +99,8 @@
         font-size: 16px;
       }
 
-      @media (max-width: 768px) {
-        html {
-          font-size: 15px;
-        }
-      }
-
       body {
         font-family: var(--font-family-body);
-        font-size: var(--font-size-base);
         background-color: var(--color-bg);
         background: linear-gradient(
           30deg,
@@ -145,21 +130,10 @@
 
       p {
         margin: var(--spacing-md) 0;
-        font-size: var(--font-size-xl);
         line-height: 1.6;
         opacity: 0;
         transform: translateY(20px);
         animation: revealText 0.6s ease forwards;
-      }
-
-      p:nth-child(1) { animation-delay: 0.3s; }
-      p:nth-child(2) { animation-delay: 0.4s; }
-      p:nth-child(3) { animation-delay: 0.5s; }
-
-      @media (max-width: 768px) {
-        p {
-          font-size: var(--font-size-lg);
-        }
       }
 
       ::selection {
@@ -186,7 +160,7 @@
         list-style: none;
         display: flex;
         justify-content: center;
-        gap: var(--spacing-lg);
+        gap: var(--spacing-md);
       }
 
       /* Header */
@@ -241,31 +215,16 @@
         }
       }
 
-      h1 { 
-        font-size: var(--font-size-4xl);
+      h1 {
         font-weight: normal;
         animation-delay: 0.2s;
       }
       h2 { 
-        font-size: var(--font-size-3xl);
         font-weight: normal;
         animation-delay: 0.4s;
       }
       h3 {
-        font-size: var(--font-size-2xl);
         font-weight: normal;
-      }
-
-      @media (max-width: 1024px) {
-        h1 { font-size: var(--font-size-3xl); }
-        h2 { font-size: var(--font-size-2xl); }
-        h3 { font-size: var(--font-size-xl); }
-      }
-
-      @media (max-width: 768px) {
-        h1 { font-size: var(--font-size-2xl); }
-        h2 { font-size: var(--font-size-xl); }
-        h3 { font-size: var(--font-size-lg); }
       }
 
       h1, h2 {
@@ -300,7 +259,6 @@
         text-decoration: none;
         position: relative;
         transition: color var(--transition-normal);
-        font-size: var(--font-size-lg);
       }
 
       a::after {
@@ -414,7 +372,6 @@
       }
 
       .card p {
-        font-size: var(--font-size-lg);
         color: var(--color-text);
         margin: 0;
       }
@@ -427,11 +384,11 @@
         margin: 0;
         padding: 0;
         list-style: none;
+        font-size: .8em;
       }
 
       .tags li {
         padding: var(--spacing-xs) var(--spacing-sm);
-        font-size: var(--font-size-sm);
         background: var(--color-link-hover);
         border: 1px solid var(--color-link-active);
         border-radius: var(--radius-sm);
@@ -489,7 +446,6 @@
 
       .experience-item strong {
         color: var(--color-text-light);
-        font-size: var(--font-size-xl);
       }
 
       .experience-item p {
@@ -505,6 +461,8 @@
 
       #blog > ul > li {
         margin-bottom: var(--spacing-lg);
+        border-left: 2px solid var(--color-accent);
+        padding-left: var(--spacing-lg);
       }
 
       #blog > ul > li > a {
@@ -514,7 +472,6 @@
 
       #blog time {
         display: block;
-        font-size: var(--font-size-base);
         color: var(--color-accent-alt);
       }
 
@@ -535,7 +492,6 @@
         display: flex;
         flex-direction: column;
         font-family: var(--font-family-heading);
-        font-size: var(--font-size-base);
         letter-spacing: 0.5px;
         color: var(--color-text);
       }
@@ -548,7 +504,6 @@
         border-radius: var(--radius-sm);
         padding: 0.75rem 1rem;
         color: var(--color-text-light);
-        font-size: var(--font-size-base);
         font-family: inherit;
         transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
       }
@@ -564,7 +519,6 @@
       button,
       .button {
         font-family: var(--font-family-heading);
-        font-size: var(--font-size-base);
         padding: var(--spacing-sm) var(--spacing-md);
         color: var(--color-text-light);
         background: var(--color-overlay);
@@ -656,7 +610,6 @@
         left: 50%;
         transform: translateX(-50%) scale(0.5);
         opacity: 0;
-        font-size: var(--font-size-sm);
         white-space: nowrap;
         transition: all 0.1s ease;
         pointer-events: none;
@@ -688,7 +641,7 @@
         top: -0.9rem;
         left: 50%;
         transform: translateX(-50%);
-        font-size: 1.4rem;
+        font-size: 1.2rem;
         color: var(--color-accent);
         background: var(--color-bg);
         padding: 0 0.6rem;
@@ -757,7 +710,6 @@
         }
 
         .tags li {
-          font-size: var(--font-size-xs);
           padding: var(--spacing-xs) var(--spacing-sm);
         }
 
@@ -768,11 +720,6 @@
 
         .experience-item > div:first-child {
           width: auto;
-        }
-
-        input,
-        textarea {
-          font-size: var(--font-size-sm);
         }
       }
 
@@ -843,7 +790,6 @@
         background: var(--color-bg);
         border-radius: var(--radius-sm);
         padding: 0 0.5rem;
-        font-size: var(--font-size-lg);
       }
 
       .form-group textarea ~ label {
@@ -857,7 +803,6 @@
       .form-group textarea:not(:placeholder-shown) ~ label {
         top: -0.75rem;
         left: 0.5rem;
-        font-size: var(--font-size-base);
         color: var(--color-accent);
         background: var(--color-bg);
         padding: 0 0.5rem;
@@ -876,7 +821,6 @@
         border-radius: var(--radius-md);
         padding: 1rem;
         color: var(--color-text);
-        font-size: var(--font-size-lg);
         transition: all 0.3s ease;
       }
 
