@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Scott Batary</title>
     <link rel="shortcut icon" type="image/jpg" href="/logo.jpg" />
+    <meta name="theme-color" content="#1a151d" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="msapplication-navbutton-color" content="#1a151d" />
+    <meta name="msapplication-TileColor" content="#1a151d" />
     <meta property="og:title" content="Scott Batary" />
     <meta property="og:type" content="article" />
     <meta
@@ -25,7 +30,7 @@
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
     <style>
       :root {
         /* Colors */
@@ -181,25 +186,11 @@
         background-repeat: no-repeat;
         height: 100vh;
         margin: -3.5rem calc(-1 * var(--spacing-lg)) 0;
-        border-radius: var(--radius-md);
         padding: var(--spacing-lg);
         position: relative;
         display: flex;
         align-items: flex-end;
         justify-content: center;
-      }
-
-      .jumbotron::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(
-          to bottom,
-          rgba(44, 33, 53, 0.4),
-          rgba(44, 33, 53, 0.6)
-        );
-        border-radius: var(--radius-md);
-        z-index: 1;
       }
 
       .jumbotron::after {
@@ -209,10 +200,8 @@
         background: radial-gradient(
           circle at 50% 50%,
           transparent 0%,
-          rgba(44, 33, 53, 0.3) 100%
+          rgba(11, 4, 17, 0.9) 100%
         );
-        border-radius: var(--radius-md);
-        z-index: 1;
       }
 
       .jumbotron section {
@@ -233,12 +222,7 @@
         text-shadow: 0 0 5px var(--color-glow),
                     0 0 10px var(--color-glow);
       }
-
-      h2 img {
-        height: .9em;
-        image-rendering: pixelated;
-      }
-
+      
       @keyframes revealText {
         to {
           opacity: 1;
@@ -292,7 +276,7 @@
 
       /* Scroll Margin */
       .scroll-margin-top {
-        scroll-margin-top: 4rem;
+        scroll-margin-top: 5rem;
       }
 
       /* Links */
@@ -304,18 +288,6 @@
         position: relative;
         transition: color var(--transition-normal);
         font-size: var(--font-size-lg);
-      }
-
-      nav ul li a {
-        font-size: var(--font-size-xl);
-      }
-
-      .card a {
-        font-size: var(--font-size-lg);
-      }
-
-      #blog > ul > li > a {
-        font-size: var(--font-size-xl);
       }
 
       a::after {
@@ -517,6 +489,7 @@
       #blog > ul {
         list-style-type: none;
         padding: 0;
+        margin-bottom: 2rem;
       }
 
       #blog > ul > li {
@@ -525,7 +498,7 @@
 
       #blog > ul > li > a {
         display: inline-block;
-        margin: 0.3rem 0 0.6rem 0;
+        margin: 0.3rem 0 1rem 0;
       }
 
       #blog time {
@@ -611,7 +584,6 @@
       }
 
       .button.small {
-        font-size: var(--font-size-sm);
         padding: var(--spacing-xs) var(--spacing-sm);
         border-radius: var(--radius-sm);
       }
@@ -843,27 +815,10 @@
         transition: transform 0.1s ease;
       }
 
-      /* Magic Pulse */
-      @keyframes magicPulse {
-        0% { transform: scale(1); }
-        50% { transform: scale(1.1); }
-        100% { transform: scale(1); }
-      }
-
-      .magic-pulse {
-        animation: magicPulse 2s ease-in-out infinite;
-      }
-
-      .magic-pulse:nth-child(1) { animation-delay: 0s; }
-      .magic-pulse:nth-child(2) { animation-delay: 0.2s; }
-      .magic-pulse:nth-child(3) { animation-delay: 0.4s; }
-      .magic-pulse:nth-child(4) { animation-delay: 0.6s; }
-      .magic-pulse:nth-child(5) { animation-delay: 0.8s; }
-
       /* Form Inputs */
       .form-group {
         position: relative;
-        margin-bottom: var(--spacing-md);
+        margin-top: var(--spacing-md);
       }
 
       .form-group label {
@@ -1061,12 +1016,22 @@
         <h2>📜 Experience</h2>
 
         <article class="experience-item">
-          <div>2017 - Present</div>
+          <div>2024 - Present</div>
+          <div>
+            <strong>Software Engineer</strong>
+            <p>
+              Started a new adventure!
+            </p>
+          </div>
+        </article>
+
+        <article class="experience-item">
+          <div>2017 - 2024</div>
           <div>
             <strong>Principal Developer</strong>
             <p>
-              I'm currently leading the development of a cutting-edge court
-              case management system. Additionally, I standardized
+              Led the development of a cutting-edge court
+              case management system. Standardized
               authentication and authorization across our applications,
               established a design system for a seamless user experience, and
               optimized developer workflows through CI/CD pipelines.
@@ -1096,9 +1061,8 @@
           <div>
             <strong>Senior Developer</strong>
             <p>
-              I was the technical lead and architect for a team of developers
-              working on a patient portal for a healthcare provider. Notable
-              achievements include the integration of multi-factor
+              Technical lead and architect for a team of developers
+              working on a patient portal for a healthcare provider. Integrated multi-factor
               authentication, a patient education system, and a secure
               messaging application.
             </p>
@@ -1125,7 +1089,7 @@
           <div>
             <strong>Programmer Analyst</strong>
             <p>
-              I led the development of a credit card transaction system and
+              Developed a credit card transaction system and
               online payment web application, and was a key contributor to
               various applications, APIs, background jobs, and reports.
             </p>
@@ -1146,7 +1110,7 @@
           <div>
             <strong>Lab Assistant</strong>
             <p>
-              I tutored students in computer science, collaborated with
+              Tutored students in computer science, collaborated with
               instructors to create course materials, and supervised student
               projects.
             </p>
@@ -1737,13 +1701,6 @@
           card.style.setProperty('--x', `${x}%`);
           card.style.setProperty('--y', `${y}%`);
         });
-      });
-    </script>
-
-    <!-- Add magic-pulse class to social icons -->
-    <script>
-      document.querySelectorAll('.socials a').forEach((el, i) => {
-        el.classList.add('magic-pulse');
       });
     </script>
 
