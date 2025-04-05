@@ -519,6 +519,7 @@
       button,
       .button {
         font-family: var(--font-family-heading);
+        font-size: 1em;
         padding: var(--spacing-sm) var(--spacing-md);
         color: var(--color-text-light);
         background: var(--color-overlay);
@@ -635,17 +636,19 @@
       }
 
       hr::before {
-        content: "✧✦✧";
+        content: "</>";
         display: inline-block;
         position: absolute;
         top: -0.9rem;
         left: 50%;
         transform: translateX(-50%);
+        font-family: var(--font-family-heading);
         font-size: 1.2rem;
+        letter-spacing: 0.1em;
         color: var(--color-accent);
         background: var(--color-bg);
         padding: 0 0.6rem;
-        border-radius: var(--radius-lg);
+        border-radius: var(--radius-sm);
       }
 
       hr::after {
@@ -655,6 +658,8 @@
         background: linear-gradient(
           to right,
           transparent,
+          var(--color-accent-alt),
+          var(--color-accent),
           var(--color-accent-alt),
           transparent
         );
@@ -1085,7 +1090,7 @@
         <h2>📖 Blog</h2>
         <p></p>
         <ul></ul>
-        <a href="https://blog.batary.dev/" class="button small">✧ View more ✧</a>
+        <a href="https://blog.batary.dev/" class="button small">&lt; View more &gt;</a>
       </section>
     </div>
 
@@ -1372,7 +1377,7 @@
       </form>
     </section>
 
-    <footer>Made with ✨ by sgbj</footer>
+    <footer>Made with 👾 by sgbj</footer>
 
     <!-- Arcane Background Glyphs -->
     <script>
