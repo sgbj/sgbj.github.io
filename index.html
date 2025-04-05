@@ -47,17 +47,17 @@
         --color-bg-tert: #0f1520;
         --color-text: #f1f5f9;
         --color-text-light: #f8fafc;
-        --color-accent: #fb7185;
-        --color-accent-alt: #f43f5e;
-        --color-complement: #f43f5e;
-        --color-complement-alt:#f43f5e; 
+        --color-accent: #e8798f;
+        --color-accent-alt: #d15a73;
+        --color-complement: #d15a73;
+        --color-complement-alt: #d15a73; 
         --color-border: #334155;
-        --color-terminal-border: #fb7185;
+        --color-terminal-border: #e8798f;
         --color-overlay: rgba(5, 10, 20, 0.95);
         --color-shadow: rgba(0, 0, 0, 0.85);
-        --color-glow: rgba(244, 63, 94, 0.3);
-        --color-link-hover: rgba(244, 63, 94, 0.2);
-        --color-link-active: rgba(244, 63, 94, 0.4);
+        --color-glow: rgba(209, 90, 115, 0.2);
+        --color-link-hover: rgba(209, 90, 115, 0.15);
+        --color-link-active: rgba(209, 90, 115, 0.25);
         
         /* Typography */
         --font-family-heading: "Silkscreen", cursive;
@@ -73,7 +73,7 @@
         /* Shadows */
         --shadow-sm: 0 2px 6px var(--color-shadow);
         --shadow-md: 0 6px 12px var(--color-glow);
-        --shadow-inner: inset 0 0 0 1px rgba(244, 63, 94, 0.1);
+        --shadow-inner: inset 0 0 0 1px rgba(209, 90, 115, 0.08);
         
         /* Transitions */
         --transition-fast: 0.2s ease;
@@ -245,8 +245,8 @@
         opacity: 0;
         transform: translateY(20px);
         animation: revealText 0.6s ease forwards;
-        text-shadow: 0 0 2px var(--color-glow),
-                    0 0 4px var(--color-glow);
+        text-shadow: 0 0 1px var(--color-glow),
+                    0 0 2px var(--color-glow);
         letter-spacing: 0.02em;
       }
       
@@ -339,7 +339,7 @@
       /* Sections */
       section, .card {
         padding: var(--spacing-lg);
-        background-color: rgba(5, 10, 20, 0.95);
+        background-color: rgba(5, 10, 20, 0.6);
         border: 1px solid var(--color-border);
         border-radius: var(--radius-md);
         box-shadow: var(--shadow-sm), var(--shadow-inner);
@@ -358,7 +358,7 @@
         background: linear-gradient(
           135deg,
           transparent 0%,
-          rgba(244, 63, 94, 0.05) 50%,
+          rgba(209, 90, 115, 0.04) 50%,
           transparent 100%
         );
         z-index: -1;
@@ -446,14 +446,14 @@
 
       .tags li {
         padding: var(--spacing-xs) var(--spacing-sm);
-        background: rgba(244, 63, 94, 0.1);
-        border: 1px solid rgba(244, 63, 94, 0.3);
+        background: rgba(209, 90, 115, 0.08);
+        border: 1px solid rgba(209, 90, 115, 0.2);
         border-radius: var(--radius-sm);
         color: var(--color-accent);
         backdrop-filter: blur(4px);
         font-weight: 600;
         opacity: 1;
-        text-shadow: 0 0 1px rgba(244, 63, 94, 0.4);
+        text-shadow: 0 0 1px rgba(209, 90, 115, 0.25);
       }
 
       /* Grid Layouts */
@@ -531,7 +531,7 @@
         margin: 0.3rem 0 1rem 0;
         font-family: var(--font-family-body);
         color: var(--color-text-light);
-        text-shadow: 0 0 1px rgba(244, 63, 94, 0.3);
+        text-shadow: 0 0 1px rgba(209, 90, 115, 0.25);
       }
 
       #blog > ul > li > a:hover {
@@ -574,6 +574,7 @@
         padding: 0.75rem 1rem;
         color: var(--color-text-light);
         font-family: inherit;
+        font-size: 1em;
         transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
       }
 
@@ -709,7 +710,7 @@
         content: ">_";
         display: inline-block;
         position: absolute;
-        top: -0.9rem;
+        top: -1.05rem;
         left: 50%;
         transform: translateX(-50%);
         font-family: var(--font-family-heading);
@@ -1476,7 +1477,7 @@
         y: Math.random() * canvas.height,
         size: 16 + Math.random() * 10,
         char: glyphs[Math.floor(Math.random() * glyphs.length)],
-        alpha: 0.12 + Math.random() * 0.25,
+        alpha: 0.08 + Math.random() * 0.12,
         speedX: (Math.random() - 0.5) * 0.1,
         speedY: (Math.random() - 0.5) * 0.1,
         rotate: Math.random() * Math.PI * 2,
@@ -1507,7 +1508,7 @@
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         
         // Draw subtle grid lines
-        ctx.strokeStyle = 'rgba(244, 63, 94, 0.05)';
+        ctx.strokeStyle = 'rgba(209, 90, 115, 0.03)';
         ctx.lineWidth = 1;
         const gridSize = 50;
         
@@ -1551,9 +1552,9 @@
           ctx.translate(p.x, particleParallaxY);
           ctx.rotate(p.rotate);
           ctx.font = `${p.size}px monospace`;
-          ctx.fillStyle = `rgba(244, 63, 94, ${p.alpha})`;
-          ctx.shadowColor = "rgba(244, 63, 94, 0.4)";
-          ctx.shadowBlur = 12;
+          ctx.fillStyle = `rgba(209, 90, 115, ${p.alpha})`;
+          ctx.shadowColor = "rgba(209, 90, 115, 0.2)";
+          ctx.shadowBlur = 8;
           ctx.fillText(p.char, 0, 0);
           ctx.restore();
 
@@ -1604,8 +1605,8 @@
           const s = sparks[i];
           tctx.beginPath();
           tctx.arc(s.x, s.y, s.radius, 0, Math.PI * 2);
-          tctx.fillStyle = `rgba(244, 63, 94, ${s.alpha})`;
-          tctx.shadowColor = "rgba(244, 63, 94, 0.3)";
+          tctx.fillStyle = `rgba(209, 90, 115, ${s.alpha})`;
+          tctx.shadowColor = "rgba(209, 90, 115, 0.2)";
           tctx.shadowBlur = 6;
           tctx.fill();
 
@@ -1693,10 +1694,10 @@
     <script>
       function createParticleBurst(x, y) {
         const colors = [
-          'rgba(244, 63, 94, 0.7)',  // accent
-          'rgba(251, 113, 133, 0.7)',  // accent-alt
-          'rgba(244, 63, 94, 0.7)',   // complement
-          'rgba(251, 113, 133, 0.7)',  // complement-alt
+          'rgba(209, 90, 115, 0.5)',  // accent
+          'rgba(232, 121, 143, 0.5)',  // accent-alt
+          'rgba(209, 90, 115, 0.5)',   // complement
+          'rgba(232, 121, 143, 0.5)',  // complement-alt
         ];
         
         for (let i = 0; i < 8; i++) {
