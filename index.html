@@ -189,7 +189,7 @@
       .jumbotron {
         background-image: url("/background.jpg");
         background-size: cover;
-        background-position: center;
+        background-position: top;
         background-repeat: no-repeat;
         height: 100vh;
         margin: -3.5rem calc(-1 * var(--spacing-lg)) 0;
@@ -590,6 +590,7 @@
       .button {
         font-family: var(--font-family-heading);
         font-size: 1em;
+        font-weight: normal;
         padding: var(--spacing-sm) var(--spacing-md);
         color: var(--color-complement);
         background: var(--color-overlay);
@@ -866,7 +867,7 @@
       .form-group textarea:focus ~ label,
       .form-group input:not(:placeholder-shown) ~ label,
       .form-group textarea:not(:placeholder-shown) ~ label {
-        top: -0.75rem;
+        top: -0.5rem;
         left: 0.5rem;
         color: var(--color-complement);
         background: var(--color-bg);
@@ -875,7 +876,7 @@
 
       .form-group textarea:focus ~ label,
       .form-group textarea:not(:placeholder-shown) ~ label {
-        top: -1.5rem;
+        top: -1.25rem;
       }
 
       .form-group input,
@@ -1175,7 +1176,7 @@
 
     <hr />
 
-    <h2 id="projects" class="scroll-margin-top">⚗️ Projects</h2>
+    <h2 id="projects" class="scroll-margin-top">🧪 Projects</h2>
 
     <div class="projects-grid">
       <a href="https://batary.dev/suika-clone/" class="card">
@@ -1440,7 +1441,7 @@
 
     <section id="contact" class="scroll-margin-top">
       <form>
-        <h2>🦉 Contact</h2>
+        <h2>✉️ Contact</h2>
 
         <div class="form-group">
           <input type="email" name="email" required placeholder=" " />
@@ -1452,7 +1453,7 @@
           <label>Message</label>
         </div>
 
-        <button type="submit">Send owl 🪽</button>
+        <button type="submit">Send packet 📦</button>
       </form>
     </section>
 
@@ -1667,7 +1668,7 @@
           .then(() => {
             e.target.reset();
             button.blur();
-            button.textContent = "Owl sent! ❇️";
+            button.textContent = "Ack! ❇️";
           })
           .catch(console.error);
       });
