@@ -339,7 +339,7 @@
       /* Sections */
       section, .card {
         padding: var(--spacing-lg);
-        background-color: rgba(5, 10, 20, 0.6);
+        background-color: rgba(5, 10, 20, 0.8);
         border: 1px solid var(--color-border);
         border-radius: var(--radius-md);
         box-shadow: var(--shadow-sm), var(--shadow-inner);
@@ -1475,9 +1475,9 @@
       const particles = Array.from({ length: 60 }, () => ({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        size: 16 + Math.random() * 10,
+        size: 20 + Math.random() * 10,
         char: glyphs[Math.floor(Math.random() * glyphs.length)],
-        alpha: 0.08 + Math.random() * 0.12,
+        alpha: 0.2 + Math.random() * 0.4,
         speedX: (Math.random() - 0.5) * 0.1,
         speedY: (Math.random() - 0.5) * 0.1,
         rotate: Math.random() * Math.PI * 2,
