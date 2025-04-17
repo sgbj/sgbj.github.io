@@ -2,13 +2,27 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
     <title>Scott Batary</title>
     <link rel="shortcut icon" type="image/jpg" href="/logo.jpg" />
-    <meta name="theme-color" content="#050a14" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#050a14" media="(prefers-color-scheme: dark)" />
+    <meta
+      name="theme-color"
+      content="#050a14"
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      name="theme-color"
+      content="#050a14"
+      media="(prefers-color-scheme: dark)"
+    />
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
     <meta name="msapplication-navbutton-color" content="#050a14" />
     <meta name="msapplication-TileColor" content="#050a14" />
     <meta name="apple-mobile-web-app-title" content="Scott Batary" />
@@ -50,7 +64,7 @@
         --color-accent: #e8798f;
         --color-accent-alt: #d15a73;
         --color-complement: #d15a73;
-        --color-complement-alt: #d15a73; 
+        --color-complement-alt: #d15a73;
         --color-border: #334155;
         --color-terminal-border: #e8798f;
         --color-overlay: rgba(5, 10, 20, 0.95);
@@ -58,27 +72,27 @@
         --color-glow: rgba(209, 90, 115, 0.2);
         --color-link-hover: rgba(209, 90, 115, 0.15);
         --color-link-active: rgba(209, 90, 115, 0.25);
-        
+
         /* Typography */
         --font-family-heading: "Silkscreen", cursive;
         --font-family-body: "Outfit", "Inter", sans-serif;
-        
+
         /* Spacing */
         --spacing-xs: 0.2rem;
         --spacing-sm: 0.4rem;
-        --spacing-md: .8rem;
+        --spacing-md: 0.8rem;
         --spacing-lg: 1.5rem;
         --spacing-xl: 2rem;
-        
+
         /* Shadows */
         --shadow-sm: 0 2px 6px var(--color-shadow);
         --shadow-md: 0 6px 12px var(--color-glow);
         --shadow-inner: inset 0 0 0 1px rgba(209, 90, 115, 0.08);
-        
+
         /* Transitions */
         --transition-fast: 0.2s ease;
         --transition-normal: 0.3s ease;
-        
+
         /* Border Radius */
         --radius-sm: 4px;
         --radius-md: 8px;
@@ -152,7 +166,7 @@
         border-bottom: 1px solid var(--color-border);
         box-shadow: var(--shadow-sm), var(--shadow-inner);
         backdrop-filter: blur(8px);
-        margin:  calc(-1 * var(--spacing-lg));
+        margin: calc(-1 * var(--spacing-lg));
         z-index: 3;
         height: 3.5rem;
         display: flex;
@@ -201,7 +215,7 @@
       }
 
       .jumbotron::after {
-        content: '';
+        content: "";
         position: absolute;
         inset: 0;
         background: radial-gradient(
@@ -213,7 +227,7 @@
       }
 
       .jumbotron::before {
-        content: '';
+        content: "";
         position: absolute;
         inset: 0;
         background: linear-gradient(
@@ -238,18 +252,19 @@
       }
 
       /* Typography */
-      h1, h2, h3 {
+      h1,
+      h2,
+      h3 {
         font-family: var(--font-family-heading);
         color: var(--color-complement);
         margin: 0;
         opacity: 0;
         transform: translateY(20px);
         animation: revealText 0.6s ease forwards;
-        text-shadow: 0 0 1px var(--color-glow),
-                    0 0 2px var(--color-glow);
+        text-shadow: 0 0 1px var(--color-glow), 0 0 2px var(--color-glow);
         letter-spacing: 0.02em;
       }
-      
+
       @keyframes revealText {
         to {
           opacity: 1;
@@ -261,7 +276,7 @@
         font-weight: normal;
         animation-delay: 0.2s;
       }
-      h2 { 
+      h2 {
         font-weight: normal;
         animation-delay: 0.4s;
       }
@@ -269,13 +284,15 @@
         font-weight: normal;
       }
 
-      h1, h2 {
+      h1,
+      h2 {
         width: fit-content;
         display: block;
         margin: 0 auto;
       }
 
-      h1::after, h2::after {
+      h1::after,
+      h2::after {
         content: "";
         display: block;
         height: 2px;
@@ -322,7 +339,8 @@
         opacity: 0.5;
         transform: scaleX(0);
         transform-origin: center;
-        transition: transform var(--transition-normal), opacity var(--transition-normal);
+        transition: transform var(--transition-normal),
+          opacity var(--transition-normal);
       }
 
       a:hover,
@@ -337,7 +355,8 @@
       }
 
       /* Sections */
-      section, .card {
+      section,
+      .card {
         padding: var(--spacing-lg);
         background-color: rgba(5, 10, 20, 0.8);
         border: 1px solid var(--color-border);
@@ -347,11 +366,13 @@
         z-index: 2;
         opacity: 0;
         transform: translateY(20px);
-        transition: opacity var(--transition-normal), transform var(--transition-normal);
+        transition: opacity var(--transition-normal),
+          transform var(--transition-normal);
       }
 
-      section::before, .card::before {
-        content: '';
+      section::before,
+      .card::before {
+        content: "";
         position: absolute;
         inset: 0;
         border-radius: var(--radius-md);
@@ -364,7 +385,8 @@
         z-index: -1;
       }
 
-      section.visible, .card.visible {
+      section.visible,
+      .card.visible {
         opacity: 1;
         transform: translateY(0);
       }
@@ -383,7 +405,7 @@
       }
 
       .card::before {
-        content: '';
+        content: "";
         position: absolute;
         inset: 0;
         background: radial-gradient(
@@ -403,10 +425,8 @@
       .card:focus {
         transform: translateY(-4px);
         border-color: var(--color-accent);
-        box-shadow: var(--shadow-md), 
-          0 0 0 1px var(--color-glow),
-          0 0 8px var(--color-glow),
-          0 0 15px var(--color-glow);
+        box-shadow: var(--shadow-md), 0 0 0 1px var(--color-glow),
+          0 0 8px var(--color-glow), 0 0 15px var(--color-glow);
         outline: 0;
       }
 
@@ -416,8 +436,10 @@
         background-position: center;
         background-repeat: no-repeat;
         margin: calc(-1 * var(--spacing-md)) calc(-1 * var(--spacing-md)) 0;
-        filter: brightness(0.8) contrast(1.1) saturate(0.9) sepia(0.2) hue-rotate(-10deg) blur(0.3px);
-        transition: filter var(--transition-normal), transform var(--transition-normal);
+        filter: brightness(0.8) contrast(1.1) saturate(0.9) sepia(0.2)
+          hue-rotate(-10deg) blur(0.3px);
+        transition: filter var(--transition-normal),
+          transform var(--transition-normal);
       }
 
       .card:hover div {
@@ -441,7 +463,7 @@
         margin: 0;
         padding: 0;
         list-style: none;
-        font-size: .7em;
+        font-size: 0.7em;
       }
 
       .tags li {
@@ -575,7 +597,8 @@
         color: var(--color-text-light);
         font-family: inherit;
         font-size: 1em;
-        transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+        transition: border-color var(--transition-fast),
+          box-shadow var(--transition-fast);
       }
 
       input:focus,
@@ -597,7 +620,8 @@
         border: 2px solid var(--color-complement-alt);
         border-radius: var(--radius-md);
         backdrop-filter: blur(5px);
-        box-shadow: var(--shadow-inner), 0 2px 5px var(--color-shadow), 0 0 6px var(--color-glow);
+        box-shadow: var(--shadow-inner), 0 2px 5px var(--color-shadow),
+          0 0 6px var(--color-glow);
         transition: all 0.25s ease;
         cursor: pointer;
       }
@@ -607,8 +631,7 @@
         background: rgba(236, 72, 153, 0.15);
         border-color: var(--color-complement);
         color: var(--color-complement);
-        box-shadow: 0 0 8px var(--color-glow),
-          0 0 18px rgba(236, 72, 153, 0.2),
+        box-shadow: 0 0 8px var(--color-glow), 0 0 18px rgba(236, 72, 153, 0.2),
           inset 0 0 10px rgba(255, 240, 200, 0.05);
         transform: translateY(-2px);
       }
@@ -616,8 +639,7 @@
       button:focus,
       .button:focus {
         outline: none;
-        box-shadow: 0 0 0 2px var(--color-accent),
-          0 0 8px 3px var(--color-glow);
+        box-shadow: 0 0 0 2px var(--color-accent), 0 0 8px 3px var(--color-glow);
       }
 
       .button.small {
@@ -640,7 +662,7 @@
       }
 
       .socials a::before {
-        content: '';
+        content: "";
         position: absolute;
         inset: -4px;
         border-radius: 50%;
@@ -677,9 +699,9 @@
         color: var(--color-bg);
         border-radius: var(--radius-sm);
         padding: var(--spacing-xs) var(--spacing-sm);
-        font-size: .8em;
+        font-size: 0.8em;
         width: fit-content;
-        margin-top: .5rem;
+        margin-top: 0.5rem;
         left: 50%;
         transform: translateX(-50%) scale(0.5);
         opacity: 0;
@@ -759,6 +781,15 @@
           font-size: 16px;
         }
 
+        nav {
+          margin: calc(-1 * var(--spacing-md));
+        }
+
+        .jumbotron {
+          margin: -3.5rem calc(-1 * var(--spacing-md)) 0;
+          padding: var(--spacing-md);
+        }
+
         nav ul {
           gap: var(--spacing-sm);
         }
@@ -819,9 +850,15 @@
 
       /* Background Animation */
       @keyframes gradientBG {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
       }
 
       /* Cursor Trail */
@@ -897,13 +934,15 @@
       }
 
       .form-group::after {
-        content: '';
+        content: "";
         position: absolute;
         inset: 0;
         border-radius: var(--radius-md);
-        background: radial-gradient(circle at var(--x, 50%) var(--y, 50%),
+        background: radial-gradient(
+          circle at var(--x, 50%) var(--y, 50%),
           var(--color-glow) 0%,
-          transparent 50%);
+          transparent 50%
+        );
         opacity: 0;
         transition: opacity 0.3s ease;
         pointer-events: none;
@@ -984,7 +1023,10 @@
             </svg>
             <span>Medium</span>
           </a>
-          <a href="https://stackoverflow.com/users/2658854/sgbj" aria-label="Stack Overflow">
+          <a
+            href="https://stackoverflow.com/users/2658854/sgbj"
+            aria-label="Stack Overflow"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               height="1em"
@@ -1012,7 +1054,10 @@
             </svg>
             <span>X / Twitter</span>
           </a>
-          <a href="https://www.linkedin.com/in/scott-batary/" aria-label="LinkedIn">
+          <a
+            href="https://www.linkedin.com/in/scott-batary/"
+            aria-label="LinkedIn"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               height="1em"
@@ -1041,14 +1086,14 @@
           that make a positive impact.
         </p>
         <p>
-          I strive to keep up-to-date with new technologies and best
-          practices. Lately, I've been learning Go, Next.js, and React Server
-          Components. I also have personal licenses for GitHub Pro, GitHub
-          Copilot, JetBrains, Tailwind UI, and Font Awesome.
+          I strive to keep up-to-date with new technologies and best practices.
+          Lately, I've been learning Go, Next.js, and React Server Components. I
+          also have personal licenses for GitHub Pro, GitHub Copilot, JetBrains,
+          Tailwind UI, and Font Awesome.
         </p>
         <p>
-          Beyond coding, I enjoy playing games like Overwatch, Dead by
-          Daylight, and Elder Scrolls Online.
+          Beyond coding, I enjoy playing games like Overwatch, Dead by Daylight,
+          and Elder Scrolls Online.
         </p>
       </section>
 
@@ -1059,9 +1104,7 @@
           <div>2024 - Present</div>
           <div>
             <strong>Software Engineer</strong>
-            <p>
-              Started a new adventure!
-            </p>
+            <p>Started a new adventure!</p>
           </div>
         </article>
 
@@ -1070,11 +1113,11 @@
           <div>
             <strong>Principal Developer</strong>
             <p>
-              Led the development of a cutting-edge court
-              case management system. Standardized
-              authentication and authorization across our applications,
-              established a design system for a seamless user experience, and
-              optimized developer workflows through CI/CD pipelines.
+              Led the development of a cutting-edge court case management
+              system. Standardized authentication and authorization across our
+              applications, established a design system for a seamless user
+              experience, and optimized developer workflows through CI/CD
+              pipelines.
             </p>
             <ul class="tags">
               <li>C#</li>
@@ -1101,10 +1144,10 @@
           <div>
             <strong>Senior Developer</strong>
             <p>
-              Technical lead and architect for a team of developers
-              working on a patient portal for a healthcare provider. Integrated multi-factor
-              authentication, a patient education system, and a secure
-              messaging application.
+              Technical lead and architect for a team of developers working on a
+              patient portal for a healthcare provider. Integrated multi-factor
+              authentication, a patient education system, and a secure messaging
+              application.
             </p>
             <ul class="tags">
               <li>C#</li>
@@ -1129,9 +1172,9 @@
           <div>
             <strong>Programmer Analyst</strong>
             <p>
-              Developed a credit card transaction system and
-              online payment web application, and was a key contributor to
-              various applications, APIs, background jobs, and reports.
+              Developed a credit card transaction system and online payment web
+              application, and was a key contributor to various applications,
+              APIs, background jobs, and reports.
             </p>
             <ul class="tags">
               <li>C#</li>
@@ -1170,7 +1213,9 @@
         <h2>📖 Blog</h2>
         <p></p>
         <ul></ul>
-        <a href="https://blog.batary.dev/" class="button small">&lt; View more &gt;</a>
+        <a href="https://blog.batary.dev/" class="button small"
+          >&lt; View more &gt;</a
+        >
       </section>
     </div>
 
@@ -1243,7 +1288,10 @@
         </ul>
       </a>
 
-      <a href="https://www.etsy.com/listing/1579967521/animated-chatbox-overlay-widget-for" class="card">
+      <a
+        href="https://www.etsy.com/listing/1579967521/animated-chatbox-overlay-widget-for"
+        class="card"
+      >
         <div style="background-image: url(/assets/chat-widget.jpg)"></div>
         <h3>Chat Widget</h3>
         <p>Animated chatbox widget for StreamElements, Twitch, and OBS.</p>
@@ -1463,12 +1511,12 @@
     <script>
       const canvas = document.getElementById("arcane-bg");
       const ctx = canvas.getContext("2d");
-      
+
       const resizeCanvas = () => {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
       };
-      
+
       resizeCanvas();
       window.addEventListener("resize", resizeCanvas);
 
@@ -1490,52 +1538,53 @@
       let isMobile = window.innerWidth <= 768;
       let mouseX = 0;
       let mouseY = 0;
-      
-      window.addEventListener('scroll', () => {
+
+      window.addEventListener("scroll", () => {
         scrollY = window.scrollY * 0.5;
       });
 
-      window.addEventListener('mousemove', (e) => {
+      window.addEventListener("mousemove", (e) => {
         mouseX = e.clientX;
         mouseY = e.clientY;
       });
 
-      window.addEventListener('resize', () => {
+      window.addEventListener("resize", () => {
         isMobile = window.innerWidth <= 768;
         resizeCanvas();
       });
 
       const animate = () => {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        
+
         // Draw subtle grid lines
-        ctx.strokeStyle = 'rgba(209, 90, 115, 0.03)';
+        ctx.strokeStyle = "rgba(209, 90, 115, 0.03)";
         ctx.lineWidth = 1;
         const gridSize = 50;
-        
+
         for (let x = 0; x < canvas.width; x += gridSize) {
           ctx.beginPath();
           ctx.moveTo(x, 0);
           ctx.lineTo(x, canvas.height);
           ctx.stroke();
         }
-        
+
         for (let y = 0; y < canvas.height; y += gridSize) {
           ctx.beginPath();
           ctx.moveTo(0, y);
           ctx.lineTo(canvas.width, y);
           ctx.stroke();
         }
-        
+
         for (const p of particles) {
           // Calculate parallax-adjusted positions
-          const particleParallaxY = p.y + (scrollY * p.parallax * (isMobile ? 0.5 : 1));
-          
+          const particleParallaxY =
+            p.y + scrollY * p.parallax * (isMobile ? 0.5 : 1);
+
           // Calculate distance to mouse
           const dx = p.x - mouseX;
           const dy = particleParallaxY - mouseY;
           const distance = Math.sqrt(dx * dx + dy * dy);
-          
+
           // Move away from mouse if within 200px
           if (distance < 200) {
             const force = (200 - distance) / 200;
@@ -1560,17 +1609,17 @@
           ctx.restore();
 
           p.rotate += p.rotateSpeed;
-          
+
           // Wrap around screen
           if (p.x < -50) p.x = canvas.width + 50;
           if (p.x > canvas.width + 50) p.x = -50;
           if (p.y < -50) p.y = canvas.height + 50;
           if (p.y > canvas.height + 50) p.y = -50;
         }
-        
+
         requestAnimationFrame(animate);
       };
-      
+
       animate();
     </script>
 
@@ -1578,17 +1627,17 @@
     <script>
       const trailCanvas = document.getElementById("magic-trail");
       const tctx = trailCanvas.getContext("2d");
-      
+
       const resizeTrailCanvas = () => {
         trailCanvas.width = window.innerWidth;
         trailCanvas.height = window.innerHeight;
       };
-      
+
       resizeTrailCanvas();
       window.addEventListener("resize", resizeTrailCanvas);
 
       const sparks = [];
-      
+
       document.addEventListener("mousemove", (e) => {
         sparks.push({
           x: e.clientX,
@@ -1601,7 +1650,7 @@
 
       const sparkle = () => {
         tctx.clearRect(0, 0, trailCanvas.width, trailCanvas.height);
-        
+
         for (let i = sparks.length - 1; i >= 0; i--) {
           const s = sparks[i];
           tctx.beginPath();
@@ -1614,15 +1663,15 @@
           s.alpha -= 0.02;
           s.y -= 0.5;
           s.life--;
-          
+
           if (s.life <= 0 || s.alpha <= 0) {
             sparks.splice(i, 1);
           }
         }
-        
+
         requestAnimationFrame(sparkle);
       };
-      
+
       sparkle();
     </script>
 
@@ -1630,27 +1679,33 @@
     <script>
       const blogStatus = document.querySelector("#blog p");
       const blogList = document.querySelector("#blog ul");
-      
+
       blogStatus.innerHTML = "Fetching blog posts&hellip;";
-      
-      fetch("https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@batary")
-        .then(res => res.json())
-        .then(res => {
+
+      fetch(
+        "https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@batary"
+      )
+        .then((res) => res.json())
+        .then((res) => {
           blogStatus.innerHTML = "";
           blogList.innerHTML = res.items
             .slice(0, 10)
-            .map(item => `
+            .map(
+              (item) => `
               <li>
                 <time>${new Date(item.pubDate).toLocaleDateString()}</time>
                 <a href="${item.link}">${item.title}</a>
                 <ul class="tags">
-                  ${item.categories.map(category => `<li>${category}</li>`).join("")}
+                  ${item.categories
+                    .map((category) => `<li>${category}</li>`)
+                    .join("")}
                 </ul>
               </li>
-            `)
+            `
+            )
             .join("");
         })
-        .catch(err => {
+        .catch((err) => {
           console.error(err);
           blogStatus.innerHTML = "Error fetching blog posts.";
         });
@@ -1658,35 +1713,43 @@
 
     <!-- Contact Form -->
     <script>
-      document.querySelector("#contact form").addEventListener("submit", (e) => {
-        e.preventDefault();
-        const formData = new FormData(e.target);
-        const data = Object.fromEntries(formData.entries());
-        const button = e.target.querySelector("button");
-        
-        fetch("https://contact-form-gamma-six.vercel.app/api/contact?" + new URLSearchParams(data))
-          .then(() => {
-            e.target.reset();
-            button.blur();
-            button.textContent = "Ack! ❇️";
-          })
-          .catch(console.error);
-      });
+      document
+        .querySelector("#contact form")
+        .addEventListener("submit", (e) => {
+          e.preventDefault();
+          const formData = new FormData(e.target);
+          const data = Object.fromEntries(formData.entries());
+          const button = e.target.querySelector("button");
+
+          fetch(
+            "https://contact-form-gamma-six.vercel.app/api/contact?" +
+              new URLSearchParams(data)
+          )
+            .then(() => {
+              e.target.reset();
+              button.blur();
+              button.textContent = "Ack! ❇️";
+            })
+            .catch(console.error);
+        });
     </script>
 
     <!-- Scroll Reveal -->
     <script>
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
-        });
-      }, {
-        threshold: 0.1
-      });
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+            }
+          });
+        },
+        {
+          threshold: 0.1,
+        }
+      );
 
-      document.querySelectorAll('section, .card').forEach(el => {
+      document.querySelectorAll("section, .card").forEach((el) => {
         observer.observe(el);
       });
     </script>
@@ -1695,40 +1758,41 @@
     <script>
       function createParticleBurst(x, y) {
         const colors = [
-          'rgba(209, 90, 115, 0.5)',  // accent
-          'rgba(232, 121, 143, 0.5)',  // accent-alt
-          'rgba(209, 90, 115, 0.5)',   // complement
-          'rgba(232, 121, 143, 0.5)',  // complement-alt
+          "rgba(209, 90, 115, 0.5)", // accent
+          "rgba(232, 121, 143, 0.5)", // accent-alt
+          "rgba(209, 90, 115, 0.5)", // complement
+          "rgba(232, 121, 143, 0.5)", // complement-alt
         ];
-        
+
         for (let i = 0; i < 8; i++) {
-          const particle = document.createElement('div');
-          particle.className = 'particle';
-          
+          const particle = document.createElement("div");
+          particle.className = "particle";
+
           const angle = (i / 8) * Math.PI * 2;
           const distance = 40 + Math.random() * 40;
           const tx = Math.cos(angle) * distance;
           const ty = Math.sin(angle) * distance;
-          
-          particle.style.setProperty('--tx', `${tx}px`);
-          particle.style.setProperty('--ty', `${ty}px`);
+
+          particle.style.setProperty("--tx", `${tx}px`);
+          particle.style.setProperty("--ty", `${ty}px`);
           particle.style.left = `${x}px`;
           particle.style.top = `${y}px`;
           particle.style.width = `${3 + Math.random() * 3}px`;
           particle.style.height = particle.style.width;
-          particle.style.background = colors[Math.floor(Math.random() * colors.length)];
-          particle.style.borderRadius = '50%';
-          particle.style.boxShadow = '0 0 8px var(--color-glow)';
-          
+          particle.style.background =
+            colors[Math.floor(Math.random() * colors.length)];
+          particle.style.borderRadius = "50%";
+          particle.style.boxShadow = "0 0 8px var(--color-glow)";
+
           document.body.appendChild(particle);
-          
-          particle.addEventListener('animationend', () => {
+
+          particle.addEventListener("animationend", () => {
             particle.remove();
           });
         }
       }
 
-      document.addEventListener('click', (e) => {
+      document.addEventListener("click", (e) => {
         createParticleBurst(e.clientX, e.clientY);
       });
     </script>
@@ -1738,42 +1802,42 @@
       const cursorTrails = [];
       const maxTrails = 8;
 
-      document.addEventListener('mousemove', (e) => {
-        const trail = document.createElement('div');
-        trail.className = 'cursor-trail';
-        trail.style.left = e.clientX + 'px';
-        trail.style.top = e.clientY + 'px';
+      document.addEventListener("mousemove", (e) => {
+        const trail = document.createElement("div");
+        trail.className = "cursor-trail";
+        trail.style.left = e.clientX + "px";
+        trail.style.top = e.clientY + "px";
         document.body.appendChild(trail);
         cursorTrails.push(trail);
 
         if (cursorTrails.length > maxTrails) {
           const oldTrail = cursorTrails.shift();
-          oldTrail.style.opacity = '0';
+          oldTrail.style.opacity = "0";
           setTimeout(() => oldTrail.remove(), 100);
         }
 
         // Update card hover effect
-        const cards = document.querySelectorAll('.card');
-        cards.forEach(card => {
+        const cards = document.querySelectorAll(".card");
+        cards.forEach((card) => {
           const rect = card.getBoundingClientRect();
           const x = ((e.clientX - rect.left) / rect.width) * 100;
           const y = ((e.clientY - rect.top) / rect.height) * 100;
-          card.style.setProperty('--x', `${x}%`);
-          card.style.setProperty('--y', `${y}%`);
+          card.style.setProperty("--x", `${x}%`);
+          card.style.setProperty("--y", `${y}%`);
         });
       });
     </script>
 
     <!-- Form Input Effect -->
     <script>
-      document.querySelectorAll('.form-group').forEach(group => {
-        const input = group.querySelector('input, textarea');
-        group.addEventListener('mousemove', (e) => {
+      document.querySelectorAll(".form-group").forEach((group) => {
+        const input = group.querySelector("input, textarea");
+        group.addEventListener("mousemove", (e) => {
           const rect = group.getBoundingClientRect();
           const x = ((e.clientX - rect.left) / rect.width) * 100;
           const y = ((e.clientY - rect.top) / rect.height) * 100;
-          group.style.setProperty('--x', `${x}%`);
-          group.style.setProperty('--y', `${y}%`);
+          group.style.setProperty("--x", `${x}%`);
+          group.style.setProperty("--y", `${y}%`);
         });
       });
     </script>
