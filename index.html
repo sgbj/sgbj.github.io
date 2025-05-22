@@ -10,12 +10,12 @@
     <link rel="shortcut icon" type="image/jpg" href="/logo.jpg" />
     <meta
       name="theme-color"
-      content="#050a14"
+      content="#0a0f1a"
       media="(prefers-color-scheme: light)"
     />
     <meta
       name="theme-color"
-      content="#050a14"
+      content="#0a0f1a"
       media="(prefers-color-scheme: dark)"
     />
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -23,8 +23,8 @@
       name="apple-mobile-web-app-status-bar-style"
       content="black-translucent"
     />
-    <meta name="msapplication-navbutton-color" content="#050a14" />
-    <meta name="msapplication-TileColor" content="#050a14" />
+    <meta name="msapplication-navbutton-color" content="#0a0f1a" />
+    <meta name="msapplication-TileColor" content="#0a0f1a" />
     <meta name="apple-mobile-web-app-title" content="Scott Batary" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
     <meta name="format-detection" content="telephone=no" />
@@ -57,21 +57,21 @@
       :root {
         /* Colors */
         --color-bg: #050a14;
-        --color-bg-alt: #0a0f1a;
-        --color-bg-tert: #0f1520;
-        --color-text: #f1f5f9;
-        --color-text-light: #f8fafc;
-        --color-accent: #e8798f;
-        --color-accent-alt: #d15a73;
-        --color-complement: #d15a73;
-        --color-complement-alt: #d15a73;
-        --color-border: #334155;
-        --color-terminal-border: #e8798f;
+        --color-bg-alt: #0a1420;
+        --color-bg-tert: #0f1a2b;
+        --color-text: #f8fafc;
+        --color-text-light: #ffffff;
+        --color-accent: #93c5fd;
+        --color-accent-alt: #60a5fa;
+        --color-complement: #60a5fa;
+        --color-complement-alt: #3b82f6;
+        --color-border: #1e293b;
+        --color-terminal-border: #93c5fd;
         --color-overlay: rgba(5, 10, 20, 0.95);
         --color-shadow: rgba(0, 0, 0, 0.85);
-        --color-glow: rgba(209, 90, 115, 0.2);
-        --color-link-hover: rgba(209, 90, 115, 0.15);
-        --color-link-active: rgba(209, 90, 115, 0.25);
+        --color-glow: rgba(147, 197, 253, 0.15);
+        --color-link-hover: rgba(147, 197, 253, 0.1);
+        --color-link-active: rgba(147, 197, 253, 0.2);
 
         /* Typography */
         --font-family-heading: "Silkscreen", cursive;
@@ -87,7 +87,7 @@
         /* Shadows */
         --shadow-sm: 0 2px 6px var(--color-shadow);
         --shadow-md: 0 6px 12px var(--color-glow);
-        --shadow-inner: inset 0 0 0 1px rgba(209, 90, 115, 0.08);
+        --shadow-inner: inset 0 0 0 1px rgba(129, 140, 248, 0.08);
 
         /* Transitions */
         --transition-fast: 0.2s ease;
@@ -118,13 +118,12 @@
       body {
         font-family: var(--font-family-body);
         background-color: var(--color-bg);
-        background: linear-gradient(
-          30deg,
-          var(--color-bg),
-          var(--color-bg-alt),
-          var(--color-bg-tert),
-          var(--color-bg-alt)
-        );
+        background: 
+          radial-gradient(circle at 0% 0%, rgba(147, 197, 253, 0.02) 0%, transparent 50%),
+          radial-gradient(circle at 100% 0%, rgba(96, 165, 250, 0.02) 0%, transparent 50%),
+          radial-gradient(circle at 100% 100%, rgba(147, 197, 253, 0.02) 0%, transparent 50%),
+          radial-gradient(circle at 0% 100%, rgba(96, 165, 250, 0.02) 0%, transparent 50%),
+          linear-gradient(30deg, var(--color-bg), var(--color-bg-alt), var(--color-bg-tert), var(--color-bg-alt));
         background-size: 300% 300%;
         animation: gradientBG 20s ease infinite;
         color: var(--color-text);
@@ -155,14 +154,14 @@
       }
 
       ::selection {
-        background-color: rgba(205, 191, 162, 0.1);
+        background-color: rgba(129, 140, 248, 0.1);
       }
 
       /* Navigation */
       nav {
         position: sticky;
         top: 0;
-        background-color: rgba(5, 10, 20, 0.97);
+        background-color: rgba(10, 15, 26, 0.97);
         border-bottom: 1px solid var(--color-border);
         box-shadow: var(--shadow-sm), var(--shadow-inner);
         backdrop-filter: blur(8px);
@@ -221,7 +220,7 @@
         background: radial-gradient(
           circle at 50% 50%,
           transparent 0%,
-          rgba(5, 10, 20, 0.95) 100%
+          rgba(10, 15, 26, 0.95) 100%
         );
         mix-blend-mode: multiply;
       }
@@ -233,7 +232,7 @@
         background: linear-gradient(
           to bottom,
           transparent 0%,
-          rgba(5, 10, 20, 0.8) 100%
+          rgba(10, 15, 26, 0.8) 100%
         );
         z-index: 1;
       }
@@ -243,7 +242,7 @@
         max-width: 36rem;
         position: relative;
         z-index: 2;
-        background-color: rgba(5, 10, 20, 0.9);
+        background-color: rgba(10, 15, 26, 0.9);
         border: 1px solid var(--color-border);
         padding: var(--spacing-lg);
         border-radius: var(--radius-md);
@@ -358,7 +357,7 @@
       section,
       .card {
         padding: var(--spacing-lg);
-        background-color: rgba(5, 10, 20, 0.8);
+        background-color: rgba(10, 15, 26, 0.8);
         border: 1px solid var(--color-border);
         border-radius: var(--radius-md);
         box-shadow: var(--shadow-sm), var(--shadow-inner);
@@ -379,7 +378,7 @@
         background: linear-gradient(
           135deg,
           transparent 0%,
-          rgba(209, 90, 115, 0.04) 50%,
+          rgba(129, 140, 248, 0.04) 50%,
           transparent 100%
         );
         z-index: -1;
@@ -468,14 +467,14 @@
 
       .tags li {
         padding: var(--spacing-xs) var(--spacing-sm);
-        background: rgba(209, 90, 115, 0.08);
-        border: 1px solid rgba(209, 90, 115, 0.2);
+        background: rgba(129, 140, 248, 0.08);
+        border: 1px solid rgba(129, 140, 248, 0.2);
         border-radius: var(--radius-sm);
         color: var(--color-accent);
         backdrop-filter: blur(4px);
         font-weight: 600;
         opacity: 1;
-        text-shadow: 0 0 1px rgba(209, 90, 115, 0.25);
+        text-shadow: 0 0 1px rgba(129, 140, 248, 0.25);
       }
 
       /* Grid Layouts */
@@ -553,7 +552,7 @@
         margin: 0.3rem 0 1rem 0;
         font-family: var(--font-family-body);
         color: var(--color-text-light);
-        text-shadow: 0 0 1px rgba(209, 90, 115, 0.25);
+        text-shadow: 0 0 1px rgba(129, 140, 248, 0.25);
       }
 
       #blog > ul > li > a:hover {
@@ -628,11 +627,11 @@
 
       button:hover,
       .button:hover {
-        background: rgba(236, 72, 153, 0.15);
+        background: rgba(129, 140, 248, 0.15);
         border-color: var(--color-complement);
         color: var(--color-complement);
-        box-shadow: 0 0 8px var(--color-glow), 0 0 18px rgba(236, 72, 153, 0.2),
-          inset 0 0 10px rgba(255, 240, 200, 0.05);
+        box-shadow: 0 0 8px var(--color-glow), 0 0 18px rgba(129, 140, 248, 0.2),
+          inset 0 0 10px rgba(129, 140, 248, 0.05);
         transform: translateY(-2px);
       }
 
@@ -1521,12 +1520,12 @@
       window.addEventListener("resize", resizeCanvas);
 
       const glyphs = "01".split("");
-      const particles = Array.from({ length: 60 }, () => ({
+      const particles = Array.from({ length: 40 }, () => ({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        size: 20 + Math.random() * 10,
+        size: 16 + Math.random() * 10,
         char: glyphs[Math.floor(Math.random() * glyphs.length)],
-        alpha: 0.2 + Math.random() * 0.4,
+        alpha: 0.03 + Math.random() * 0.05,
         speedX: (Math.random() - 0.5) * 0.1,
         speedY: (Math.random() - 0.5) * 0.1,
         rotate: Math.random() * Math.PI * 2,
@@ -1556,24 +1555,14 @@
       const animate = () => {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        // Draw subtle grid lines
-        ctx.strokeStyle = "rgba(209, 90, 115, 0.03)";
-        ctx.lineWidth = 1;
-        const gridSize = 50;
-
-        for (let x = 0; x < canvas.width; x += gridSize) {
-          ctx.beginPath();
-          ctx.moveTo(x, 0);
-          ctx.lineTo(x, canvas.height);
-          ctx.stroke();
-        }
-
-        for (let y = 0; y < canvas.height; y += gridSize) {
-          ctx.beginPath();
-          ctx.moveTo(0, y);
-          ctx.lineTo(canvas.width, y);
-          ctx.stroke();
-        }
+        // Draw subtle gradient overlay
+        const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+        gradient.addColorStop(0, 'rgba(147, 197, 253, 0.015)');
+        gradient.addColorStop(0.5, 'rgba(96, 165, 250, 0.01)');
+        gradient.addColorStop(1, 'rgba(147, 197, 253, 0.015)');
+        
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
 
         for (const p of particles) {
           // Calculate parallax-adjusted positions
@@ -1602,8 +1591,8 @@
           ctx.translate(p.x, particleParallaxY);
           ctx.rotate(p.rotate);
           ctx.font = `${p.size}px monospace`;
-          ctx.fillStyle = `rgba(209, 90, 115, ${p.alpha})`;
-          ctx.shadowColor = "rgba(209, 90, 115, 0.2)";
+          ctx.fillStyle = `rgba(147, 197, 253, ${p.alpha})`;
+          ctx.shadowColor = "rgba(147, 197, 253, 0.1)";
           ctx.shadowBlur = 8;
           ctx.fillText(p.char, 0, 0);
           ctx.restore();
@@ -1655,8 +1644,8 @@
           const s = sparks[i];
           tctx.beginPath();
           tctx.arc(s.x, s.y, s.radius, 0, Math.PI * 2);
-          tctx.fillStyle = `rgba(209, 90, 115, ${s.alpha})`;
-          tctx.shadowColor = "rgba(209, 90, 115, 0.2)";
+          tctx.fillStyle = `rgba(147, 197, 253, ${s.alpha})`;
+          tctx.shadowColor = "rgba(147, 197, 253, 0.2)";
           tctx.shadowBlur = 6;
           tctx.fill();
 
@@ -1758,35 +1747,34 @@
     <script>
       function createParticleBurst(x, y) {
         const colors = [
-          "rgba(209, 90, 115, 0.5)", // accent
-          "rgba(232, 121, 143, 0.5)", // accent-alt
-          "rgba(209, 90, 115, 0.5)", // complement
-          "rgba(232, 121, 143, 0.5)", // complement-alt
+          'rgba(147, 197, 253, 0.4)',  // accent
+          'rgba(96, 165, 250, 0.4)',   // accent-alt
+          'rgba(147, 197, 253, 0.4)',  // complement
+          'rgba(96, 165, 250, 0.4)',   // complement-alt
         ];
-
+        
         for (let i = 0; i < 8; i++) {
-          const particle = document.createElement("div");
-          particle.className = "particle";
-
+          const particle = document.createElement('div');
+          particle.className = 'particle';
+          
           const angle = (i / 8) * Math.PI * 2;
           const distance = 40 + Math.random() * 40;
           const tx = Math.cos(angle) * distance;
           const ty = Math.sin(angle) * distance;
-
-          particle.style.setProperty("--tx", `${tx}px`);
-          particle.style.setProperty("--ty", `${ty}px`);
+          
+          particle.style.setProperty('--tx', `${tx}px`);
+          particle.style.setProperty('--ty', `${ty}px`);
           particle.style.left = `${x}px`;
           particle.style.top = `${y}px`;
           particle.style.width = `${3 + Math.random() * 3}px`;
           particle.style.height = particle.style.width;
-          particle.style.background =
-            colors[Math.floor(Math.random() * colors.length)];
-          particle.style.borderRadius = "50%";
-          particle.style.boxShadow = "0 0 8px var(--color-glow)";
-
+          particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+          particle.style.borderRadius = '50%';
+          particle.style.boxShadow = '0 0 8px var(--color-glow)';
+          
           document.body.appendChild(particle);
-
-          particle.addEventListener("animationend", () => {
+          
+          particle.addEventListener('animationend', () => {
             particle.remove();
           });
         }
