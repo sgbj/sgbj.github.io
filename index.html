@@ -1710,16 +1710,22 @@
           const data = Object.fromEntries(formData.entries());
           const button = e.target.querySelector("button");
 
-          fetch(
-            "https://contact-form-gamma-six.vercel.app/api/contact?" +
-              new URLSearchParams(data)
-          )
-            .then(() => {
-              e.target.reset();
-              button.blur();
-              button.textContent = "Ack! ❇️";
-            })
-            .catch(console.error);
+          if (data.message.length >= 20) {
+            fetch(
+              "https://contact-form-gamma-six.vercel.app/api/contact?" +
+                new URLSearchParams(data)
+            )
+              .then(() => {
+                e.target.reset();
+                button.blur();
+                button.textContent = "Ack! ❇️";
+              })
+              .catch(console.error);
+          } else {
+            e.target.reset();
+            button.blur();
+            button.textContent = "Ack! ❇️";
+          }
         });
     </script>
 
@@ -1831,4 +1837,5 @@
     </script>
   </body>
 </html>
+
 
