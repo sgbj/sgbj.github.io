@@ -1,7 +1,7 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, viewport-fit=cover"
@@ -9,106 +9,50 @@
     <title>Scott Batary</title>
     <link rel="shortcut icon" type="image/jpg" href="/logo.jpg" />
     <meta
+      name="description"
+      content="Full-stack developer building web apps, APIs, and open-source tools."
+    />
+    <meta
       name="theme-color"
-      content="#0a0f1a"
+      content="#000000"
       media="(prefers-color-scheme: light)"
     />
     <meta
       name="theme-color"
-      content="#0a0f1a"
+      content="#000000"
       media="(prefers-color-scheme: dark)"
     />
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta
-      name="apple-mobile-web-app-status-bar-style"
-      content="black-translucent"
-    />
-    <meta name="msapplication-navbutton-color" content="#0a0f1a" />
-    <meta name="msapplication-TileColor" content="#0a0f1a" />
-    <meta name="apple-mobile-web-app-title" content="Scott Batary" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-title" content="Scott Batary" />
     <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="msapplication-TileColor" content="#000000" />
+    <meta name="format-detection" content="telephone=no" />
     <meta property="og:title" content="Scott Batary" />
-    <meta property="og:type" content="article" />
+    <meta
+      property="og:description"
+      content="Full-stack developer building web apps, APIs, and open-source tools."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://batary.dev" />
+    <meta property="og:site_name" content="Scott Batary" />
     <meta
       property="og:image"
       content="https://batary.dev/assets/Scott%20Lofi.jpg"
     />
-    <meta property="og:url" content="https://batary.dev" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta
-      property="og:description"
-      content="I'm a full-stack developer with a passion for building feature-rich web apps, robust APIs, and innovative libraries."
-    />
-    <meta property="og:site_name" content="Scott Batary" />
     <meta name="twitter:site" content="@sbatary" />
-    <meta
-      name="description"
-      content="I'm a full-stack developer with a passion for building feature-rich web apps, robust APIs, and innovative libraries."
-    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&family=Outfit:wght@300;400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500&display=swap"
       rel="stylesheet"
     />
     <style>
-      :root {
-        /* Colors */
-        --color-bg: #050a14;
-        --color-bg-alt: #0a1420;
-        --color-bg-tert: #0f1a2b;
-        --color-text: #f8fafc;
-        --color-text-light: #ffffff;
-        --color-accent: #93c5fd;
-        --color-accent-alt: #60a5fa;
-        --color-complement: #60a5fa;
-        --color-complement-alt: #3b82f6;
-        --color-border: #1e293b;
-        --color-terminal-border: #93c5fd;
-        --color-overlay: rgba(5, 10, 20, 0.95);
-        --color-shadow: rgba(0, 0, 0, 0.85);
-        --color-glow: rgba(147, 197, 253, 0.15);
-        --color-link-hover: rgba(147, 197, 253, 0.1);
-        --color-link-active: rgba(147, 197, 253, 0.2);
-
-        /* Typography */
-        --font-family-heading: "Silkscreen", cursive;
-        --font-family-body: "Outfit", "Inter", sans-serif;
-
-        /* Spacing */
-        --spacing-xs: 0.2rem;
-        --spacing-sm: 0.4rem;
-        --spacing-md: 0.8rem;
-        --spacing-lg: 1.5rem;
-        --spacing-xl: 2rem;
-
-        /* Shadows */
-        --shadow-sm: 0 2px 6px var(--color-shadow);
-        --shadow-md: 0 6px 12px var(--color-glow);
-        --shadow-inner: inset 0 0 0 1px rgba(129, 140, 248, 0.08);
-
-        /* Transitions */
-        --transition-fast: 0.2s ease;
-        --transition-normal: 0.3s ease;
-
-        /* Border Radius */
-        --radius-sm: 4px;
-        --radius-md: 8px;
-        --radius-lg: 1rem;
-      }
-
       * {
-        box-sizing: border-box;
         margin: 0;
         padding: 0;
-      }
-
-      *:focus {
-        outline: 3px double var(--color-accent);
-        outline-offset: 3px;
-        transition: outline var(--transition-fast);
+        box-sizing: border-box;
       }
 
       html {
@@ -116,1621 +60,736 @@
       }
 
       body {
-        font-family: var(--font-family-body);
-        background-color: var(--color-bg);
-        background-image: 
-          radial-gradient(circle at 0% 0%, rgba(147, 197, 253, 0.02) 0%, transparent 50%),
-          radial-gradient(circle at 100% 0%, rgba(96, 165, 250, 0.02) 0%, transparent 50%),
-          radial-gradient(circle at 100% 100%, rgba(147, 197, 253, 0.02) 0%, transparent 50%),
-          radial-gradient(circle at 0% 100%, rgba(96, 165, 250, 0.02) 0%, transparent 50%),
-          linear-gradient(30deg, var(--color-bg), var(--color-bg-alt), var(--color-bg-tert), var(--color-bg-alt));
-        background-size: 300% 300%;
-        animation: gradientBG 20s ease infinite;
-        color: var(--color-text);
-        padding: var(--spacing-lg);
-        display: flex;
-        flex-direction: column;
-        gap: var(--spacing-lg);
-        min-height: 100vh;
+        background: #000;
+        font-family:
+          "DM Sans",
+          -apple-system,
+          BlinkMacSystemFont,
+          sans-serif;
+        color: #999;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        font-size: 17px;
         line-height: 1.7;
-        font-size: 20px;
       }
 
-      canvas {
+      #lava-bg {
         position: fixed;
         top: 0;
         left: 0;
-        pointer-events: none;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+      }
+
+      /* Hero */
+      .hero {
+        position: relative;
         z-index: 1;
-      }
-
-      p {
-        margin: var(--spacing-md) 0;
-        line-height: 1.7;
-        opacity: 0;
-        transform: translateY(20px);
-        animation: revealText 0.6s ease forwards;
-        letter-spacing: 0.01em;
-      }
-
-      ::selection {
-        background-color: rgba(129, 140, 248, 0.1);
-      }
-
-      /* Navigation */
-      nav {
-        position: sticky;
-        top: 0;
-        background-color: rgba(10, 15, 26, 0.97);
-        border-bottom: 1px solid var(--color-border);
-        box-shadow: var(--shadow-sm), var(--shadow-inner);
-        backdrop-filter: blur(8px);
-        margin: calc(-1 * var(--spacing-lg));
-        z-index: 3;
-        height: 3.5rem;
+        min-height: 100vh;
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
-        font-family: var(--font-family-heading);
-      }
-
-      nav ul {
-        list-style: none;
-        display: flex;
-        justify-content: center;
-        gap: var(--spacing-md);
-      }
-
-      nav a {
-        font-family: var(--font-family-heading);
-        color: var(--color-text);
-        text-decoration: none;
-        padding: var(--spacing-xs) var(--spacing-sm);
-        transition: all var(--transition-fast);
-        position: relative;
-      }
-
-      nav a:hover {
-        color: var(--color-accent);
-      }
-
-      nav a.active {
-        color: var(--color-accent);
-      }
-
-      /* Header */
-      .jumbotron {
-        background-image: url("/background.jpg");
-        background-size: cover;
-        background-position: top;
-        background-repeat: no-repeat;
-        height: 100vh;
-        margin: -3.5rem calc(-1 * var(--spacing-lg)) 0;
-        padding: var(--spacing-lg);
-        position: relative;
-        display: flex;
-        align-items: flex-end;
-        justify-content: center;
-      }
-
-      .jumbotron::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: radial-gradient(
-          circle at 50% 50%,
-          transparent 0%,
-          rgba(10, 15, 26, 0.95) 100%
-        );
-        mix-blend-mode: multiply;
-      }
-
-      .jumbotron::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(
-          to bottom,
-          transparent 0%,
-          rgba(10, 15, 26, 0.8) 100%
-        );
-        z-index: 1;
-      }
-
-      .jumbotron section {
+        padding: 2rem;
         text-align: center;
-        max-width: 36rem;
-        position: relative;
-        z-index: 2;
-        background-color: rgba(10, 15, 26, 0.9);
-        border: 1px solid var(--color-border);
-        padding: var(--spacing-lg);
-        border-radius: var(--radius-md);
-        box-shadow: var(--shadow-sm), var(--shadow-inner);
-        backdrop-filter: blur(8px);
       }
 
-      /* Typography */
-      h1,
-      h2,
-      h3 {
-        font-family: var(--font-family-heading);
-        color: var(--color-complement);
-        margin: 0;
+      h1 {
+        font-family: "Cormorant Garamond", Georgia, serif;
+        font-size: clamp(2.8rem, 10vw, 6rem);
+        font-weight: 500;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: #e8e8e8;
+        margin-bottom: 1.25rem;
         opacity: 0;
-        transform: translateY(20px);
-        animation: revealText 0.6s ease forwards;
-        text-shadow: 0 0 1px var(--color-glow), 0 0 2px var(--color-glow);
-        letter-spacing: 0.02em;
+        animation: fadeIn 0.8s ease forwards;
+        animation-delay: 0.2s;
       }
 
-      @keyframes revealText {
+      .tagline {
+        font-size: 1.05rem;
+        font-weight: 400;
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        color: #5a5a5a;
+        margin-bottom: 2.5rem;
+        opacity: 0;
+        animation: fadeIn 0.8s ease forwards;
+        animation-delay: 0.4s;
+      }
+
+      nav {
+        display: flex;
+        gap: 2.5rem;
+        justify-content: center;
+        flex-wrap: wrap;
+        opacity: 0;
+        animation: fadeIn 0.8s ease forwards;
+        animation-delay: 0.6s;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(12px);
+        }
         to {
           opacity: 1;
           transform: translateY(0);
         }
       }
 
-      h1 {
-        font-weight: normal;
-        animation-delay: 0.2s;
-      }
-      h2 {
-        font-weight: normal;
-        animation-delay: 0.4s;
-      }
-      h3 {
-        font-weight: normal;
-      }
-
-      h1,
-      h2 {
-        width: fit-content;
-        display: block;
-        margin: 0 auto;
-      }
-
-      h1::after,
-      h2::after {
-        content: "";
-        display: block;
-        height: 2px;
-        background: linear-gradient(
-          to right,
-          transparent,
-          var(--color-accent-alt),
-          var(--color-accent),
-          var(--color-accent-alt),
-          transparent
-        );
-      }
-
-      /* Scroll Margin */
-      .scroll-margin-top {
-        scroll-margin-top: 5rem;
-      }
-
-      /* Links */
-      a {
-        font-family: var(--font-family-body);
-        color: var(--color-complement-alt);
+      nav a {
+        font-size: 0.85rem;
+        font-weight: 500;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #4a4a4a;
         text-decoration: none;
+        transition: color 0.3s ease;
         position: relative;
-        transition: color var(--transition-normal);
-        border-radius: var(--radius-sm);
       }
 
-      a::after {
+      nav a::after {
         content: "";
         position: absolute;
+        bottom: -4px;
         left: 0;
-        bottom: -2px;
-        width: 100%;
+        width: 0;
         height: 1px;
-        background: linear-gradient(
-          to right,
-          transparent,
-          var(--color-complement-alt),
-          var(--color-complement),
-          var(--color-complement-alt),
-          transparent
-        );
-        opacity: 0.5;
-        transform: scaleX(0);
-        transform-origin: center;
-        transition: transform var(--transition-normal),
-          opacity var(--transition-normal);
+        background: #666;
+        transition: width 0.3s ease;
       }
 
-      a:hover,
-      a:focus {
-        color: var(--color-complement);
+      nav a:hover {
+        color: #999;
       }
 
-      a:hover::after,
-      a:focus::after {
-        transform: scaleX(1);
-        opacity: 0.9;
+      nav a:hover::after {
+        width: 100%;
       }
 
-      /* Sections */
-      section,
-      .card {
-        padding: var(--spacing-lg);
-        background-color: rgba(10, 15, 26, 0.8);
-        border: 1px solid var(--color-border);
-        border-radius: var(--radius-md);
-        box-shadow: var(--shadow-sm), var(--shadow-inner);
-        backdrop-filter: blur(8px);
-        z-index: 2;
-        opacity: 0;
-        transform: translateY(20px);
-        transition: opacity var(--transition-normal),
-          transform var(--transition-normal);
-      }
-
-      section::before,
-      .card::before {
-        content: "";
+      .scroll-hint {
         position: absolute;
-        inset: 0;
-        border-radius: var(--radius-md);
-        background: linear-gradient(
-          135deg,
-          transparent 0%,
-          rgba(129, 140, 248, 0.04) 50%,
-          transparent 100%
-        );
-        z-index: -1;
+        bottom: 2.5rem;
+        left: 50%;
+        transform: translateX(-50%);
+        color: #2a2a2a;
+        font-size: 0.7rem;
+        font-weight: 500;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        opacity: 0;
+        animation:
+          fadeIn 0.8s ease forwards,
+          pulse 2.5s ease-in-out 1s infinite;
+        animation-delay: 0.9s, 1.7s;
       }
 
-      section.visible,
-      .card.visible {
+      .scroll-hint::after {
+        content: "";
+        display: block;
+        width: 1px;
+        height: 24px;
+        background: linear-gradient(to bottom, #2a2a2a, transparent);
+        margin: 0.6rem auto 0;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 0.4;
+        }
+        50% {
+          opacity: 0.7;
+        }
+      }
+
+      /* Content */
+      .content {
+        position: relative;
+        z-index: 1;
+      }
+
+      section {
+        max-width: 660px;
+        margin: 0 auto;
+        padding: 5rem 2rem;
+        opacity: 0;
+        transform: translateY(16px);
+        transition:
+          opacity 0.6s ease,
+          transform 0.6s ease;
+      }
+
+      section.visible {
         opacity: 1;
         transform: translateY(0);
       }
 
-      /* Cards */
-      .card {
+      h2 {
+        font-family: "Cormorant Garamond", Georgia, serif;
+        font-size: 1.5rem;
+        font-weight: 500;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #bbb;
+        margin-bottom: 1.75rem;
+      }
+
+      /* About */
+      .about p {
+        color: #777;
+        max-width: 540px;
+      }
+
+      /* Projects */
+      .projects-list {
         display: flex;
         flex-direction: column;
-        gap: var(--spacing-md);
-        overflow: hidden;
+        gap: 2.75rem;
+      }
+
+      .project {
         text-decoration: none;
-        transition: all 0.3s ease;
-        padding: var(--spacing-md);
-        font-family: var(--font-family-body);
-        position: relative;
+        display: block;
+        transition: transform 0.3s ease;
       }
 
-      .card::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: radial-gradient(
-          circle at var(--x, 50%) var(--y, 50%),
-          var(--color-glow) 0%,
-          transparent 50%
-        );
-        opacity: 0;
-        transition: opacity 0.3s ease;
+      .project:hover {
+        transform: translateX(6px);
       }
 
-      .card:hover::before {
-        opacity: 0.15;
+      .project h3 {
+        font-family: "DM Sans", sans-serif;
+        font-size: 1.05rem;
+        font-weight: 500;
+        color: #c8c8c8;
+        margin-bottom: 0.35rem;
+        transition: color 0.3s ease;
       }
 
-      .card:hover,
-      .card:focus {
-        transform: translateY(-4px);
-        border-color: var(--color-accent);
-        box-shadow: var(--shadow-md), 0 0 0 1px var(--color-glow),
-          0 0 8px var(--color-glow), 0 0 15px var(--color-glow);
-        outline: 0;
+      .project:hover h3 {
+        color: #fff;
       }
 
-      .card div {
-        aspect-ratio: 16/9;
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        margin: calc(-1 * var(--spacing-md)) calc(-1 * var(--spacing-md)) 0;
-        filter: brightness(0.8) contrast(1.1) saturate(0.9) sepia(0.2)
-          hue-rotate(-10deg) blur(0.3px);
-        transition: filter var(--transition-normal),
-          transform var(--transition-normal);
+      .project p {
+        font-size: 0.92rem;
+        color: #606060;
+        margin-bottom: 0.65rem;
+        line-height: 1.6;
       }
 
-      .card:hover div {
-        filter: brightness(1.05) contrast(1.05) saturate(1.2);
-      }
-
-      .card h3 {
-        margin-bottom: -0.5rem;
-      }
-
-      .card p {
-        color: var(--color-text);
-        margin: 0;
-      }
-
-      /* Tags */
-      .tags {
+      .project .tags {
         display: flex;
         flex-wrap: wrap;
-        gap: var(--spacing-sm);
-        margin: 0;
-        padding: 0;
-        list-style: none;
-        font-size: 0.7em;
+        gap: 0.4rem;
       }
 
-      .tags li {
-        padding: var(--spacing-xs) var(--spacing-sm);
-        background: rgba(129, 140, 248, 0.08);
-        border: 1px solid rgba(129, 140, 248, 0.2);
-        border-radius: var(--radius-sm);
-        color: var(--color-accent);
-        backdrop-filter: blur(4px);
-        font-weight: 600;
-        opacity: 1;
-        text-shadow: 0 0 1px rgba(129, 140, 248, 0.25);
-      }
-
-      /* Grid Layouts */
-      .about-grid {
-        display: grid;
-        grid-template-columns: 2fr 1fr;
-        gap: var(--spacing-lg);
-      }
-
-      .about-grid section:first-child,
-      .about-grid section:nth-child(2) {
-        grid-column: 1;
-      }
-
-      .about-grid section:last-child {
-        grid-column: 2;
-        grid-row: 1 / span 2;
-      }
-
-      @media (max-width: 1024px) {
-        .about-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .about-grid section:first-child,
-        .about-grid section:nth-child(2),
-        .about-grid section:last-child {
-          grid-column: 1;
-          grid-row: auto;
-        }
-      }
-
-      .projects-grid {
-        display: grid;
-        gap: var(--spacing-lg);
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      }
-
-      /* Experience */
-      .experience-item {
-        margin-top: var(--spacing-lg);
-        display: flex;
-      }
-
-      .experience-item > div:first-child {
-        width: 10rem;
-        flex: 0 0 auto;
-        color: var(--color-complement-alt);
-      }
-
-      .experience-item strong {
-        color: var(--color-complement);
-        font-weight: 600;
-      }
-
-      .experience-item p {
-        margin: var(--spacing-sm) 0 var(--spacing-md);
-      }
-
-      /* Blog */
-      #blog > ul {
-        list-style-type: none;
-        padding: 0;
-        margin-bottom: 2rem;
-      }
-
-      #blog > ul > li {
-        margin-bottom: var(--spacing-lg);
-        border-left: 2px solid var(--color-accent);
-        padding-left: var(--spacing-lg);
-      }
-
-      #blog > ul > li > a {
-        display: inline-block;
-        margin: 0.3rem 0 1rem 0;
-        font-family: var(--font-family-body);
-        color: var(--color-text-light);
-        text-shadow: 0 0 1px rgba(129, 140, 248, 0.25);
-      }
-
-      #blog > ul > li > a:hover {
-        color: var(--color-accent);
-      }
-
-      #blog time {
-        display: block;
-        color: var(--color-complement-alt);
-        font-weight: 500;
-      }
-
-      /* Contact Form */
-      #contact {
-        max-width: 600px;
-        width: 100%;
-        margin: 0 auto;
-      }
-
-      #contact form {
-        display: flex;
-        flex-direction: column;
-        gap: var(--spacing-lg);
-      }
-
-      label {
-        display: flex;
-        flex-direction: column;
-        font-family: var(--font-family-heading);
-        letter-spacing: 0.5px;
-        color: var(--color-text);
-      }
-
-      input,
-      textarea {
-        margin-top: 0.4rem;
-        background: var(--color-bg);
-        border: 1px solid var(--color-link-active);
-        border-radius: var(--radius-sm);
-        padding: 0.75rem 1rem;
-        color: var(--color-text-light);
-        font-family: inherit;
-        font-size: 1em;
-        transition: border-color var(--transition-fast),
-          box-shadow var(--transition-fast);
-      }
-
-      input:focus,
-      textarea:focus {
-        outline: none;
-        border-color: var(--color-accent);
-        box-shadow: 0 0 0 2px var(--color-glow);
-      }
-
-      /* Buttons */
-      button,
-      .button {
-        font-family: var(--font-family-heading);
-        font-size: 1em;
-        font-weight: normal;
-        padding: var(--spacing-sm) var(--spacing-md);
-        color: var(--color-complement);
-        background: var(--color-overlay);
-        border: 2px solid var(--color-complement-alt);
-        border-radius: var(--radius-md);
-        backdrop-filter: blur(5px);
-        box-shadow: var(--shadow-inner), 0 2px 5px var(--color-shadow),
-          0 0 6px var(--color-glow);
-        transition: all 0.25s ease;
-        cursor: pointer;
-      }
-
-      button:hover,
-      .button:hover {
-        background: rgba(129, 140, 248, 0.15);
-        border-color: var(--color-complement);
-        color: var(--color-complement);
-        box-shadow: 0 0 8px var(--color-glow), 0 0 18px rgba(129, 140, 248, 0.2),
-          inset 0 0 10px rgba(129, 140, 248, 0.05);
-        transform: translateY(-2px);
-      }
-
-      button:focus,
-      .button:focus {
-        outline: none;
-        box-shadow: 0 0 0 2px var(--color-accent), 0 0 8px 3px var(--color-glow);
-      }
-
-      .button.small {
-        padding: var(--spacing-xs) var(--spacing-sm);
-        border-radius: var(--radius-sm);
-      }
-
-      /* Social Links */
-      .socials {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.75rem;
-      }
-
-      .socials a {
-        fill: currentColor;
-        transition: all 0.2s ease;
-        position: relative;
-      }
-
-      .socials a::before {
-        content: "";
-        position: absolute;
-        inset: -4px;
-        border-radius: 50%;
-        background: var(--color-glow);
-        opacity: 0;
-        transform: scale(0.8);
-        transition: all 0.2s ease;
-      }
-
-      .socials a:hover::before,
-      .socials a:focus::before {
-        opacity: 0.3;
-        transform: scale(1.2);
-      }
-
-      .socials a:hover,
-      .socials a:focus {
-        transform: translateY(-2px) scale(1.1);
-        color: var(--color-accent);
-      }
-
-      .socials svg {
-        width: 1.3rem;
-        height: 1.3rem;
-        display: block;
-        transition: transform var(--transition-normal);
-      }
-
-      .socials span {
-        font-family: var(--font-family-body);
-        position: absolute;
-        display: block;
-        background: var(--color-text-light);
-        color: var(--color-bg);
-        border-radius: var(--radius-sm);
-        padding: var(--spacing-xs) var(--spacing-sm);
-        font-size: 0.8em;
-        width: fit-content;
-        margin-top: 0.5rem;
-        left: 50%;
-        transform: translateX(-50%) scale(0.5);
-        opacity: 0;
-        white-space: nowrap;
-        transition: all 0.1s ease;
-        pointer-events: none;
-      }
-
-      .socials a:hover span,
-      .socials a:focus span {
-        opacity: 1;
-        transform: translate(-50%, 0.4rem) scale(1);
-      }
-
-      /* Dividers */
-      hr {
-        width: 100%;
-        overflow: visible;
-        border: none;
-        text-align: center;
-        height: 1px;
-        background: none;
-        position: relative;
-        max-width: 420px;
-        margin: var(--spacing-xl) auto;
-      }
-
-      hr::before {
-        content: ">_";
-        display: inline-block;
-        position: absolute;
-        top: -1.05rem;
-        left: 50%;
-        transform: translateX(-50%);
-        font-family: var(--font-family-heading);
-        letter-spacing: 0.1em;
-        color: var(--color-complement);
-        background: var(--color-bg);
-        padding: 0 0.6rem;
-        border-radius: var(--radius-sm);
-      }
-
-      hr::after {
-        content: "";
-        display: block;
-        height: 3px;
-        background: linear-gradient(
-          to right,
-          transparent,
-          var(--color-complement-alt),
-          var(--color-complement),
-          var(--color-complement-alt),
-          transparent
-        );
+      .project .tag {
+        font-size: 0.65rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: #4a4a4a;
+        padding: 0.25rem 0.55rem;
+        border: 1px solid #1f1f1f;
+        border-radius: 3px;
       }
 
       /* Footer */
       footer {
+        position: relative;
+        z-index: 1;
+        padding: 4rem 2rem;
         text-align: center;
-        margin-top: auto;
-        border-top: 1px solid var(--color-border);
-        padding-top: var(--spacing-lg);
-        color: var(--color-text-light);
-        text-shadow: 0 0 5px var(--color-glow);
       }
 
-      /* Media Queries */
-      @media (max-width: 1024px) {
-        .about-grid {
-          grid-template-columns: 1fr;
-        }
+      .socials {
+        display: flex;
+        justify-content: center;
+        gap: 1.75rem;
       }
 
-      @media (max-width: 768px) {
-        body {
-          padding: var(--spacing-md);
-          font-size: 16px;
-        }
+      .socials a {
+        color: #3a3a3a;
+        transition:
+          color 0.3s ease,
+          transform 0.2s ease;
+        display: inline-block;
+      }
 
+      .socials a:hover {
+        color: #777;
+        transform: scale(1.15);
+      }
+
+      .socials svg {
+        width: 18px;
+        height: 18px;
+        fill: currentColor;
+      }
+
+      /* Responsive */
+      @media (max-width: 600px) {
         nav {
-          margin: calc(-1 * var(--spacing-md));
+          gap: 1.75rem;
         }
 
-        .jumbotron {
-          margin: -3.5rem calc(-1 * var(--spacing-md)) 0;
-          padding: var(--spacing-md);
-        }
-
-        nav ul {
-          gap: var(--spacing-sm);
-        }
-
-        .projects-grid {
-          grid-template-columns: 1fr;
-          gap: var(--spacing-md);
-        }
-
-        .card {
-          margin: 0;
-        }
-
-        .card div {
-          margin: calc(-1 * var(--spacing-md)) calc(-1 * var(--spacing-md)) 0;
+        section {
+          padding: 3.5rem 1.5rem;
         }
 
         .socials {
-          flex-wrap: wrap;
-          gap: var(--spacing-sm);
-        }
-
-        .socials a {
-          padding: var(--spacing-xs);
-        }
-
-        .socials svg {
-          width: 1.2rem;
-          height: 1.2rem;
-        }
-
-        .tags {
-          gap: var(--spacing-xs);
-        }
-
-        .tags li {
-          padding: var(--spacing-xs) var(--spacing-sm);
-        }
-
-        .experience-item {
-          flex-direction: column;
-          gap: var(--spacing-sm);
-        }
-
-        .experience-item > div:first-child {
-          width: auto;
+          gap: 1.5rem;
         }
       }
 
-      @media (prefers-reduced-motion: reduce) {
-        * {
-          animation-duration: 0.01ms !important;
-          animation-iteration-count: 1 !important;
-          transition-duration: 0.01ms !important;
-          scroll-behavior: auto !important;
+      @media (min-width: 1200px) {
+        body {
+          font-size: 18px;
         }
-      }
 
-      /* Background Animation */
-      @keyframes gradientBG {
-        0% {
-          background-position: 0% 50%;
+        section {
+          max-width: 700px;
+          padding: 6rem 2rem;
         }
-        50% {
-          background-position: 100% 50%;
+
+        h2 {
+          font-size: 1.65rem;
         }
-        100% {
-          background-position: 0% 50%;
+
+        .project h3 {
+          font-size: 1.15rem;
         }
-      }
 
-      /* Cursor Trail */
-      .cursor-trail {
-        position: fixed;
-        width: 6px;
-        height: 6px;
-        background: var(--color-accent);
-        border-radius: 50%;
-        pointer-events: none;
-        opacity: 0;
-        z-index: 9999;
-        mix-blend-mode: screen;
-        filter: blur(1px);
-        transition: transform 0.1s ease;
-      }
-
-      /* Form Inputs */
-      .form-group {
-        position: relative;
-        margin-top: var(--spacing-md);
-      }
-
-      .form-group label {
-        position: absolute;
-        left: 1rem;
-        top: 50%;
-        transform: translateY(-50%);
-        transition: all 0.3s ease;
-        pointer-events: none;
-        color: var(--color-text);
-        background: var(--color-bg);
-        border-radius: var(--radius-sm);
-        padding: 0 0.5rem;
-      }
-
-      .form-group textarea ~ label {
-        top: 1rem;
-        transform: none;
-      }
-
-      .form-group input:focus ~ label,
-      .form-group textarea:focus ~ label,
-      .form-group input:not(:placeholder-shown) ~ label,
-      .form-group textarea:not(:placeholder-shown) ~ label {
-        top: -0.5rem;
-        left: 0.5rem;
-        color: var(--color-complement);
-        background: var(--color-bg);
-        padding: 0 0.5rem;
-      }
-
-      .form-group textarea:focus ~ label,
-      .form-group textarea:not(:placeholder-shown) ~ label {
-        top: -1.25rem;
-      }
-
-      .form-group input,
-      .form-group textarea {
-        width: 100%;
-        background: transparent;
-        border: 2px solid var(--color-border);
-        border-radius: var(--radius-md);
-        padding: 1rem;
-        color: var(--color-text);
-        transition: all 0.3s ease;
-      }
-
-      .form-group input:focus,
-      .form-group textarea:focus {
-        border-color: var(--color-accent);
-        box-shadow: 0 0 0 2px var(--color-glow);
-      }
-
-      .form-group::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        border-radius: var(--radius-md);
-        background: radial-gradient(
-          circle at var(--x, 50%) var(--y, 50%),
-          var(--color-glow) 0%,
-          transparent 50%
-        );
-        opacity: 0;
-        transition: opacity 0.3s ease;
-        pointer-events: none;
-      }
-
-      .form-group:hover::after {
-        opacity: 0.1;
-      }
-
-      /* Particle Burst Effect */
-      .particle {
-        position: fixed;
-        pointer-events: none;
-        z-index: 9999;
-        animation: particleBurst 1s ease-out forwards;
-      }
-
-      @keyframes particleBurst {
-        0% {
-          transform: translate(0, 0) scale(1);
-          opacity: 1;
-        }
-        100% {
-          transform: translate(var(--tx), var(--ty)) scale(0);
-          opacity: 0;
+        .project p {
+          font-size: 1rem;
         }
       }
     </style>
   </head>
   <body>
-    <!-- Background effects -->
-    <canvas id="arcane-bg"></canvas>
-    <canvas id="magic-trail"></canvas>
+    <canvas id="lava-bg"></canvas>
 
-    <nav>
-      <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-
-    <header id="home" class="jumbotron scroll-margin-top">
-      <section>
-        <h1>Scott Batary</h1>
-        <p>
-          I'm a full-stack developer with a passion for building feature-rich
-          web apps, robust APIs, and innovative libraries. Check out my work on
-          GitHub!
-        </p>
-        <div class="socials">
-          <a href="https://github.com/sgbj" aria-label="GitHub">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              height="1em"
-              viewBox="0 0 496 512"
-              aria-hidden="true"
-            >
-              <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-              <path
-                d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"
-              />
-            </svg>
-            <span>GitHub</span>
-          </a>
-          <a href="https://blog.batary.dev/" aria-label="Medium">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              height="1em"
-              viewBox="0 0 640 512"
-              aria-hidden="true"
-            >
-              <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-              <path
-                d="M180.5,74.262C80.813,74.262,0,155.633,0,256S80.819,437.738,180.5,437.738,361,356.373,361,256,280.191,74.262,180.5,74.262Zm288.25,10.646c-49.845,0-90.245,76.619-90.245,171.095s40.406,171.1,90.251,171.1,90.251-76.619,90.251-171.1H559C559,161.5,518.6,84.908,468.752,84.908Zm139.506,17.821c-17.526,0-31.735,68.628-31.735,153.274s14.2,153.274,31.735,153.274S640,340.631,640,256C640,171.351,625.785,102.729,608.258,102.729Z"
-              />
-            </svg>
-            <span>Medium</span>
-          </a>
-          <a
-            href="https://stackoverflow.com/users/2658854/sgbj"
-            aria-label="Stack Overflow"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              height="1em"
-              viewBox="0 0 384 512"
-              aria-hidden="true"
-            >
-              <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-              <path
-                d="M290.7 311L95 269.7 86.8 309l195.7 41zm51-87L188.2 95.7l-25.5 30.8 153.5 128.3zm-31.2 39.7L129.2 179l-16.7 36.5L293.7 300zM262 32l-32 24 119.3 160.3 32-24zm20.5 328h-200v39.7h200zm39.7 80H42.7V320h-40v160h359.5V320h-40z"
-              />
-            </svg>
-            <span>Stack Overflow</span>
-          </a>
-          <a href="https://twitter.com/sbatary" aria-label="X / Twitter">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              height="1em"
-              viewBox="0 0 512 512"
-              aria-hidden="true"
-            >
-              <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-              <path
-                d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"
-              />
-            </svg>
-            <span>X / Twitter</span>
-          </a>
-          <a
-            href="https://www.linkedin.com/in/scott-batary/"
-            aria-label="LinkedIn"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              height="1em"
-              viewBox="0 0 448 512"
-              aria-hidden="true"
-            >
-              <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-              <path
-                d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"
-              />
-            </svg>
-            <span>LinkedIn</span>
-          </a>
-        </div>
-      </section>
-    </header>
-
-    <hr />
-
-    <div class="about-grid">
-      <section id="about" class="scroll-margin-top">
-        <h2>🧙‍♂️ About</h2>
-        <p>
-          Hello, world! I'm Scott, a software developer based in Oklahoma. I'm
-          passionate about building intuitive and scalable software solutions
-          that make a positive impact.
-        </p>
-        <p>
-          I strive to keep up-to-date with new technologies and best practices.
-          Lately, I've been learning Go, Next.js, and React Server Components. I
-          also have personal licenses for GitHub Pro, GitHub Copilot, JetBrains,
-          Tailwind UI, and Font Awesome.
-        </p>
-        <p>
-          Beyond coding, I enjoy playing games like Overwatch, Dead by Daylight,
-          and Elder Scrolls Online.
-        </p>
-      </section>
-
-      <section id="experience">
-        <h2>📜 Experience</h2>
-
-        <article class="experience-item">
-          <div>2024 - Present</div>
-          <div>
-            <strong>Software Engineer</strong>
-            <p>Started a new adventure!</p>
-          </div>
-        </article>
-
-        <article class="experience-item">
-          <div>2017 - 2024</div>
-          <div>
-            <strong>Principal Developer</strong>
-            <p>
-              Led the development of a cutting-edge court case management
-              system. Standardized authentication and authorization across our
-              applications, established a design system for a seamless user
-              experience, and optimized developer workflows through CI/CD
-              pipelines.
-            </p>
-            <ul class="tags">
-              <li>C#</li>
-              <li>TS</li>
-              <li>SCSS</li>
-              <li>Angular</li>
-              <li>ASP.NET Core</li>
-              <li>Entity Framework Core</li>
-              <li>IdentityServer</li>
-              <li>OpenID Connect</li>
-              <li>OAuth 2.0</li>
-              <li>SQL Server</li>
-              <li>SSRS</li>
-              <li>Docker</li>
-              <li>SharePoint</li>
-              <li>Microsoft Graph</li>
-              <li>Azure DevOps</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="experience-item">
-          <div>2016 - 2017</div>
-          <div>
-            <strong>Senior Developer</strong>
-            <p>
-              Technical lead and architect for a team of developers working on a
-              patient portal for a healthcare provider. Integrated multi-factor
-              authentication, a patient education system, and a secure messaging
-              application.
-            </p>
-            <ul class="tags">
-              <li>C#</li>
-              <li>JS</li>
-              <li>ASP.NET</li>
-              <li>AngularJS</li>
-              <li>React</li>
-              <li>Redux</li>
-              <li>Redis</li>
-              <li>Twilio</li>
-              <li>SendGrid</li>
-              <li>DocuSign</li>
-              <li>GitHub Enterprise</li>
-              <li>Octopus</li>
-              <li>Jira</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="experience-item">
-          <div>2013 - 2016</div>
-          <div>
-            <strong>Programmer Analyst</strong>
-            <p>
-              Developed a credit card transaction system and online payment web
-              application, and was a key contributor to various applications,
-              APIs, background jobs, and reports.
-            </p>
-            <ul class="tags">
-              <li>C#</li>
-              <li>JS</li>
-              <li>SQL</li>
-              <li>ASP.NET MVC</li>
-              <li>Entity Framework</li>
-              <li>SQL Server</li>
-              <li>SSRS</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="experience-item">
-          <div>2011 - 2013</div>
-          <div>
-            <strong>Lab Assistant</strong>
-            <p>
-              Tutored students in computer science, collaborated with
-              instructors to create course materials, and supervised student
-              projects.
-            </p>
-            <ul class="tags">
-              <li>Java</li>
-              <li>PHP</li>
-              <li>HTML</li>
-              <li>CSS</li>
-              <li>JS</li>
-              <li>Computer Science</li>
-            </ul>
-          </div>
-        </article>
-      </section>
-
-      <section id="blog">
-        <h2>📖 Blog</h2>
-        <p></p>
-        <ul></ul>
-        <a href="https://blog.batary.dev/" class="button small"
-          >&lt; View more &gt;</a
+    <div class="hero">
+      <h1>Scott Batary</h1>
+      <p class="tagline">Software Engineer</p>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#work">Work</a>
+        <a href="https://github.com/sgbj" target="_blank" rel="noopener"
+          >GitHub</a
         >
+        <a href="https://blog.batary.dev/" target="_blank" rel="noopener"
+          >Blog</a
+        >
+      </nav>
+      <div class="scroll-hint">Scroll</div>
+    </div>
+
+    <div class="content">
+      <section id="about" class="about">
+        <h2>About</h2>
+        <p>
+          I build web apps and APIs, mostly with C# and Next.js. Based in
+          Oklahoma. Sometimes I make games or open-source tools when an idea
+          won't leave me alone.
+        </p>
+      </section>
+
+      <section id="work">
+        <h2>Selected Work</h2>
+        <div class="projects-list">
+          <a
+            href="https://www.nuget.org/packages/Sgbj.Cron.CronTimer"
+            target="_blank"
+            rel="noopener"
+            class="project"
+          >
+            <h3>CronTimer</h3>
+            <p>Cron scheduling library for .NET with over 800k downloads.</p>
+            <div class="tags">
+              <span class="tag">C#</span>
+              <span class="tag">.NET</span>
+              <span class="tag">NuGet</span>
+            </div>
+          </a>
+
+          <a
+            href="https://batary.dev/copycat/"
+            target="_blank"
+            rel="noopener"
+            class="project"
+          >
+            <h3>Copycat</h3>
+            <p>
+              Portal-inspired pixel art platformer where you record your actions
+              and spawn a clone to replay them.
+            </p>
+            <div class="tags">
+              <span class="tag">TypeScript</span>
+              <span class="tag">Phaser</span>
+              <span class="tag">Matter.js</span>
+            </div>
+          </a>
+
+          <a
+            href="https://github.com/sgbj/conquer"
+            target="_blank"
+            rel="noopener"
+            class="project"
+          >
+            <h3>Conquer Server</h3>
+            <p>Private server emulator for the MMORPG Conquer Online.</p>
+            <div class="tags">
+              <span class="tag">C#</span>
+              <span class="tag">ASP.NET Core</span>
+              <span class="tag">EF Core</span>
+            </div>
+          </a>
+
+          <a
+            href="https://overlays.batary.dev/"
+            target="_blank"
+            rel="noopener"
+            class="project"
+          >
+            <h3>Overlay Sharer</h3>
+            <p>Share StreamElements overlays with the click of a button.</p>
+            <div class="tags">
+              <span class="tag">Next.js</span>
+              <span class="tag">Prisma</span>
+              <span class="tag">Vercel</span>
+            </div>
+          </a>
+
+          <a
+            href="https://batary.dev/d20/"
+            target="_blank"
+            rel="noopener"
+            class="project"
+          >
+            <h3>d20</h3>
+            <p>Roll 3D dice in the browser with realistic physics.</p>
+            <div class="tags">
+              <span class="tag">TypeScript</span>
+              <span class="tag">Babylon.js</span>
+              <span class="tag">Havok</span>
+            </div>
+          </a>
+        </div>
       </section>
     </div>
 
-    <hr />
+    <footer>
+      <div class="socials">
+        <a
+          href="https://github.com/sgbj"
+          target="_blank"
+          rel="noopener"
+          aria-label="GitHub"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
+            <path
+              d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8z"
+            />
+          </svg>
+        </a>
+        <a
+          href="https://linkedin.com/in/scott-batary"
+          target="_blank"
+          rel="noopener"
+          aria-label="LinkedIn"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+            <path
+              d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"
+            />
+          </svg>
+        </a>
+        <a
+          href="https://twitter.com/sbatary"
+          target="_blank"
+          rel="noopener"
+          aria-label="X / Twitter"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+            <path
+              d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"
+            />
+          </svg>
+        </a>
+        <a
+          href="https://medium.com/@batary"
+          target="_blank"
+          rel="noopener"
+          aria-label="Medium"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+            <path
+              d="M180.5,74.262C80.813,74.262,0,155.633,0,256S80.819,437.738,180.5,437.738,361,356.373,361,256,280.191,74.262,180.5,74.262Zm288.25,10.646c-49.845,0-90.245,76.619-90.245,171.095s40.406,171.1,90.251,171.1,90.251-76.619,90.251-171.1H559C559,161.5,518.6,84.908,468.752,84.908Zm139.506,17.821c-17.526,0-31.735,68.628-31.735,153.274s14.2,153.274,31.735,153.274S640,340.631,640,256C640,171.351,625.785,102.729,608.258,102.729Z"
+            />
+          </svg>
+        </a>
+      </div>
+    </footer>
 
-    <h2 id="projects" class="scroll-margin-top">🧪 Projects</h2>
-
-    <div class="projects-grid">
-      <a href="https://batary.dev/suika-clone/" class="card">
-        <div style="background-image: url(/assets/suika-clone.jpg)"></div>
-        <h3>Suika Clone</h3>
-        <p>Halloween 🎃 themed version of the Watermelon Game.</p>
-        <ul class="tags">
-          <li>TS</li>
-          <li>Phaser</li>
-          <li>Matter.js</li>
-          <li>Vite</li>
-        </ul>
-      </a>
-
-      <a href="https://overlays.batary.dev/" class="card">
-        <div style="background-image: url(/assets/overlay-sharer.png)"></div>
-        <h3>Overlay Sharer</h3>
-        <p>Share StreamElements overlays with the click of a button.</p>
-        <ul class="tags">
-          <li>Next.js</li>
-          <li>NextAuth.js</li>
-          <li>React</li>
-          <li>Prisma</li>
-          <li>PostgreSQL</li>
-          <li>Tailwind</li>
-          <li>Vercel</li>
-        </ul>
-      </a>
-
-      <a href="https://github.com/sgbj/conquer" class="card">
-        <div style="background-image: url(/assets/conquer-server.jpg)"></div>
-        <h3>Conquer Server</h3>
-        <p>Private server for the MMORPG Conquer Online.</p>
-        <ul class="tags">
-          <li>C#</li>
-          <li>ASP.NET Core Identity</li>
-          <li>Entity Framework Core</li>
-          <li>SQL Server</li>
-        </ul>
-      </a>
-
-      <a href="https://batary.dev/d20/" class="card">
-        <div style="background-image: url(/assets/d20.png)"></div>
-        <h3>d20</h3>
-        <p>Roll a set of 3D dice 🎲 in the browser.</p>
-        <ul class="tags">
-          <li>TS</li>
-          <li>Babylon.js</li>
-          <li>Havok</li>
-          <li>Vite</li>
-        </ul>
-      </a>
-
-      <a href="https://github.com/sgbj/dbd-stats" class="card">
-        <div style="background-image: url(/assets/dbd-stats.png)"></div>
-        <h3>DBD Stats</h3>
-        <p>Track Dead by Daylight player stats and achievements from Steam.</p>
-        <ul class="tags">
-          <li>Next.js</li>
-          <li>React</li>
-          <li>Tailwind</li>
-          <li>Prisma</li>
-          <li>Vercel</li>
-        </ul>
-      </a>
-
-      <a
-        href="https://www.etsy.com/listing/1579967521/animated-chatbox-overlay-widget-for"
-        class="card"
-      >
-        <div style="background-image: url(/assets/chat-widget.jpg)"></div>
-        <h3>Chat Widget</h3>
-        <p>Animated chatbox widget for StreamElements, Twitch, and OBS.</p>
-        <ul class="tags">
-          <li>HTML</li>
-          <li>CSS</li>
-          <li>JS</li>
-        </ul>
-      </a>
-
-      <a href="https://www.nuget.org/packages/Sgbj.Cron.CronTimer" class="card">
-        <div style="background-image: url(/assets/crontimer.png)"></div>
-        <h3>CronTimer</h3>
-        <p>Cron timer NuGet package with over 400k downloads.</p>
-        <ul class="tags">
-          <li>C#</li>
-          <li>.NET</li>
-          <li>NuGet</li>
-        </ul>
-      </a>
-
-      <a href="https://github.com/sgbj/dotnet-monitoring" class="card">
-        <div style="background-image: url(/assets/dotnet-monitoring.png)"></div>
-        <h3>.NET Monitoring</h3>
-        <p>
-          Sample ASP.NET Core web app with instrumentation and monitoring using
-          OpenTelementry.
-        </p>
-        <ul class="tags">
-          <li>C#</li>
-          <li>Prometheus</li>
-          <li>Jaeger</li>
-          <li>Grafana</li>
-          <li>Docker</li>
-        </ul>
-      </a>
-
-      <a href="https://github.com/sgbj/go-todos" class="card">
-        <div style="background-image: url(/assets/go-todos.png)"></div>
-        <h3>Todos</h3>
-        <p>Simple todo app built with Go.</p>
-        <ul class="tags">
-          <li>Go</li>
-          <li>SQLite</li>
-          <li>REST</li>
-        </ul>
-      </a>
-
-      <a href="https://github.com/sgbj/notion-clone" class="card">
-        <div style="background-image: url(/assets/notion-clone.png)"></div>
-        <h3>Notion Clone</h3>
-        <p>
-          Fullstack notes app with auth, sharing, rich text editing, and image
-          uploads.
-        </p>
-        <ul class="tags">
-          <li>Next.js</li>
-          <li>React</li>
-          <li>Tailwind</li>
-          <li>shadcn/ui</li>
-          <li>Clerk</li>
-          <li>Convex</li>
-          <li>Edge Store</li>
-          <li>BlockNote</li>
-        </ul>
-      </a>
-
-      <a href="https://github.com/sgbj/discord-clone" class="card">
-        <div style="background-image: url(/assets/discord-clone.png)"></div>
-        <h3>Discord Clone</h3>
-        <p>
-          Fullstack chat app with realtime messaging, audio, and video calls.
-        </p>
-        <ul class="tags">
-          <li>Next.js</li>
-          <li>React</li>
-          <li>Tailwind</li>
-          <li>shadcn/ui</li>
-          <li>Socket.IO</li>
-          <li>Prisma</li>
-          <li>MySQL</li>
-        </ul>
-      </a>
-
-      <a href="https://batary.dev/pool/" class="card">
-        <div style="background-image: url(/assets/pool.png)"></div>
-        <h3>Pool</h3>
-        <p>A game of pool 🎱 made with pixel art.</p>
-        <ul class="tags">
-          <li>JS</li>
-          <li>Phaser</li>
-          <li>Matter.js</li>
-        </ul>
-      </a>
-
-      <a href="https://batary.dev/chess/" class="card">
-        <div style="background-image: url(/assets/chess.png)"></div>
-        <h3>Chess</h3>
-        <p>Chess ♟️ game using the Canvas API.</p>
-        <ul class="tags">
-          <li>HTML</li>
-          <li>JS</li>
-          <li>Vite</li>
-        </ul>
-      </a>
-
-      <a href="https://batary.dev/emojis/" class="card">
-        <div style="background-image: url(/assets/bouncy-emojis.png)"></div>
-        <h3>Bouncy Emojis</h3>
-        <p>Spawn emojis 🤪 with bouncy physics.</p>
-        <ul class="tags">
-          <li>JS</li>
-          <li>Phaser</li>
-          <li>Matter.js</li>
-        </ul>
-      </a>
-
-      <a href="https://github.com/sgbj/platform" class="card">
-        <div style="background-image: url(/assets/platform.png)"></div>
-        <h3>Platform</h3>
-        <p>Frontend prototype for a platform as a service.</p>
-        <ul class="tags">
-          <li>TS</li>
-          <li>SCSS</li>
-          <li>Angular</li>
-          <li>Material</li>
-        </ul>
-      </a>
-
-      <a href="https://github.com/sgbj/streaming" class="card">
-        <div style="background-image: url(/assets/twitch-clone.png)"></div>
-        <h3>Twitch Clone</h3>
-        <p>
-          Proof of concept streaming platform built on the same protocols as
-          Twitch: RTMP and HLS.
-        </p>
-        <ul class="tags">
-          <li>C#</li>
-          <li>SignalR</li>
-          <li>React</li>
-          <li>Chakra UI</li>
-        </ul>
-      </a>
-
-      <a href="https://github.com/sgbj/versed" class="card">
-        <div style="background-image: url(/assets/versed.png)"></div>
-        <h3>Versed</h3>
-        <p>
-          File conversion microservice powered by FFmpeg, LibreOffice,
-          ImageMagick, and Tesseract OCR.
-        </p>
-        <ul class="tags">
-          <li>Node.js</li>
-          <li>Express</li>
-        </ul>
-      </a>
-
-      <a href="https://github.com/sgbj/pdf-sign" class="card">
-        <div style="background-image: url(/assets/pdf-sign.png)"></div>
-        <h3>PDF Sign</h3>
-        <p>
-          Prototype using custom PDF rendering, overlayed form controls, and the
-          ability to draw on canvas.
-        </p>
-        <ul class="tags">
-          <li>HTML</li>
-          <li>JS</li>
-          <li>CSS</li>
-        </ul>
-      </a>
-
-      <a href="https://batary.dev/fractals/" class="card">
-        <div style="background-image: url(/assets/fractals.png)"></div>
-        <h3>Fractals</h3>
-        <p>Implementations of common fractals.</p>
-        <ul class="tags">
-          <li>HTML</li>
-          <li>JS</li>
-        </ul>
-      </a>
-
-      <a href="https://github.com/sgbj/pocket-iv" class="card">
-        <div style="background-image: url(/assets/pocket-iv.png)"></div>
-        <h3>Pocket IV</h3>
-        <p>Mobile app for calculating IV in Pokemon GO.</p>
-        <ul class="tags">
-          <li>JS</li>
-          <li>CSS</li>
-          <li>Ionic</li>
-        </ul>
-      </a>
-    </div>
-
-    <hr />
-
-    <section id="contact" class="scroll-margin-top">
-      <form>
-        <h2>✉️ Contact</h2>
-
-        <div class="form-group">
-          <input type="email" name="email" required placeholder=" " />
-          <label>Email</label>
-        </div>
-
-        <div class="form-group">
-          <textarea name="message" rows="6" required placeholder=" "></textarea>
-          <label>Message</label>
-        </div>
-
-        <button type="submit">Send packet 📦</button>
-      </form>
-    </section>
-
-    <footer>Made with 👾 by sgbj</footer>
-
-    <!-- Arcane Background Glyphs -->
     <script>
-      const canvas = document.getElementById("arcane-bg");
-      const ctx = canvas.getContext("2d");
+      const canvas = document.getElementById("lava-bg");
+      const gl = canvas.getContext("webgl");
 
-      const resizeCanvas = () => {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-      };
+      if (!gl) {
+        console.error("WebGL not supported");
+      }
 
-      resizeCanvas();
-      window.addEventListener("resize", resizeCanvas);
+      const vertexShaderSource = `
+      attribute vec2 a_position;
+      void main() {
+        gl_Position = vec4(a_position, 0.0, 1.0);
+      }
+    `;
 
-      const glyphs = "01".split("");
-      const particles = Array.from({ length: 40 }, () => ({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        size: 16 + Math.random() * 10,
-        char: glyphs[Math.floor(Math.random() * glyphs.length)],
-        alpha: 0.03 + Math.random() * 0.05,
-        speedX: (Math.random() - 0.5) * 0.1,
-        speedY: (Math.random() - 0.5) * 0.1,
-        rotate: Math.random() * Math.PI * 2,
-        rotateSpeed: (Math.random() - 0.5) * 0.01,
-        parallax: 0.2 + Math.random() * 0.3,
-      }));
+      const fragmentShaderSource = `
+      precision highp float;
 
-      let scrollY = 0;
-      let isMobile = window.innerWidth <= 768;
-      let mouseX = 0;
-      let mouseY = 0;
+      uniform vec2 u_resolution;
+      uniform float u_time;
+      uniform float u_scroll;
+
+      #define MAX_STEPS 100
+      #define MAX_DIST 100.0
+      #define SURF_DIST 0.0005
+
+      float smin(float a, float b, float k) {
+        float h = clamp(0.5 + 0.5 * (b - a) / k, 0.0, 1.0);
+        return mix(b, a, h) - k * h * (1.0 - h);
+      }
+
+      vec3 getBlobPos(int i, float t, float scroll) {
+        float fi = float(i);
+        float speed = 0.08;
+
+        float baseX = sin(t * speed * 0.5 + fi * 2.1) * 0.8 + sin(t * speed * 0.3 + fi * 0.7) * 0.4;
+        float side = mod(fi, 2.0) == 0.0 ? 1.0 : -1.0;
+
+        // Scroll spread
+        float scrollEffect = scroll * 2.2;
+        float x = baseX + side * scrollEffect * (0.8 + abs(baseX) * 0.4);
+
+        float cyclePhase = fi * 0.8 + t * speed * 0.4;
+        float cycle = sin(cyclePhase);
+        float y = cycle * cycle * sign(cycle) * 2.5;
+        y += sin(t * speed * 0.7 + fi * 1.5) * 0.3;
+        y -= 0.5;
+        y += y * scrollEffect * 0.25;
+
+        float z = 2.8 + sin(fi * 1.3) * 0.15;
+        z += scrollEffect * 0.2;
+
+        return vec3(x, y, z);
+      }
+
+      float getBlobSize(int i, float t) {
+        float fi = float(i);
+        float base = 0.3 + mod(fi * 0.618, 1.0) * 0.25;
+        float pulse = sin(t * 0.1 + fi * 1.7) * 0.05;
+        return base + pulse;
+      }
+
+      float sceneSDF(vec3 p, float t, float scroll) {
+        float d = MAX_DIST;
+        float blend = 0.7;
+
+        for (int i = 0; i < 14; i++) {
+          vec3 bp = getBlobPos(i, t, scroll);
+          float bs = getBlobSize(i, t);
+          d = smin(d, length(p - bp) - bs, blend);
+        }
+
+        return d;
+      }
+
+      vec3 calcNormal(vec3 p, float t, float scroll) {
+        vec2 e = vec2(0.0005, 0.0);
+        return normalize(vec3(
+          sceneSDF(p + e.xyy, t, scroll) - sceneSDF(p - e.xyy, t, scroll),
+          sceneSDF(p + e.yxy, t, scroll) - sceneSDF(p - e.yxy, t, scroll),
+          sceneSDF(p + e.yyx, t, scroll) - sceneSDF(p - e.yyx, t, scroll)
+        ));
+      }
+
+      float rayMarch(vec3 ro, vec3 rd, float t, float scroll) {
+        float d = 0.0;
+        for (int i = 0; i < MAX_STEPS; i++) {
+          vec3 p = ro + rd * d;
+          float ds = sceneSDF(p, t, scroll);
+          d += ds;
+          if (ds < SURF_DIST || d > MAX_DIST) break;
+        }
+        return d;
+      }
+
+      void main() {
+        vec2 uv = (gl_FragCoord.xy - 0.5 * u_resolution.xy) / u_resolution.y;
+        float t = u_time;
+        float scroll = u_scroll;
+
+        vec3 ro = vec3(0.0, 0.0, -1.0);
+        vec3 rd = normalize(vec3(uv, 1.2));
+
+        vec3 bgColor = vec3(0.0, 0.0, 0.0);
+        vec3 col = bgColor;
+
+        float d = rayMarch(ro, rd, t, scroll);
+
+        if (d < MAX_DIST) {
+          vec3 p = ro + rd * d;
+          vec3 n = calcNormal(p, t, scroll);
+
+          vec3 lightPos1 = vec3(0.0, -3.0, 1.0);
+          vec3 lightPos2 = vec3(2.5, 1.0, 0.5);
+
+          vec3 lightDir1 = normalize(lightPos1 - p);
+          vec3 lightDir2 = normalize(lightPos2 - p);
+
+          float diff1 = max(dot(n, lightDir1), 0.0);
+          float diff2 = max(dot(n, lightDir2), 0.0) * 0.4;
+
+          vec3 viewDir = normalize(ro - p);
+          vec3 halfDir1 = normalize(lightDir1 + viewDir);
+          vec3 halfDir2 = normalize(lightDir2 + viewDir);
+          float spec1 = pow(max(dot(n, halfDir1), 0.0), 32.0);
+          float spec2 = pow(max(dot(n, halfDir2), 0.0), 64.0);
+
+          float fresnel = pow(1.0 - max(dot(viewDir, n), 0.0), 3.0);
+          float sss = max(0.0, dot(viewDir, -lightDir1 + n * 0.5)) * 0.4;
+
+          vec3 baseColor = vec3(0.11, 0.05, 0.20);
+          vec3 uvGlow = vec3(0.22, 0.12, 0.55);
+          vec3 hotGlow = vec3(0.45, 0.18, 0.50);
+          vec3 rimGlow = vec3(0.28, 0.18, 0.65);
+
+          col = baseColor * 0.2;
+          col += baseColor * diff1 * 0.6;
+          col += baseColor * diff2 * 0.3;
+          col += uvGlow * spec1 * 0.7;
+          col += hotGlow * spec2 * 0.4;
+          col += rimGlow * fresnel * 0.5;
+          col += baseColor * sss * vec3(1.0, 0.8, 1.4);
+
+          float internalGlow = exp(-d * 0.5) * 0.12;
+          col += hotGlow * internalGlow;
+
+          float fog = 1.0 - exp(-d * 0.15);
+          col = mix(col, bgColor, fog * 0.7);
+        }
+
+        vec2 vuv = gl_FragCoord.xy / u_resolution.xy;
+        float vignette = 1.0 - dot(vuv - 0.5, vuv - 0.5) * 0.8;
+        col *= vignette;
+
+        col = col / (col + vec3(0.8));
+        col = pow(col, vec3(0.9));
+
+        col += vec3(0.008, 0.004, 0.02) * (1.0 - length(col));
+
+        gl_FragColor = vec4(col, 1.0);
+      }
+    `;
+
+      function createShader(gl, type, source) {
+        const shader = gl.createShader(type);
+        gl.shaderSource(shader, source);
+        gl.compileShader(shader);
+        if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+          console.error("Shader compile error:", gl.getShaderInfoLog(shader));
+          gl.deleteShader(shader);
+          return null;
+        }
+        return shader;
+      }
+
+      function createProgram(gl, vertexShader, fragmentShader) {
+        const program = gl.createProgram();
+        gl.attachShader(program, vertexShader);
+        gl.attachShader(program, fragmentShader);
+        gl.linkProgram(program);
+        if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+          console.error("Program link error:", gl.getProgramInfoLog(program));
+          return null;
+        }
+        return program;
+      }
+
+      const vertexShader = createShader(
+        gl,
+        gl.VERTEX_SHADER,
+        vertexShaderSource,
+      );
+      const fragmentShader = createShader(
+        gl,
+        gl.FRAGMENT_SHADER,
+        fragmentShaderSource,
+      );
+      const program = createProgram(gl, vertexShader, fragmentShader);
+
+      const positions = new Float32Array([
+        -1, -1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1,
+      ]);
+
+      const positionBuffer = gl.createBuffer();
+      gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+      gl.bufferData(gl.ARRAY_BUFFER, positions, gl.STATIC_DRAW);
+
+      const positionLocation = gl.getAttribLocation(program, "a_position");
+      const resolutionLocation = gl.getUniformLocation(program, "u_resolution");
+      const timeLocation = gl.getUniformLocation(program, "u_time");
+      const scrollLocation = gl.getUniformLocation(program, "u_scroll");
+
+      function resize() {
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        canvas.width = window.innerWidth * dpr;
+        canvas.height = window.innerHeight * dpr;
+        canvas.style.width = window.innerWidth + "px";
+        canvas.style.height = window.innerHeight + "px";
+        gl.viewport(0, 0, canvas.width, canvas.height);
+      }
+
+      window.addEventListener("resize", resize);
+      resize();
+
+      let startTime = Date.now();
+      let scrollProgress = 0;
+      let targetScroll = 0;
 
       window.addEventListener("scroll", () => {
-        scrollY = window.scrollY * 0.5;
+        targetScroll = Math.min(window.scrollY / window.innerHeight, 1);
       });
 
-      window.addEventListener("mousemove", (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-      });
+      function render() {
+        const time = (Date.now() - startTime) * 0.001;
+        scrollProgress += (targetScroll - scrollProgress) * 0.1;
 
-      window.addEventListener("resize", () => {
-        isMobile = window.innerWidth <= 768;
-        resizeCanvas();
-      });
+        gl.clearColor(0, 0, 0, 1);
+        gl.clear(gl.COLOR_BUFFER_BIT);
 
-      const animate = () => {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        gl.useProgram(program);
+        gl.enableVertexAttribArray(positionLocation);
+        gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+        gl.vertexAttribPointer(positionLocation, 2, gl.FLOAT, false, 0, 0);
+        gl.uniform2f(resolutionLocation, canvas.width, canvas.height);
+        gl.uniform1f(timeLocation, time);
+        gl.uniform1f(scrollLocation, scrollProgress);
+        gl.drawArrays(gl.TRIANGLES, 0, 6);
 
-        // Draw subtle gradient overlay
-        const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-        gradient.addColorStop(0, 'rgba(147, 197, 253, 0.015)');
-        gradient.addColorStop(0.5, 'rgba(96, 165, 250, 0.01)');
-        gradient.addColorStop(1, 'rgba(147, 197, 253, 0.015)');
-        
-        ctx.fillStyle = gradient;
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        requestAnimationFrame(render);
+      }
 
-        for (const p of particles) {
-          // Calculate parallax-adjusted positions
-          const particleParallaxY =
-            p.y + scrollY * p.parallax * (isMobile ? 0.5 : 1);
+      render();
 
-          // Calculate distance to mouse
-          const dx = p.x - mouseX;
-          const dy = particleParallaxY - mouseY;
-          const distance = Math.sqrt(dx * dx + dy * dy);
-
-          // Move away from mouse if within 200px
-          if (distance < 200) {
-            const force = (200 - distance) / 200;
-            // Apply force in the direction away from mouse
-            p.x += (dx / distance) * force * 2;
-            p.y += (dy / distance) * force * 2;
-          } else {
-            // Normal movement when far from mouse
-            p.x += p.speedX;
-            p.y += p.speedY;
-          }
-
-          ctx.save();
-          // Use the parallax-adjusted position for rendering
-          ctx.translate(p.x, particleParallaxY);
-          ctx.rotate(p.rotate);
-          ctx.font = `${p.size}px monospace`;
-          ctx.fillStyle = `rgba(147, 197, 253, ${p.alpha})`;
-          ctx.shadowColor = "rgba(147, 197, 253, 0.1)";
-          ctx.shadowBlur = 8;
-          ctx.fillText(p.char, 0, 0);
-          ctx.restore();
-
-          p.rotate += p.rotateSpeed;
-
-          // Wrap around screen
-          if (p.x < -50) p.x = canvas.width + 50;
-          if (p.x > canvas.width + 50) p.x = -50;
-          if (p.y < -50) p.y = canvas.height + 50;
-          if (p.y > canvas.height + 50) p.y = -50;
-        }
-
-        requestAnimationFrame(animate);
-      };
-
-      animate();
-    </script>
-
-    <!-- Cursor Sparkle Trail -->
-    <script>
-      const trailCanvas = document.getElementById("magic-trail");
-      const tctx = trailCanvas.getContext("2d");
-
-      const resizeTrailCanvas = () => {
-        trailCanvas.width = window.innerWidth;
-        trailCanvas.height = window.innerHeight;
-      };
-
-      resizeTrailCanvas();
-      window.addEventListener("resize", resizeTrailCanvas);
-
-      const sparks = [];
-
-      document.addEventListener("mousemove", (e) => {
-        sparks.push({
-          x: e.clientX,
-          y: e.clientY,
-          radius: Math.random() * 2 + 1,
-          alpha: 1,
-          life: 60,
-        });
-      });
-
-      const sparkle = () => {
-        tctx.clearRect(0, 0, trailCanvas.width, trailCanvas.height);
-
-        for (let i = sparks.length - 1; i >= 0; i--) {
-          const s = sparks[i];
-          tctx.beginPath();
-          tctx.arc(s.x, s.y, s.radius, 0, Math.PI * 2);
-          tctx.fillStyle = `rgba(147, 197, 253, ${s.alpha})`;
-          tctx.shadowColor = "rgba(147, 197, 253, 0.2)";
-          tctx.shadowBlur = 6;
-          tctx.fill();
-
-          s.alpha -= 0.02;
-          s.y -= 0.5;
-          s.life--;
-
-          if (s.life <= 0 || s.alpha <= 0) {
-            sparks.splice(i, 1);
-          }
-        }
-
-        requestAnimationFrame(sparkle);
-      };
-
-      sparkle();
-    </script>
-
-    <!-- Blog -->
-    <script>
-      const blogStatus = document.querySelector("#blog p");
-      const blogList = document.querySelector("#blog ul");
-
-      blogStatus.innerHTML = "Fetching blog posts&hellip;";
-
-      fetch(
-        "https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@batary"
-      )
-        .then((res) => res.json())
-        .then((res) => {
-          blogStatus.innerHTML = "";
-          blogList.innerHTML = res.items
-            .slice(0, 10)
-            .map(
-              (item) => `
-              <li>
-                <time>${new Date(item.pubDate).toLocaleDateString()}</time>
-                <a href="${item.link}">${item.title}</a>
-                <ul class="tags">
-                  ${item.categories
-                    .map((category) => `<li>${category}</li>`)
-                    .join("")}
-                </ul>
-              </li>
-            `
-            )
-            .join("");
-        })
-        .catch((err) => {
-          console.error(err);
-          blogStatus.innerHTML = "Error fetching blog posts.";
-        });
-    </script>
-
-    <!-- Contact Form -->
-    <script>
-      document
-        .querySelector("#contact form")
-        .addEventListener("submit", (e) => {
-          e.preventDefault();
-          const formData = new FormData(e.target);
-          const data = Object.fromEntries(formData.entries());
-          const button = e.target.querySelector("button");
-
-          if (data.message.length >= 20) {
-            fetch(
-              "https://contact-form-gamma-six.vercel.app/api/contact?" +
-                new URLSearchParams(data)
-            )
-              .then(() => {
-                e.target.reset();
-                button.blur();
-                button.textContent = "Ack! ❇️";
-              })
-              .catch(console.error);
-          } else {
-            e.target.reset();
-            button.blur();
-            button.textContent = "Ack! ❇️";
-          }
-        });
-    </script>
-
-    <!-- Scroll Reveal -->
-    <script>
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
@@ -1739,103 +798,12 @@
             }
           });
         },
-        {
-          threshold: 0.1,
-        }
+        { threshold: 0.15 },
       );
 
-      document.querySelectorAll("section, .card").forEach((el) => {
-        observer.observe(el);
-      });
-    </script>
-
-    <!-- Particle Burst Effect -->
-    <script>
-      function createParticleBurst(x, y) {
-        const colors = [
-          'rgba(147, 197, 253, 0.4)',  // accent
-          'rgba(96, 165, 250, 0.4)',   // accent-alt
-          'rgba(147, 197, 253, 0.4)',  // complement
-          'rgba(96, 165, 250, 0.4)',   // complement-alt
-        ];
-        
-        for (let i = 0; i < 8; i++) {
-          const particle = document.createElement('div');
-          particle.className = 'particle';
-          
-          const angle = (i / 8) * Math.PI * 2;
-          const distance = 40 + Math.random() * 40;
-          const tx = Math.cos(angle) * distance;
-          const ty = Math.sin(angle) * distance;
-          
-          particle.style.setProperty('--tx', `${tx}px`);
-          particle.style.setProperty('--ty', `${ty}px`);
-          particle.style.left = `${x}px`;
-          particle.style.top = `${y}px`;
-          particle.style.width = `${3 + Math.random() * 3}px`;
-          particle.style.height = particle.style.width;
-          particle.style.background = colors[Math.floor(Math.random() * colors.length)];
-          particle.style.borderRadius = '50%';
-          particle.style.boxShadow = '0 0 8px var(--color-glow)';
-          
-          document.body.appendChild(particle);
-          
-          particle.addEventListener('animationend', () => {
-            particle.remove();
-          });
-        }
-      }
-
-      document.addEventListener("click", (e) => {
-        createParticleBurst(e.clientX, e.clientY);
-      });
-    </script>
-
-    <!-- Cursor Trail Effect -->
-    <script>
-      const cursorTrails = [];
-      const maxTrails = 8;
-
-      document.addEventListener("mousemove", (e) => {
-        const trail = document.createElement("div");
-        trail.className = "cursor-trail";
-        trail.style.left = e.clientX + "px";
-        trail.style.top = e.clientY + "px";
-        document.body.appendChild(trail);
-        cursorTrails.push(trail);
-
-        if (cursorTrails.length > maxTrails) {
-          const oldTrail = cursorTrails.shift();
-          oldTrail.style.opacity = "0";
-          setTimeout(() => oldTrail.remove(), 100);
-        }
-
-        // Update card hover effect
-        const cards = document.querySelectorAll(".card");
-        cards.forEach((card) => {
-          const rect = card.getBoundingClientRect();
-          const x = ((e.clientX - rect.left) / rect.width) * 100;
-          const y = ((e.clientY - rect.top) / rect.height) * 100;
-          card.style.setProperty("--x", `${x}%`);
-          card.style.setProperty("--y", `${y}%`);
-        });
-      });
-    </script>
-
-    <!-- Form Input Effect -->
-    <script>
-      document.querySelectorAll(".form-group").forEach((group) => {
-        const input = group.querySelector("input, textarea");
-        group.addEventListener("mousemove", (e) => {
-          const rect = group.getBoundingClientRect();
-          const x = ((e.clientX - rect.left) / rect.width) * 100;
-          const y = ((e.clientY - rect.top) / rect.height) * 100;
-          group.style.setProperty("--x", `${x}%`);
-          group.style.setProperty("--y", `${y}%`);
-        });
-      });
+      document
+        .querySelectorAll("section")
+        .forEach((el) => observer.observe(el));
     </script>
   </body>
 </html>
-
-
