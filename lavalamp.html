@@ -1,0 +1,489 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lava Lamp</title>
+    <script src="https://cdn.jsdelivr.net/npm/lil-gui@0.19/dist/lil-gui.umd.min.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background: #000;
+        overflow: hidden;
+      }
+
+      #lava-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="lava-bg"></canvas>
+
+    <script>
+      const canvas = document.getElementById("lava-bg");
+      const gl = canvas.getContext("webgl");
+
+      if (!gl) {
+        alert("WebGL not supported");
+      }
+
+      const settings = {
+        baseColor: "#1c0d33",
+        glowColor: "#381f8c",
+        hotColor: "#732e80",
+        rimColor: "#472ea6",
+        blobCount: 14,
+        blobSizeMin: 0.3,
+        blobSizeMax: 0.55,
+        blendFactor: 0.7,
+        speed: 0.08,
+        horizontalAmp: 0.8,
+        verticalAmp: 2.5,
+        zBase: 2.8,
+        zVariation: 0.15,
+        light1X: 0.0,
+        light1Y: -3.0,
+        light1Z: 1.0,
+        light2X: 2.5,
+        light2Y: 1.0,
+        light2Z: 0.5,
+        specPower1: 32.0,
+        specPower2: 64.0,
+        fresnelPower: 3.0,
+        vignetteStrength: 0.8,
+        fogDensity: 0.15,
+        preset: "Purple/Magenta",
+        applyPreset: function () {},
+      };
+
+      const presets = {
+        "Purple/Magenta": {
+          baseColor: "#1c0d33",
+          glowColor: "#381f8c",
+          hotColor: "#732e80",
+          rimColor: "#472ea6",
+        },
+        "White/Blue": {
+          baseColor: "#e8e8e8",
+          glowColor: "#4a90c2",
+          hotColor: "#6ab0e0",
+          rimColor: "#3a7aa8",
+        },
+        "Black/Pink": {
+          baseColor: "#0a0a0a",
+          glowColor: "#c24a8a",
+          hotColor: "#e06aaa",
+          rimColor: "#a83a7a",
+        },
+        "Amber/Gold": {
+          baseColor: "#381405",
+          glowColor: "#8c510f",
+          hotColor: "#994707",
+          rimColor: "#803305",
+        },
+        "Red/Pink": {
+          baseColor: "#330d0d",
+          glowColor: "#8c1f3f",
+          hotColor: "#cc2255",
+          rimColor: "#991144",
+        },
+        "Teal/Cyan": {
+          baseColor: "#0d2933",
+          glowColor: "#1f7a8c",
+          hotColor: "#2e99a6",
+          rimColor: "#1a6680",
+        },
+      };
+
+      const gui = new lil.GUI({ title: "Lava Lamp Settings" });
+
+      const colorsFolder = gui.addFolder("Colors");
+      colorsFolder.addColor(settings, "baseColor").name("Base");
+      colorsFolder.addColor(settings, "glowColor").name("Glow");
+      colorsFolder.addColor(settings, "hotColor").name("Hot Spots");
+      colorsFolder.addColor(settings, "rimColor").name("Rim");
+
+      const blobsFolder = gui.addFolder("Blobs");
+      blobsFolder.add(settings, "blobCount", 1, 20, 1).name("Count");
+      blobsFolder.add(settings, "blobSizeMin", 0.1, 0.6, 0.01).name("Size Min");
+      blobsFolder.add(settings, "blobSizeMax", 0.2, 0.8, 0.01).name("Size Max");
+      blobsFolder.add(settings, "blendFactor", 0.1, 1.5, 0.05).name("Blend");
+
+      const movementFolder = gui.addFolder("Movement");
+      movementFolder.add(settings, "speed", 0.01, 0.2, 0.01).name("Speed");
+      movementFolder
+        .add(settings, "horizontalAmp", 0.2, 2.0, 0.1)
+        .name("Horizontal");
+      movementFolder
+        .add(settings, "verticalAmp", 0.5, 4.0, 0.1)
+        .name("Vertical");
+
+      const depthFolder = gui.addFolder("Depth");
+      depthFolder.add(settings, "zBase", 1.5, 5.0, 0.1).name("Z Distance");
+      depthFolder.add(settings, "zVariation", 0, 0.5, 0.05).name("Z Variation");
+
+      const lightingFolder = gui.addFolder("Lighting");
+      lightingFolder.add(settings, "light1X", -5, 5, 0.1).name("Light 1 X");
+      lightingFolder.add(settings, "light1Y", -5, 5, 0.1).name("Light 1 Y");
+      lightingFolder.add(settings, "light1Z", -2, 3, 0.1).name("Light 1 Z");
+      lightingFolder.add(settings, "light2X", -5, 5, 0.1).name("Light 2 X");
+      lightingFolder.add(settings, "light2Y", -5, 5, 0.1).name("Light 2 Y");
+      lightingFolder.add(settings, "light2Z", -2, 3, 0.1).name("Light 2 Z");
+      lightingFolder
+        .add(settings, "specPower1", 4, 128, 1)
+        .name("Spec Power 1");
+      lightingFolder
+        .add(settings, "specPower2", 4, 128, 1)
+        .name("Spec Power 2");
+
+      const effectsFolder = gui.addFolder("Effects");
+      effectsFolder.add(settings, "fresnelPower", 1, 5, 0.1).name("Fresnel");
+      effectsFolder
+        .add(settings, "vignetteStrength", 0, 1.5, 0.1)
+        .name("Vignette");
+      effectsFolder.add(settings, "fogDensity", 0, 0.5, 0.01).name("Fog");
+
+      const presetsFolder = gui.addFolder("Presets");
+      presetsFolder
+        .add(settings, "preset", Object.keys(presets))
+        .name("Theme")
+        .onChange((value) => {
+          const p = presets[value];
+          settings.baseColor = p.baseColor;
+          settings.glowColor = p.glowColor;
+          settings.hotColor = p.hotColor;
+          settings.rimColor = p.rimColor;
+          gui.controllersRecursive().forEach((c) => c.updateDisplay());
+        });
+
+      lightingFolder.close();
+      depthFolder.close();
+      effectsFolder.close();
+
+      function hexToRgb(hex) {
+        const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+        return result
+          ? [
+              parseInt(result[1], 16) / 255,
+              parseInt(result[2], 16) / 255,
+              parseInt(result[3], 16) / 255,
+            ]
+          : [0, 0, 0];
+      }
+
+      const vertexShaderSource = `
+      attribute vec2 a_position;
+      void main() {
+        gl_Position = vec4(a_position, 0.0, 1.0);
+      }
+    `;
+
+      const fragmentShaderSource = `
+      precision highp float;
+
+      uniform vec2 u_resolution;
+      uniform float u_time;
+      uniform vec3 u_baseColor;
+      uniform vec3 u_glowColor;
+      uniform vec3 u_hotColor;
+      uniform vec3 u_rimColor;
+      uniform float u_blobCount;
+      uniform float u_blobSizeMin;
+      uniform float u_blobSizeMax;
+      uniform float u_blendFactor;
+      uniform float u_speed;
+      uniform float u_horizontalAmp;
+      uniform float u_verticalAmp;
+      uniform float u_zBase;
+      uniform float u_zVariation;
+      uniform vec3 u_light1Pos;
+      uniform vec3 u_light2Pos;
+      uniform float u_specPower1;
+      uniform float u_specPower2;
+      uniform float u_fresnelPower;
+      uniform float u_vignetteStrength;
+      uniform float u_fogDensity;
+
+      #define MAX_STEPS 100
+      #define MAX_DIST 100.0
+      #define SURF_DIST 0.0005
+      #define MAX_BLOBS 20
+
+      float smin(float a, float b, float k) {
+        float h = clamp(0.5 + 0.5 * (b - a) / k, 0.0, 1.0);
+        return mix(b, a, h) - k * h * (1.0 - h);
+      }
+
+      vec3 getBlobPos(int i, float t) {
+        float fi = float(i);
+        float speed = u_speed;
+
+        float baseX = sin(t * speed * 0.5 + fi * 2.1) * u_horizontalAmp + sin(t * speed * 0.3 + fi * 0.7) * (u_horizontalAmp * 0.5);
+        float side = mod(fi, 2.0) == 0.0 ? 1.0 : -1.0;
+        float x = baseX;
+
+        float cyclePhase = fi * 0.8 + t * speed * 0.4;
+        float cycle = sin(cyclePhase);
+        float y = cycle * cycle * sign(cycle) * u_verticalAmp;
+        y += sin(t * speed * 0.7 + fi * 1.5) * 0.3;
+        y -= 0.5;
+
+        float z = u_zBase + sin(fi * 1.3) * u_zVariation;
+
+        return vec3(x, y, z);
+      }
+
+      float getBlobSize(int i, float t) {
+        float fi = float(i);
+        float range = u_blobSizeMax - u_blobSizeMin;
+        float base = u_blobSizeMin + mod(fi * 0.618, 1.0) * range;
+        float pulse = sin(t * 0.1 + fi * 1.7) * 0.05;
+        return base + pulse;
+      }
+
+      float sceneSDF(vec3 p, float t) {
+        float d = MAX_DIST;
+
+        for (int i = 0; i < MAX_BLOBS; i++) {
+          if (float(i) >= u_blobCount) break;
+          vec3 bp = getBlobPos(i, t);
+          float bs = getBlobSize(i, t);
+          d = smin(d, length(p - bp) - bs, u_blendFactor);
+        }
+
+        return d;
+      }
+
+      vec3 calcNormal(vec3 p, float t) {
+        vec2 e = vec2(0.0005, 0.0);
+        return normalize(vec3(
+          sceneSDF(p + e.xyy, t) - sceneSDF(p - e.xyy, t),
+          sceneSDF(p + e.yxy, t) - sceneSDF(p - e.yxy, t),
+          sceneSDF(p + e.yyx, t) - sceneSDF(p - e.yyx, t)
+        ));
+      }
+
+      float rayMarch(vec3 ro, vec3 rd, float t) {
+        float d = 0.0;
+        for (int i = 0; i < MAX_STEPS; i++) {
+          vec3 p = ro + rd * d;
+          float ds = sceneSDF(p, t);
+          d += ds;
+          if (ds < SURF_DIST || d > MAX_DIST) break;
+        }
+        return d;
+      }
+
+      void main() {
+        vec2 uv = (gl_FragCoord.xy - 0.5 * u_resolution.xy) / u_resolution.y;
+        float t = u_time;
+
+        vec3 ro = vec3(0.0, 0.0, -1.0);
+        vec3 rd = normalize(vec3(uv, 1.2));
+
+        vec3 bgColor = vec3(0.0, 0.0, 0.0);
+        vec3 col = bgColor;
+
+        float d = rayMarch(ro, rd, t);
+
+        if (d < MAX_DIST) {
+          vec3 p = ro + rd * d;
+          vec3 n = calcNormal(p, t);
+
+          vec3 lightDir1 = normalize(u_light1Pos - p);
+          vec3 lightDir2 = normalize(u_light2Pos - p);
+
+          float diff1 = max(dot(n, lightDir1), 0.0);
+          float diff2 = max(dot(n, lightDir2), 0.0) * 0.4;
+
+          vec3 viewDir = normalize(ro - p);
+          vec3 halfDir1 = normalize(lightDir1 + viewDir);
+          vec3 halfDir2 = normalize(lightDir2 + viewDir);
+          float spec1 = pow(max(dot(n, halfDir1), 0.0), u_specPower1);
+          float spec2 = pow(max(dot(n, halfDir2), 0.0), u_specPower2);
+
+          float fresnel = pow(1.0 - max(dot(viewDir, n), 0.0), u_fresnelPower);
+          float sss = max(0.0, dot(viewDir, -lightDir1 + n * 0.5)) * 0.4;
+
+          col = u_baseColor * 0.2;
+          col += u_baseColor * diff1 * 0.6;
+          col += u_baseColor * diff2 * 0.3;
+          col += u_glowColor * spec1 * 0.7;
+          col += u_hotColor * spec2 * 0.4;
+          col += u_rimColor * fresnel * 0.5;
+          col += u_baseColor * sss * vec3(0.8, 1.2, 0.9);
+
+          float internalGlow = exp(-d * 0.5) * 0.12;
+          col += u_hotColor * internalGlow;
+
+          float fog = 1.0 - exp(-d * u_fogDensity);
+          col = mix(col, bgColor, fog * 0.7);
+        }
+
+        vec2 vuv = gl_FragCoord.xy / u_resolution.xy;
+        float vignette = 1.0 - dot(vuv - 0.5, vuv - 0.5) * u_vignetteStrength;
+        col *= vignette;
+
+        col = col / (col + vec3(0.8));
+        col = pow(col, vec3(0.9));
+
+        gl_FragColor = vec4(col, 1.0);
+      }
+    `;
+
+      function createShader(gl, type, source) {
+        const shader = gl.createShader(type);
+        gl.shaderSource(shader, source);
+        gl.compileShader(shader);
+        if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+          console.error("Shader compile error:", gl.getShaderInfoLog(shader));
+          gl.deleteShader(shader);
+          return null;
+        }
+        return shader;
+      }
+
+      function createProgram(gl, vertexShader, fragmentShader) {
+        const program = gl.createProgram();
+        gl.attachShader(program, vertexShader);
+        gl.attachShader(program, fragmentShader);
+        gl.linkProgram(program);
+        if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+          console.error("Program link error:", gl.getProgramInfoLog(program));
+          return null;
+        }
+        return program;
+      }
+
+      const vertexShader = createShader(
+        gl,
+        gl.VERTEX_SHADER,
+        vertexShaderSource,
+      );
+      const fragmentShader = createShader(
+        gl,
+        gl.FRAGMENT_SHADER,
+        fragmentShaderSource,
+      );
+      const program = createProgram(gl, vertexShader, fragmentShader);
+
+      const positions = new Float32Array([
+        -1, -1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1,
+      ]);
+
+      const positionBuffer = gl.createBuffer();
+      gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+      gl.bufferData(gl.ARRAY_BUFFER, positions, gl.STATIC_DRAW);
+
+      const uniforms = {
+        position: gl.getAttribLocation(program, "a_position"),
+        resolution: gl.getUniformLocation(program, "u_resolution"),
+        time: gl.getUniformLocation(program, "u_time"),
+        baseColor: gl.getUniformLocation(program, "u_baseColor"),
+        glowColor: gl.getUniformLocation(program, "u_glowColor"),
+        hotColor: gl.getUniformLocation(program, "u_hotColor"),
+        rimColor: gl.getUniformLocation(program, "u_rimColor"),
+        blobCount: gl.getUniformLocation(program, "u_blobCount"),
+        blobSizeMin: gl.getUniformLocation(program, "u_blobSizeMin"),
+        blobSizeMax: gl.getUniformLocation(program, "u_blobSizeMax"),
+        blendFactor: gl.getUniformLocation(program, "u_blendFactor"),
+        speed: gl.getUniformLocation(program, "u_speed"),
+        horizontalAmp: gl.getUniformLocation(program, "u_horizontalAmp"),
+        verticalAmp: gl.getUniformLocation(program, "u_verticalAmp"),
+        zBase: gl.getUniformLocation(program, "u_zBase"),
+        zVariation: gl.getUniformLocation(program, "u_zVariation"),
+        light1Pos: gl.getUniformLocation(program, "u_light1Pos"),
+        light2Pos: gl.getUniformLocation(program, "u_light2Pos"),
+        specPower1: gl.getUniformLocation(program, "u_specPower1"),
+        specPower2: gl.getUniformLocation(program, "u_specPower2"),
+        fresnelPower: gl.getUniformLocation(program, "u_fresnelPower"),
+        vignetteStrength: gl.getUniformLocation(program, "u_vignetteStrength"),
+        fogDensity: gl.getUniformLocation(program, "u_fogDensity"),
+      };
+
+      function resize() {
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        canvas.width = window.innerWidth * dpr;
+        canvas.height = window.innerHeight * dpr;
+        canvas.style.width = window.innerWidth + "px";
+        canvas.style.height = window.innerHeight + "px";
+        gl.viewport(0, 0, canvas.width, canvas.height);
+      }
+
+      window.addEventListener("resize", resize);
+      resize();
+
+      let startTime = Date.now();
+
+      function render() {
+        const time = (Date.now() - startTime) * 0.001;
+
+        gl.clearColor(0, 0, 0, 1);
+        gl.clear(gl.COLOR_BUFFER_BIT);
+
+        gl.useProgram(program);
+        gl.enableVertexAttribArray(uniforms.position);
+        gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+        gl.vertexAttribPointer(uniforms.position, 2, gl.FLOAT, false, 0, 0);
+        gl.uniform2f(uniforms.resolution, canvas.width, canvas.height);
+        gl.uniform1f(uniforms.time, time);
+
+        const base = hexToRgb(settings.baseColor);
+        const glow = hexToRgb(settings.glowColor);
+        const hot = hexToRgb(settings.hotColor);
+        const rim = hexToRgb(settings.rimColor);
+        gl.uniform3f(uniforms.baseColor, base[0], base[1], base[2]);
+        gl.uniform3f(uniforms.glowColor, glow[0], glow[1], glow[2]);
+        gl.uniform3f(uniforms.hotColor, hot[0], hot[1], hot[2]);
+        gl.uniform3f(uniforms.rimColor, rim[0], rim[1], rim[2]);
+
+        gl.uniform1f(uniforms.blobCount, settings.blobCount);
+        gl.uniform1f(uniforms.blobSizeMin, settings.blobSizeMin);
+        gl.uniform1f(uniforms.blobSizeMax, settings.blobSizeMax);
+        gl.uniform1f(uniforms.blendFactor, settings.blendFactor);
+
+        gl.uniform1f(uniforms.speed, settings.speed);
+        gl.uniform1f(uniforms.horizontalAmp, settings.horizontalAmp);
+        gl.uniform1f(uniforms.verticalAmp, settings.verticalAmp);
+
+        gl.uniform1f(uniforms.zBase, settings.zBase);
+        gl.uniform1f(uniforms.zVariation, settings.zVariation);
+
+        gl.uniform3f(
+          uniforms.light1Pos,
+          settings.light1X,
+          settings.light1Y,
+          settings.light1Z,
+        );
+        gl.uniform3f(
+          uniforms.light2Pos,
+          settings.light2X,
+          settings.light2Y,
+          settings.light2Z,
+        );
+        gl.uniform1f(uniforms.specPower1, settings.specPower1);
+        gl.uniform1f(uniforms.specPower2, settings.specPower2);
+
+        gl.uniform1f(uniforms.fresnelPower, settings.fresnelPower);
+        gl.uniform1f(uniforms.vignetteStrength, settings.vignetteStrength);
+        gl.uniform1f(uniforms.fogDensity, settings.fogDensity);
+
+        gl.drawArrays(gl.TRIANGLES, 0, 6);
+
+        requestAnimationFrame(render);
+      }
+
+      render();
+    </script>
+  </body>
+</html>
