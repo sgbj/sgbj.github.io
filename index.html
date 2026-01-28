@@ -217,7 +217,7 @@
       section {
         max-width: 660px;
         margin: 0 auto;
-        padding: 5rem 2rem;
+        padding: 4rem 2rem;
         opacity: 0;
         transform: translateY(16px);
         transition:
@@ -244,6 +244,11 @@
       .about p {
         color: #777;
         max-width: 540px;
+      }
+
+      .about img {
+        display: block;
+        margin: 1.75rem auto 0;
       }
 
       /* Projects */
@@ -339,7 +344,7 @@
         }
 
         section {
-          padding: 3.5rem 1.5rem;
+          padding: 3rem 1.5rem;
         }
 
         .socials {
@@ -354,7 +359,7 @@
 
         section {
           max-width: 700px;
-          padding: 6rem 2rem;
+          padding: 5rem 2rem;
         }
 
         h2 {
@@ -395,9 +400,9 @@
         <h2>About</h2>
         <p>
           I build web apps and APIs, mostly with C# and Next.js. Based in
-          Oklahoma. Sometimes I make games or open-source tools when an idea
-          won't leave me alone.
+          Oklahoma. I make games, pixel art, and open source projects for fun.
         </p>
+        <img src="https://batary.dev/pixelart/lgtm-gold.gif" alt="LGTM!" />
       </section>
 
       <section id="work">
@@ -667,10 +672,10 @@
           float fresnel = pow(1.0 - max(dot(viewDir, n), 0.0), 3.0);
           float sss = max(0.0, dot(viewDir, -lightDir1 + n * 0.5)) * 0.4;
 
-          vec3 baseColor = vec3(0.11, 0.05, 0.20);
-          vec3 uvGlow = vec3(0.22, 0.12, 0.55);
-          vec3 hotGlow = vec3(0.45, 0.18, 0.50);
-          vec3 rimGlow = vec3(0.28, 0.18, 0.65);
+          vec3 baseColor = vec3(0.02, 0.10, 0.13);
+          vec3 uvGlow = vec3(0.03, 0.26, 0.32);
+          vec3 hotGlow = vec3(0.06, 0.36, 0.44);
+          vec3 rimGlow = vec3(0.04, 0.30, 0.38);
 
           col = baseColor * 0.2;
           col += baseColor * diff1 * 0.6;
@@ -678,7 +683,7 @@
           col += uvGlow * spec1 * 0.7;
           col += hotGlow * spec2 * 0.4;
           col += rimGlow * fresnel * 0.5;
-          col += baseColor * sss * vec3(1.0, 0.8, 1.4);
+          col += baseColor * sss * vec3(0.8, 1.2, 1.3);
 
           float internalGlow = exp(-d * 0.5) * 0.12;
           col += hotGlow * internalGlow;
@@ -694,7 +699,7 @@
         col = col / (col + vec3(0.8));
         col = pow(col, vec3(0.9));
 
-        col += vec3(0.008, 0.004, 0.02) * (1.0 - length(col));
+        col += vec3(0.003, 0.010, 0.013) * (1.0 - length(col));
 
         gl_FragColor = vec4(col, 1.0);
       }
