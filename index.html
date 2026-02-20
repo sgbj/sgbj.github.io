@@ -175,13 +175,15 @@
       .scroll-hint {
         position: absolute;
         bottom: 2.5rem;
-        left: 50%;
-        transform: translateX(-50%);
+        left: 0;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         color: #5a5a5a;
         font-size: 0.7rem;
         font-weight: 500;
         letter-spacing: 0.25em;
-        text-indent: 0.25em;
         text-transform: uppercase;
         opacity: 0;
         animation:
