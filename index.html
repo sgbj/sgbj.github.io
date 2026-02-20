@@ -181,12 +181,19 @@
         font-size: 0.7rem;
         font-weight: 500;
         letter-spacing: 0.25em;
+        text-indent: 0.25em;
         text-transform: uppercase;
         opacity: 0;
         animation:
           fadeIn 0.8s ease forwards,
           pulse 2.5s ease-in-out 1s infinite;
         animation-delay: 0.9s, 1.7s;
+      }
+
+      @media (max-height: 500px) {
+        .scroll-hint {
+          display: none;
+        }
       }
 
       .scroll-hint::after {
