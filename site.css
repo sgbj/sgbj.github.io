@@ -77,8 +77,11 @@ a:focus-visible { outline: 1px solid var(--accent); outline-offset: 2px; }
 .chrome nav a { color: var(--text-2); letter-spacing: var(--track-meta); }
 .chrome nav a::before { content: '['; color: var(--text-3); }
 .chrome nav a::after  { content: ']'; color: var(--text-3); }
-.name:hover, .chrome nav a:hover { background: var(--hl); color: var(--accent); }
-.chrome nav a:hover::before, .chrome nav a:hover::after { color: var(--text-2); }
+/* hover and keyboard focus look the same, like the project rows */
+.name:hover, .name:focus-visible,
+.chrome nav a:hover, .chrome nav a:focus-visible { background: var(--hl); color: var(--accent); outline: none; }
+.chrome nav a:hover::before, .chrome nav a:hover::after,
+.chrome nav a:focus-visible::before, .chrome nav a:focus-visible::after { color: var(--text-2); }
 
 /* ── the scrolling screen, clipped inside the frame ────────────────────── */
 .screen {
