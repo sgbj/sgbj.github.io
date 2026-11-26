@@ -1,0 +1,158 @@
+/* ── Scott Batary — the site as one DOS screen over The Pilgrim's Vigil ───── */
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('fonts/jetbrains-mono-latin.woff2') format('woff2');
+  font-weight: 300 600;
+  font-display: swap;
+}
+
+/* ── design tokens ─────────────────────────────────────────────────────────
+   One small system, used everywhere. Contrast is measured against black.
+   text    three levels, every one readable at small sizes (≥ 4.5:1)
+   surface solid black behind all text; one highlight colour for hover
+   lines   two weights: inner windows quieter than the outer frame
+   accent  the only saturated colour in the UI: selection bar, hover, focus
+   type    two sizes (14 content, 12 meta), one weight (400); hierarchy comes
+           from brightness and from caps + tracking, never from bold
+
+   The painting carries the colour. Text is near-neutral (a breath of cool so it
+   sits with the scene), lines are quiet, and colour appears only where you interact. */
+:root {
+  --text-1: #e3e9ea;    /* primary: names, about copy          17.1:1 */
+  --text-2: #9eaaac;    /* secondary: descriptions, links       8.8:1 */
+  --text-3: #73807f;    /* tertiary: tags, brackets             5.1:1 */
+
+  --surface: #000;      /* windows, tabs, link cells */
+
+  --rule: #1d3034;      /* window outlines: dim grey-cyan, structure without colour */
+  --rule-2: #37585f;    /* the screen frame: the outermost structure, one step stronger */
+
+  /* the staff orb's cyan, sampled from the plate (#8eedfe, 189°): the complement of the
+     magenta aurora. Used only for interaction. */
+  --accent: #8eedfe;    /* hovered titles and links (9.2:1 on the bar), focus ring, ::selection */
+  --hl: #073a44;        /* the selection bar, a deep shade of the accent. text-1 on it 10.1:1 */
+
+  --size-body: 14px;
+  --size-meta: 12px;
+  --row: 22px;          /* the terminal row: every line of text is exactly one row tall,
+                           and vertical spacing comes in whole or half rows */
+  --track-caps: .32em;  /* uppercase labels: name tab, window titles */
+  --track-meta: .06em;  /* links, tags */
+
+  --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --m: 16px;            /* black margin outside the screen frame */
+  --line: 3px;          /* double frame line */
+  --pad: clamp(14px, 3.5vw, 52px);   /* content gutter inside the frame */
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+html { background: #000; }
+body {
+  margin: 0; overflow: hidden; background: transparent;
+  color: var(--text-1); font: 400 var(--size-body)/var(--row) var(--mono);
+  -webkit-font-smoothing: antialiased;
+}
+::selection { background: var(--accent); color: #000; }
+a { color: inherit; text-decoration: none; }
+a:focus-visible { outline: 1px solid var(--accent); outline-offset: 2px; }
+
+#vigil { position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: 0; display: block; }
+
+/* ── the screen frame ──────────────────────────────────────────────────── */
+.frame {
+  position: fixed; inset: var(--m); z-index: 3; pointer-events: none;
+  border: var(--line) double var(--rule-2);
+  box-shadow: 0 0 0 100vmax #000;          /* everything outside the frame is solid black */
+}
+.chrome { position: fixed; inset: 0; z-index: 4; pointer-events: none; font-size: var(--size-meta); }
+.chrome a {
+  pointer-events: auto; display: inline-block; padding: 0 6px; line-height: 18px;
+  background: var(--surface); transition: background-color .12s, color .12s;
+}
+/* name tab and links sit centred on the top frame line */
+.name, .chrome nav { position: absolute; top: calc(var(--m) + var(--line) / 2 - 9px); }
+.name { left: calc(var(--m) + 18px); color: var(--text-1); letter-spacing: var(--track-caps); text-transform: uppercase; }
+.chrome nav { right: calc(var(--m) + 18px); display: flex; gap: 10px; }
+.chrome nav a { color: var(--text-2); letter-spacing: var(--track-meta); }
+.chrome nav a::before { content: '['; color: var(--text-3); }
+.chrome nav a::after  { content: ']'; color: var(--text-3); }
+.name:hover, .chrome nav a:hover { background: var(--hl); color: var(--accent); }
+.chrome nav a:hover::before, .chrome nav a:hover::after { color: var(--text-2); }
+
+/* ── the scrolling screen, clipped inside the frame ────────────────────── */
+.screen {
+  position: fixed; z-index: 1;
+  inset: calc(var(--m) + 12px) calc(var(--m) + var(--line));   /* clear of the tabs on the top and bottom lines */
+  overflow-y: auto; overscroll-behavior: contain; scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+.screen::-webkit-scrollbar { display: none; }
+.screen:focus { outline: none; }
+.screen > .win:first-of-type { margin-top: calc(3 * var(--row)); }
+
+/* ── windows ───────────────────────────────────────────────────────────────
+   Spacing is one system measured from the visible outline, not the box edge:
+   --inset   window edge → outline. The same 7px channel also runs outline → row bar
+             and title → row bar, so every gap around a highlighted row is equal.
+   --win-pad window edge → content, the same on all four sides (23px inside the outline).
+   Row text lines up with the about copy: 2 × inset + row padding = win-pad.        */
+.win {
+  --inset: 7px;
+  --win-pad: 30px;
+  position: relative; display: block; max-width: 44rem;
+  margin: calc(2 * var(--row)) 0 0 var(--pad); padding: var(--win-pad);
+  background: var(--surface);
+  outline: 1px solid var(--rule); outline-offset: calc(-1 * var(--inset));
+}
+.win:last-child { margin-bottom: calc(2 * var(--row)); }
+.win-title {
+  position: absolute; top: var(--inset); left: 20px; transform: translateY(-50%);
+  margin: 0; padding: 0 .6em; background: var(--surface);
+  font: 400 var(--size-meta)/1.4 var(--mono); letter-spacing: var(--track-caps); text-transform: uppercase;
+  color: var(--text-2);                    /* wayfinding sits one step below content */
+}
+.win p { margin: 0; color: var(--text-1); }
+
+.about { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 20px 32px; }
+.avatar { width: 102px; height: 116px; image-rendering: pixelated; display: block; }
+
+/* projects: one window, rows as a DOS list; hover = highlight bar.
+   Bars sit one inset inside the outline on every side. The top adds the half of the
+   title that hangs below the line (~8px), so title → first bar is also one inset.
+   Each card is whole rows: half a row above, its lines, half a row below, so cards are
+   separated by exactly one blank row. Reads square: 11px + 4px leading ≈ 16px sides. */
+.list { padding: calc(2 * var(--inset) + 8px) calc(2 * var(--inset)) calc(2 * var(--inset)); }
+.rows { list-style: none; margin: 0; padding: 0; }
+/* a DOS listing: name column, tags column on the same row, description below.
+   Every line is one row tall with no extra margins, so all three share one rhythm. */
+.row {
+  display: grid; grid-template-columns: 18ch 1fr; align-items: start;   /* rows stay exactly 22px; baselines differ <1px */
+  grid-template-areas: "title tags" "desc desc";
+  padding: calc(var(--row) / 2) calc(var(--win-pad) - 2 * var(--inset));
+  transition: background-color .12s;
+}
+.r-title { grid-area: title; color: var(--text-1); letter-spacing: .03em; }
+.r-desc  { grid-area: desc; color: var(--text-2); }
+.r-tags  { grid-area: tags; display: flex; flex-wrap: wrap; gap: 0 2ch;
+           color: var(--text-3); font-size: var(--size-meta); letter-spacing: var(--track-meta); }
+.row:hover, .row:focus-visible { background: var(--hl); outline: none; }
+/* on the bar the title lights up in the accent; every other level steps up one */
+.row:hover .r-title, .row:focus-visible .r-title { color: var(--accent); }
+.row:hover .r-desc, .row:focus-visible .r-desc { color: var(--text-1); }
+.row:hover .r-tags, .row:focus-visible .r-tags { color: var(--text-2); }
+
+/* ── phones: thinner frame, links move to the bottom line ──────────────── */
+@media (max-width: 720px) {
+  :root { --m: 8px; --size-body: 13px; --row: 20px; }
+  .chrome nav { top: auto; bottom: calc(var(--m) + var(--line) / 2 - 9px); right: 50%; transform: translateX(50%); }
+  .name { left: calc(var(--m) + 12px); letter-spacing: .24em; }
+  .win { --win-pad: 24px; margin: 32px var(--pad) 0; }
+  .about { grid-template-columns: 1fr; justify-items: start; }
+  /* too narrow for a tags column: tags become the third row */
+  .row { grid-template-columns: 1fr; grid-template-areas: "title" "desc" "tags"; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .screen { scroll-behavior: auto; }
+  .chrome a, .row { transition: none; }
+}
