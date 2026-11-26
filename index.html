@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Scott Batary — Software Engineer</title>
+<title>Scott Batary</title>
 <meta name="description" content="Scott Batary is a software engineer building web apps and APIs with C# and Next.js, plus games, pixel art, and open source.">
 <meta name="theme-color" content="#000000">
 <link rel="icon" type="image/jpeg" href="/logo.jpg">
-<meta property="og:title" content="Scott Batary — Software Engineer">
+<meta property="og:title" content="Scott Batary">
 <meta property="og:description" content="Web apps, APIs, games, pixel art, and open source.">
 <link rel="preload" href="fonts/jetbrains-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="art/plate-aurora.webp" as="image">
@@ -15,19 +15,17 @@
 </head>
 <body>
 <canvas id="vigil" aria-hidden="true"></canvas>
-
-<!-- the whole site is one DOS screen: a fixed frame with the name and links on its line -->
+  
 <div class="frame" aria-hidden="true"></div>
 <header class="chrome">
   <a class="name" href="/" data-flare="window">Scott Batary</a>
-  <nav aria-label="Elsewhere">
+  <nav aria-label="Links">
     <a href="https://github.com/sgbj" data-flare="crystal">github</a>
     <a href="https://linkedin.com/in/scott-batary" data-flare="crystal">linkedin</a>
     <a href="https://blog.batary.dev/" data-flare="crystal">blog</a>
   </nav>
 </header>
 
-<!-- content scrolls inside the frame and is clipped at its line -->
 <main class="screen" id="screen" tabindex="-1">
 
   <section id="about" class="win about">
